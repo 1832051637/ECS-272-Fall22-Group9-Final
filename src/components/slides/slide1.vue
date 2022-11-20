@@ -3,17 +3,17 @@
         <span class="background" style="background-image:url('https://webslides.tv/static/images/nature.jpg')"></span>
         <!--.wrap = container (width: 90%) -->
         <div class="wrap aligncenter">
-          <h1><strong>Create beautiful stories</strong></h1>
-          <p class="text-intro">WebSlides makes HTML presentations easy.<br>
-            Just the essentials and using lovely CSS.
+          <h1><strong>Stories of Covid 19</strong></h1>
+          <p class="text-intro">Write an introductions for covid-19<br>
+            By Erjie Zhang, Yun Qin
           </p>
           <p>
-            <a href="https://webslides.tv/webslides-latest.zip" class="button zoomIn"
-              title="Download WebSlides for free">
-              <svg class="fa-cloud-download">
-                <use xlink:href="#fa-cloud-download"></use>
+            <a href="https://github.com/1832051637/ECS-272-Fall22-Group9-Final" class="button zoomIn"
+              title="View our Github Repo">
+              <svg class="fa-github">
+                <use xlink:href="#fa-github"></use>
               </svg>
-              WebSlides
+              Github
             </a>
           </p>
         </div>

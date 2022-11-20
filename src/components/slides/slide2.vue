@@ -6,7 +6,7 @@
           <p class="text-intro"><a href="demos/why-webslides.html" title="Why WebSlides?">Presentations</a>, <a
               href="demos/landings.html" title="Landings">landings</a>, <a href="demos/portfolios.html"
               title="Portfolios">portfolios</a>, and <a href="demos/longforms.html" title="Longforms">longforms</a>.</p>
-          <div class="bg-white shadow">
+          <!-- <div class="bg-white shadow">
             <ul class="flexblock reasons">
               <li>
                 <h2>An opportunity to engage.</h2>
@@ -19,7 +19,9 @@
                     title="WebSlides Demos">choose a demo</a> and customize it in minutes.</p>
               </li>
             </ul>
-          </div>
+          </div> -->
+          <BarChart/>
+          
           <!-- .end .bg-white shadow -->
         </div>
         <!-- .end .wrap -->
@@ -27,10 +29,12 @@
 </template>
 
 <script>
+import BarChart from "../charts/barchart.vue"
+
 export default {
     name: "slide2",
     components: {
-
+      BarChart
     },
 }
 </script>

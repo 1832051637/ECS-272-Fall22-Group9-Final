@@ -17,7 +17,7 @@
               </ul>
             </div>
             <div class="column">
-              <figure><img class="aligncenter" src="static/images/setup.png" alt="WebSlides Files"></figure>
+              <figure><img class="aligncenter" src="/src/assets/images/setup.png" alt="WebSlides Files"></figure>
             </div>
             <div class="column">
               <h4>
