@@ -1,6 +1,6 @@
 # covid_19_storytelling
 
-This template should help get you started developing with Vue 3 in Vite.
+A project repo for ECS-272 Fall 2022 final project (Group 9)
 
 ## Recommended IDE Setup
 
