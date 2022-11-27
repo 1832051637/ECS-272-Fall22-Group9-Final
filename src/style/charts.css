@@ -7,3 +7,10 @@
     height: auto;
     width: auto;
 }
+
+.mapCircle {
+    fill: red;
+    fill-opacity: 50%;
+    stroke: red;
+    stroke-width: 1;
+}

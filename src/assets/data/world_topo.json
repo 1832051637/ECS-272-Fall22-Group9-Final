@@ -13,7 +13,7 @@
                 "id" : 0,
                 "properties" : {
                     "name" : "Aruba",
-                    "countryCode" : "AW",
+                    "country_code" : "AW",
                     "capital" : "Oranjestad",
                     "lat" : "12.516666666666667",
                     "lon" : "-70.03333333333333"
@@ -27,7 +27,7 @@
                 "id" : 1,
                 "properties" : {
                     "name" : "Afghanistan",
-                    "countryCode" : "AF",
+                    "country_code" : "AF",
                     "capital" : "Kabul",
                     "lat" : "34.516666666666666",
                     "lon" : "69.18333333333334"
@@ -46,7 +46,7 @@
                 "id" : 2,
                 "properties" : {
                     "name" : "Angola",
-                    "countryCode" : "AO",
+                    "country_code" : "AO",
                     "capital" : "Luanda",
                     "lat" : "-8.833333333333334",
                     "lon" : "13.216666666666667"
@@ -60,7 +60,7 @@
                 "id" : 3,
                 "properties" : {
                     "name" : "Anguilla",
-                    "countryCode" : "AI",
+                    "country_code" : "AI",
                     "capital" : "The Valley",
                     "lat" : "18.216666666666665",
                     "lon" : "-63.05"
@@ -74,7 +74,7 @@
                 "id" : 4,
                 "properties" : {
                     "name" : "Albania",
-                    "countryCode" : "AL",
+                    "country_code" : "AL",
                     "capital" : "Tirana",
                     "lat" : "41.31666666666667",
                     "lon" : "19.816666666666666"
@@ -96,7 +96,7 @@
                 "id" : 5,
                 "properties" : {
                     "name" : "Åland Islands",
-                    "countryCode" : "AX",
+                    "country_code" : "AX",
                     "capital" : "Mariehamn",
                     "lat" : "60.116667",
                     "lon" : "19.9"
@@ -110,7 +110,7 @@
                 "id" : 6,
                 "properties" : {
                     "name" : "Andorra",
-                    "countryCode" : "AD",
+                    "country_code" : "AD",
                     "capital" : "Andorra la Vella",
                     "lat" : "42.5",
                     "lon" : "1.5166666666666666"
@@ -139,7 +139,7 @@
                 "id" : 7,
                 "properties" : {
                     "name" : "United Arab Emirates",
-                    "countryCode" : "AE",
+                    "country_code" : "AE",
                     "capital" : "Abu Dhabi",
                     "lat" : "24.466666666666665",
                     "lon" : "54.36666666666667"
@@ -164,7 +164,7 @@
                 "id" : 8,
                 "properties" : {
                     "name" : "Argentina",
-                    "countryCode" : "AR",
+                    "country_code" : "AR",
                     "capital" : "Buenos Aires",
                     "lat" : "-34.583333333333336",
                     "lon" : "-58.666666666666664"
@@ -184,7 +184,7 @@
                 "id" : 9,
                 "properties" : {
                     "name" : "Armenia",
-                    "countryCode" : "AM",
+                    "country_code" : "AM",
                     "capital" : "Yerevan",
                     "lat" : "40.166666666666664",
                     "lon" : "44.5"
@@ -198,7 +198,7 @@
                 "id" : 10,
                 "properties" : {
                     "name" : "American Samoa",
-                    "countryCode" : "AS",
+                    "country_code" : "AS",
                     "capital" : "Pago Pago",
                     "lat" : "-14.266666666666667",
                     "lon" : "-170.7"
@@ -529,7 +529,7 @@
                 "id" : 11,
                 "properties" : {
                     "name" : "Antarctica",
-                    "countryCode" : "AQ"
+                    "country_code" : "AQ"
                 }
             },
             {
@@ -537,7 +537,7 @@
                 "id" : 12,
                 "properties" : {
                     "name" : "Australia",
-                    "countryCode" : "AU",
+                    "country_code" : "AU",
                     "capital" : "Canberra",
                     "lat" : "-35.266666666666666",
                     "lon" : "149.13333333333333"
@@ -559,7 +559,7 @@
                 "id" : 13,
                 "properties" : {
                     "name" : "French Southern Territories",
-                    "countryCode" : "TF",
+                    "country_code" : "TF",
                     "capital" : "Port-aux-Français",
                     "lat" : "-49.35",
                     "lon" : "70.216667"
@@ -578,7 +578,7 @@
                 "id" : 14,
                 "properties" : {
                     "name" : "Antigua and Barbuda",
-                    "countryCode" : "AG",
+                    "country_code" : "AG",
                     "capital" : "Saint John's",
                     "lat" : "17.116666666666667",
                     "lon" : "-61.85"
@@ -708,7 +708,7 @@
                 "id" : 15,
                 "properties" : {
                     "name" : "Australia",
-                    "countryCode" : "AU",
+                    "country_code" : "AU",
                     "capital" : "Canberra",
                     "lat" : "-35.266666666666666",
                     "lon" : "149.13333333333333"
@@ -722,7 +722,7 @@
                 "id" : 16,
                 "properties" : {
                     "name" : "Austria",
-                    "countryCode" : "AT",
+                    "country_code" : "AT",
                     "capital" : "Vienna",
                     "lat" : "48.2",
                     "lon" : "16.366666666666667"
@@ -745,7 +745,7 @@
                 "id" : 17,
                 "properties" : {
                     "name" : "Azerbaijan",
-                    "countryCode" : "AZ",
+                    "country_code" : "AZ",
                     "capital" : "Baku",
                     "lat" : "40.38333333333333",
                     "lon" : "49.86666666666667"
@@ -759,7 +759,7 @@
                 "id" : 18,
                 "properties" : {
                     "name" : "Burundi",
-                    "countryCode" : "BI",
+                    "country_code" : "BI",
                     "capital" : "Bujumbura",
                     "lat" : "-3.3666666666666667",
                     "lon" : "29.35"
@@ -773,7 +773,7 @@
                 "id" : 19,
                 "properties" : {
                     "name" : "Belgium",
-                    "countryCode" : "BE",
+                    "country_code" : "BE",
                     "capital" : "Brussels",
                     "lat" : "50.833333333333336",
                     "lon" : "4.333333333333333"
@@ -787,7 +787,7 @@
                 "id" : 20,
                 "properties" : {
                     "name" : "Benin",
-                    "countryCode" : "BJ",
+                    "country_code" : "BJ",
                     "capital" : "Porto-Novo",
                     "lat" : "6.483333333333333",
                     "lon" : "2.6166666666666667"
@@ -801,7 +801,7 @@
                 "id" : 21,
                 "properties" : {
                     "name" : "Burkina Faso",
-                    "countryCode" : "BF",
+                    "country_code" : "BF",
                     "capital" : "Ouagadougou",
                     "lat" : "12.366666666666667",
                     "lon" : "-1.5166666666666666"
@@ -835,7 +835,7 @@
                 "id" : 22,
                 "properties" : {
                     "name" : "Bangladesh",
-                    "countryCode" : "BD",
+                    "country_code" : "BD",
                     "capital" : "Dhaka",
                     "lat" : "23.716666666666665",
                     "lon" : "90.4"
@@ -849,7 +849,7 @@
                 "id" : 23,
                 "properties" : {
                     "name" : "Bulgaria",
-                    "countryCode" : "BG",
+                    "country_code" : "BG",
                     "capital" : "Sofia",
                     "lat" : "42.68333333333333",
                     "lon" : "23.316666666666666"
@@ -863,7 +863,7 @@
                 "id" : 24,
                 "properties" : {
                     "name" : "Bahrain",
-                    "countryCode" : "BH",
+                    "country_code" : "BH",
                     "capital" : "Manama",
                     "lat" : "26.233333333333334",
                     "lon" : "50.56666666666667"
@@ -921,7 +921,7 @@
                 "id" : 25,
                 "properties" : {
                     "name" : "Bahamas",
-                    "countryCode" : "BS",
+                    "country_code" : "BS",
                     "capital" : "Nassau",
                     "lat" : "25.083333333333332",
                     "lon" : "-77.35"
@@ -935,7 +935,7 @@
                 "id" : 26,
                 "properties" : {
                     "name" : "Bosnia and Herzegovina",
-                    "countryCode" : "BA",
+                    "country_code" : "BA",
                     "capital" : "Sarajevo",
                     "lat" : "43.86666666666667",
                     "lon" : "18.416666666666668"
@@ -946,7 +946,7 @@
                 "id" : 27,
                 "properties" : {
                     "name" : "Saint Barthélemy",
-                    "countryCode" : "BL",
+                    "country_code" : "BL",
                     "capital" : "Gustavia",
                     "lat" : "17.883333333333333",
                     "lon" : "-62.85"
@@ -960,7 +960,7 @@
                 "id" : 28,
                 "properties" : {
                     "name" : "Belarus",
-                    "countryCode" : "BY",
+                    "country_code" : "BY",
                     "capital" : "Minsk",
                     "lat" : "53.9",
                     "lon" : "27.566666666666666"
@@ -982,7 +982,7 @@
                 "id" : 29,
                 "properties" : {
                     "name" : "Belize",
-                    "countryCode" : "BZ",
+                    "country_code" : "BZ",
                     "capital" : "Belmopan",
                     "lat" : "17.25",
                     "lon" : "-88.76666666666667"
@@ -996,7 +996,7 @@
                 "id" : 30,
                 "properties" : {
                     "name" : "Bermuda",
-                    "countryCode" : "BM",
+                    "country_code" : "BM",
                     "capital" : "Hamilton",
                     "lat" : "32.28333333333333",
                     "lon" : "-64.78333333333333"
@@ -1010,7 +1010,7 @@
                 "id" : 31,
                 "properties" : {
                     "name" : "Bolivia, Plurinational State of",
-                    "countryCode" : "BO",
+                    "country_code" : "BO",
                     "capital" : "La Paz",
                     "lat" : "-16.5",
                     "lon" : "-68.15"
@@ -1074,7 +1074,7 @@
                 "id" : 32,
                 "properties" : {
                     "name" : "Brazil",
-                    "countryCode" : "BR",
+                    "country_code" : "BR",
                     "capital" : "Brasilia",
                     "lat" : "-15.783333333333333",
                     "lon" : "-47.916666666666664"
@@ -1088,7 +1088,7 @@
                 "id" : 33,
                 "properties" : {
                     "name" : "Barbados",
-                    "countryCode" : "BB",
+                    "country_code" : "BB",
                     "capital" : "Bridgetown",
                     "lat" : "13.1",
                     "lon" : "-59.61666666666667"
@@ -1107,7 +1107,7 @@
                 "id" : 34,
                 "properties" : {
                     "name" : "Brunei Darussalam",
-                    "countryCode" : "BN",
+                    "country_code" : "BN",
                     "capital" : "Bandar Seri Begawan",
                     "lat" : "4.883333333333333",
                     "lon" : "114.93333333333334"
@@ -1121,7 +1121,7 @@
                 "id" : 35,
                 "properties" : {
                     "name" : "Bhutan",
-                    "countryCode" : "BT",
+                    "country_code" : "BT",
                     "capital" : "Thimphu",
                     "lat" : "27.466666666666665",
                     "lon" : "89.63333333333334"
@@ -1135,7 +1135,7 @@
                 "id" : 36,
                 "properties" : {
                     "name" : "Botswana",
-                    "countryCode" : "BW",
+                    "country_code" : "BW",
                     "capital" : "Gaborone",
                     "lat" : "-24.633333333333333",
                     "lon" : "25.9"
@@ -1149,7 +1149,7 @@
                 "id" : 37,
                 "properties" : {
                     "name" : "Central African Republic",
-                    "countryCode" : "CF",
+                    "country_code" : "CF",
                     "capital" : "Bangui",
                     "lat" : "4.366666666666666",
                     "lon" : "18.583333333333332"
@@ -1564,7 +1564,7 @@
                 "id" : 38,
                 "properties" : {
                     "name" : "Canada",
-                    "countryCode" : "CA",
+                    "country_code" : "CA",
                     "capital" : "Ottawa",
                     "lat" : "45.416666666666664",
                     "lon" : "-75.7"
@@ -1578,7 +1578,7 @@
                 "id" : 39,
                 "properties" : {
                     "name" : "Switzerland",
-                    "countryCode" : "CH",
+                    "country_code" : "CH",
                     "capital" : "Bern",
                     "lat" : "46.916666666666664",
                     "lon" : "7.466666666666667"
@@ -1684,7 +1684,7 @@
                 "id" : 40,
                 "properties" : {
                     "name" : "Chile",
-                    "countryCode" : "CL",
+                    "country_code" : "CL",
                     "capital" : "Santiago",
                     "lat" : "-33.45",
                     "lon" : "-70.66666666666667"
@@ -1736,7 +1736,7 @@
                 "id" : 41,
                 "properties" : {
                     "name" : "China",
-                    "countryCode" : "CN",
+                    "country_code" : "CN",
                     "capital" : "Beijing",
                     "lat" : "39.916666666666664",
                     "lon" : "116.38333333333334"
@@ -1755,7 +1755,7 @@
                 "id" : 42,
                 "properties" : {
                     "name" : "Côte d'Ivoire",
-                    "countryCode" : "CI",
+                    "country_code" : "CI",
                     "capital" : "Yamoussoukro",
                     "lat" : "6.816666666666666",
                     "lon" : "-5.266666666666667"
@@ -1769,7 +1769,7 @@
                 "id" : 43,
                 "properties" : {
                     "name" : "Cameroon",
-                    "countryCode" : "CM",
+                    "country_code" : "CM",
                     "capital" : "Yaounde",
                     "lat" : "3.8666666666666667",
                     "lon" : "11.516666666666667"
@@ -1783,7 +1783,7 @@
                 "id" : 44,
                 "properties" : {
                     "name" : "Congo, the Democratic Republic of the",
-                    "countryCode" : "CD",
+                    "country_code" : "CD",
                     "capital" : "Kinshasa",
                     "lat" : "-4.316666666666666",
                     "lon" : "15.3"
@@ -1797,7 +1797,7 @@
                 "id" : 45,
                 "properties" : {
                     "name" : "Congo",
-                    "countryCode" : "CG",
+                    "country_code" : "CG",
                     "capital" : "Brazzaville",
                     "lat" : "-4.25",
                     "lon" : "15.283333333333333"
@@ -1811,7 +1811,7 @@
                 "id" : 46,
                 "properties" : {
                     "name" : "Cook Islands",
-                    "countryCode" : "CK",
+                    "country_code" : "CK",
                     "capital" : "Avarua",
                     "lat" : "-21.2",
                     "lon" : "-159.76666666666668"
@@ -1830,7 +1830,7 @@
                 "id" : 47,
                 "properties" : {
                     "name" : "Colombia",
-                    "countryCode" : "CO",
+                    "country_code" : "CO",
                     "capital" : "Bogota",
                     "lat" : "4.6",
                     "lon" : "-74.08333333333333"
@@ -1852,7 +1852,7 @@
                 "id" : 48,
                 "properties" : {
                     "name" : "Comoros",
-                    "countryCode" : "KM",
+                    "country_code" : "KM",
                     "capital" : "Moroni",
                     "lat" : "-11.7",
                     "lon" : "43.233333333333334"
@@ -1889,7 +1889,7 @@
                 "id" : 49,
                 "properties" : {
                     "name" : "Cape Verde",
-                    "countryCode" : "CV",
+                    "country_code" : "CV",
                     "capital" : "Praia",
                     "lat" : "14.916666666666666",
                     "lon" : "-23.516666666666666"
@@ -1903,7 +1903,7 @@
                 "id" : 50,
                 "properties" : {
                     "name" : "Costa Rica",
-                    "countryCode" : "CR",
+                    "country_code" : "CR",
                     "capital" : "San Jose",
                     "lat" : "9.933333333333334",
                     "lon" : "-84.08333333333333"
@@ -1937,7 +1937,7 @@
                 "id" : 51,
                 "properties" : {
                     "name" : "Cuba",
-                    "countryCode" : "CU",
+                    "country_code" : "CU",
                     "capital" : "Havana",
                     "lat" : "23.116666666666667",
                     "lon" : "-82.35"
@@ -1951,7 +1951,7 @@
                 "id" : 52,
                 "properties" : {
                     "name" : "Curaçao",
-                    "countryCode" : "CW",
+                    "country_code" : "CW",
                     "capital" : "Willemstad",
                     "lat" : "12.1",
                     "lon" : "-68.91666666666667"
@@ -1970,7 +1970,7 @@
                 "id" : 53,
                 "properties" : {
                     "name" : "Cayman Islands",
-                    "countryCode" : "KY",
+                    "country_code" : "KY",
                     "capital" : "George Town",
                     "lat" : "19.3",
                     "lon" : "-81.38333333333334"
@@ -1995,7 +1995,7 @@
                 "id" : 55,
                 "properties" : {
                     "name" : "Cyprus",
-                    "countryCode" : "CY",
+                    "country_code" : "CY",
                     "capital" : "Nicosia",
                     "lat" : "35.166666666666664",
                     "lon" : "33.36666666666667"
@@ -2009,7 +2009,7 @@
                 "id" : 56,
                 "properties" : {
                     "name" : "Czech Republic",
-                    "countryCode" : "CZ",
+                    "country_code" : "CZ",
                     "capital" : "Prague",
                     "lat" : "50.083333333333336",
                     "lon" : "14.466666666666667"
@@ -2040,7 +2040,7 @@
                 "id" : 57,
                 "properties" : {
                     "name" : "Germany",
-                    "countryCode" : "DE",
+                    "country_code" : "DE",
                     "capital" : "Berlin",
                     "lat" : "52.516666666666666",
                     "lon" : "13.4"
@@ -2054,7 +2054,7 @@
                 "id" : 58,
                 "properties" : {
                     "name" : "Djibouti",
-                    "countryCode" : "DJ",
+                    "country_code" : "DJ",
                     "capital" : "Djibouti",
                     "lat" : "11.583333333333334",
                     "lon" : "43.15"
@@ -2068,7 +2068,7 @@
                 "id" : 59,
                 "properties" : {
                     "name" : "Dominica",
-                    "countryCode" : "DM",
+                    "country_code" : "DM",
                     "capital" : "Roseau",
                     "lat" : "15.3",
                     "lon" : "-61.4"
@@ -2117,7 +2117,7 @@
                 "id" : 60,
                 "properties" : {
                     "name" : "Denmark",
-                    "countryCode" : "DK",
+                    "country_code" : "DK",
                     "capital" : "Copenhagen",
                     "lat" : "55.666666666666664",
                     "lon" : "12.583333333333334"
@@ -2131,7 +2131,7 @@
                 "id" : 61,
                 "properties" : {
                     "name" : "Dominican Republic",
-                    "countryCode" : "DO",
+                    "country_code" : "DO",
                     "capital" : "Santo Domingo",
                     "lat" : "18.466666666666665",
                     "lon" : "-69.9"
@@ -2145,7 +2145,7 @@
                 "id" : 62,
                 "properties" : {
                     "name" : "Algeria",
-                    "countryCode" : "DZ",
+                    "country_code" : "DZ",
                     "capital" : "Algiers",
                     "lat" : "36.75",
                     "lon" : "3.05"
@@ -2185,7 +2185,7 @@
                 "id" : 63,
                 "properties" : {
                     "name" : "Ecuador",
-                    "countryCode" : "EC",
+                    "country_code" : "EC",
                     "capital" : "Quito",
                     "lat" : "-0.21666666666666667",
                     "lon" : "-78.5"
@@ -2199,7 +2199,7 @@
                 "id" : 64,
                 "properties" : {
                     "name" : "Egypt",
-                    "countryCode" : "EG",
+                    "country_code" : "EG",
                     "capital" : "Cairo",
                     "lat" : "30.05",
                     "lon" : "31.25"
@@ -2221,7 +2221,7 @@
                 "id" : 65,
                 "properties" : {
                     "name" : "Eritrea",
-                    "countryCode" : "ER",
+                    "country_code" : "ER",
                     "capital" : "Asmara",
                     "lat" : "15.333333333333334",
                     "lon" : "38.93333333333333"
@@ -2270,7 +2270,7 @@
                 "id" : 66,
                 "properties" : {
                     "name" : "Spain",
-                    "countryCode" : "ES",
+                    "country_code" : "ES",
                     "capital" : "Madrid",
                     "lat" : "40.4",
                     "lon" : "-3.6833333333333336"
@@ -2295,7 +2295,7 @@
                 "id" : 67,
                 "properties" : {
                     "name" : "Estonia",
-                    "countryCode" : "EE",
+                    "country_code" : "EE",
                     "capital" : "Tallinn",
                     "lat" : "59.43333333333333",
                     "lon" : "24.716666666666665"
@@ -2309,7 +2309,7 @@
                 "id" : 68,
                 "properties" : {
                     "name" : "Ethiopia",
-                    "countryCode" : "ET",
+                    "country_code" : "ET",
                     "capital" : "Addis Ababa",
                     "lat" : "9.033333333333333",
                     "lon" : "38.7"
@@ -2346,7 +2346,7 @@
                 "id" : 69,
                 "properties" : {
                     "name" : "Finland",
-                    "countryCode" : "FI",
+                    "country_code" : "FI",
                     "capital" : "Helsinki",
                     "lat" : "60.166666666666664",
                     "lon" : "24.933333333333334"
@@ -2404,7 +2404,7 @@
                 "id" : 70,
                 "properties" : {
                     "name" : "Fiji",
-                    "countryCode" : "FJ",
+                    "country_code" : "FJ",
                     "capital" : "Suva",
                     "lat" : "-18.133333333333333",
                     "lon" : "178.41666666666666"
@@ -2435,7 +2435,7 @@
                 "id" : 71,
                 "properties" : {
                     "name" : "Falkland Islands (Malvinas)",
-                    "countryCode" : "FK",
+                    "country_code" : "FK",
                     "capital" : "Stanley",
                     "lat" : "-51.7",
                     "lon" : "-57.85"
@@ -2475,7 +2475,7 @@
                 "id" : 72,
                 "properties" : {
                     "name" : "France",
-                    "countryCode" : "FR",
+                    "country_code" : "FR",
                     "capital" : "Paris",
                     "lat" : "48.86666666666667",
                     "lon" : "2.3333333333333335"
@@ -2489,7 +2489,7 @@
                 "id" : 73,
                 "properties" : {
                     "name" : "French Guiana",
-                    "countryCode" : "GF",
+                    "country_code" : "GF",
                     "countryCapital" : "Cayenne"
                 }
             },
@@ -2515,7 +2515,7 @@
                 "id" : 74,
                 "properties" : {
                     "name" : "Faroe Islands",
-                    "countryCode" : "FO",
+                    "country_code" : "FO",
                     "capital" : "Torshavn",
                     "lat" : "62",
                     "lon" : "-6.766666666666667"
@@ -2543,7 +2543,7 @@
                 "id" : 75,
                 "properties" : {
                     "name" : "Micronesia, Federated States of",
-                    "countryCode" : "FM",
+                    "country_code" : "FM",
                     "capital" : "Palikir",
                     "lat" : "6.916666666666667",
                     "lon" : "158.15"
@@ -2557,7 +2557,7 @@
                 "id" : 76,
                 "properties" : {
                     "name" : "Gabon",
-                    "countryCode" : "GA",
+                    "country_code" : "GA",
                     "capital" : "Libreville",
                     "lat" : "0.38333333333333336",
                     "lon" : "9.45"
@@ -2633,7 +2633,7 @@
                 "id" : 77,
                 "properties" : {
                     "name" : "United Kingdom",
-                    "countryCode" : "GB",
+                    "country_code" : "GB",
                     "capital" : "London",
                     "lat" : "51.5",
                     "lon" : "-0.08333333333333333"
@@ -2647,7 +2647,7 @@
                 "id" : 78,
                 "properties" : {
                     "name" : "Georgia",
-                    "countryCode" : "GE",
+                    "country_code" : "GE",
                     "capital" : "Tbilisi",
                     "lat" : "41.68333333333333",
                     "lon" : "44.833333333333336"
@@ -2661,7 +2661,7 @@
                 "id" : 79,
                 "properties" : {
                     "name" : "Guernsey",
-                    "countryCode" : "GG",
+                    "country_code" : "GG",
                     "capital" : "Saint Peter Port",
                     "lat" : "49.45",
                     "lon" : "-2.533333333333333"
@@ -2675,7 +2675,7 @@
                 "id" : 80,
                 "properties" : {
                     "name" : "Ghana",
-                    "countryCode" : "GH",
+                    "country_code" : "GH",
                     "capital" : "Accra",
                     "lat" : "5.55",
                     "lon" : "-0.21666666666666667"
@@ -2689,7 +2689,7 @@
                 "id" : 81,
                 "properties" : {
                     "name" : "Guinea",
-                    "countryCode" : "GN",
+                    "country_code" : "GN",
                     "capital" : "Conakry",
                     "lat" : "9.5",
                     "lon" : "-13.7"
@@ -2703,7 +2703,7 @@
                 "id" : 82,
                 "properties" : {
                     "name" : "Gambia",
-                    "countryCode" : "GM",
+                    "country_code" : "GM",
                     "capital" : "Banjul",
                     "lat" : "13.45",
                     "lon" : "-16.566666666666666"
@@ -2737,7 +2737,7 @@
                 "id" : 83,
                 "properties" : {
                     "name" : "Guinea-Bissau",
-                    "countryCode" : "GW",
+                    "country_code" : "GW",
                     "capital" : "Bissau",
                     "lat" : "11.85",
                     "lon" : "-15.583333333333334"
@@ -2756,7 +2756,7 @@
                 "id" : 84,
                 "properties" : {
                     "name" : "Equatorial Guinea",
-                    "countryCode" : "GQ",
+                    "country_code" : "GQ",
                     "capital" : "Malabo",
                     "lat" : "3.75",
                     "lon" : "8.783333333333333"
@@ -2886,7 +2886,7 @@
                 "id" : 85,
                 "properties" : {
                     "name" : "Greece",
-                    "countryCode" : "GR",
+                    "country_code" : "GR",
                     "capital" : "Athens",
                     "lat" : "37.983333333333334",
                     "lon" : "23.733333333333334"
@@ -2900,7 +2900,7 @@
                 "id" : 86,
                 "properties" : {
                     "name" : "Grenada",
-                    "countryCode" : "GD",
+                    "country_code" : "GD",
                     "capital" : "Saint George's",
                     "lat" : "12.05",
                     "lon" : "-61.75"
@@ -2964,7 +2964,7 @@
                 "id" : 87,
                 "properties" : {
                     "name" : "Greenland",
-                    "countryCode" : "GL",
+                    "country_code" : "GL",
                     "capital" : "Nuuk",
                     "lat" : "64.18333333333334",
                     "lon" : "-51.75"
@@ -2978,7 +2978,7 @@
                 "id" : 88,
                 "properties" : {
                     "name" : "Guatemala",
-                    "countryCode" : "GT",
+                    "country_code" : "GT",
                     "capital" : "Guatemala City",
                     "lat" : "14.616666666666667",
                     "lon" : "-90.51666666666667"
@@ -2992,7 +2992,7 @@
                 "id" : 89,
                 "properties" : {
                     "name" : "Guam",
-                    "countryCode" : "GU",
+                    "country_code" : "GU",
                     "capital" : "Hagatna",
                     "lat" : "13.466666666666667",
                     "lon" : "144.73333333333332"
@@ -3006,7 +3006,7 @@
                 "id" : 90,
                 "properties" : {
                     "name" : "Guyana",
-                    "countryCode" : "GY",
+                    "country_code" : "GY",
                     "capital" : "Georgetown",
                     "lat" : "6.8",
                     "lon" : "-58.15"
@@ -3028,7 +3028,7 @@
                 "id" : 91,
                 "properties" : {
                     "name" : "Hong Kong",
-                    "countryCode" : "HK"
+                    "country_code" : "HK"
                 }
             },
             {
@@ -3039,7 +3039,7 @@
                 "id" : 92,
                 "properties" : {
                     "name" : "Heard Island and McDonald Islands",
-                    "countryCode" : "HM"
+                    "country_code" : "HM"
                 }
             },
             {
@@ -3058,7 +3058,7 @@
                 "id" : 93,
                 "properties" : {
                     "name" : "Honduras",
-                    "countryCode" : "HN",
+                    "country_code" : "HN",
                     "capital" : "Tegucigalpa",
                     "lat" : "14.1",
                     "lon" : "-87.21666666666667"
@@ -3098,7 +3098,7 @@
                 "id" : 94,
                 "properties" : {
                     "name" : "Croatia",
-                    "countryCode" : "HR",
+                    "country_code" : "HR",
                     "capital" : "Zagreb",
                     "lat" : "45.8",
                     "lon" : "16"
@@ -3120,7 +3120,7 @@
                 "id" : 95,
                 "properties" : {
                     "name" : "Haiti",
-                    "countryCode" : "HT",
+                    "country_code" : "HT",
                     "capital" : "Port-au-Prince",
                     "lat" : "18.533333333333335",
                     "lon" : "-72.33333333333333"
@@ -3134,7 +3134,7 @@
                 "id" : 96,
                 "properties" : {
                     "name" : "Hungary",
-                    "countryCode" : "HU",
+                    "country_code" : "HU",
                     "capital" : "Budapest",
                     "lat" : "47.5",
                     "lon" : "19.083333333333332"
@@ -3543,7 +3543,7 @@
                 "id" : 97,
                 "properties" : {
                     "name" : "Indonesia",
-                    "countryCode" : "ID",
+                    "country_code" : "ID",
                     "capital" : "Jakarta",
                     "lat" : "-6.166666666666667",
                     "lon" : "106.81666666666666"
@@ -3557,7 +3557,7 @@
                 "id" : 98,
                 "properties" : {
                     "name" : "Isle of Man",
-                    "countryCode" : "IM",
+                    "country_code" : "IM",
                     "capital" : "Douglas",
                     "lat" : "54.15",
                     "lon" : "-4.483333333333333"
@@ -3603,7 +3603,7 @@
                 "id" : 99,
                 "properties" : {
                     "name" : "India",
-                    "countryCode" : "IN",
+                    "country_code" : "IN",
                     "capital" : "New Delhi",
                     "lat" : "28.6",
                     "lon" : "77.2"
@@ -3617,7 +3617,7 @@
                 "id" : 100,
                 "properties" : {
                     "name" : "Cocos Islands",
-                    "countryCode" : "CC",
+                    "country_code" : "CC",
                     "capital" : "West Island",
                     "lat" : "-12.166666666666666",
                     "lon" : "96.83333333333333"
@@ -3631,7 +3631,7 @@
                 "id" : 101,
                 "properties" : {
                     "name" : "Christmas Island",
-                    "countryCode" : "CX",
+                    "country_code" : "CX",
                     "capital" : "The Settlement",
                     "lat" : "-10.416666666666666",
                     "lon" : "105.71666666666667"
@@ -3645,7 +3645,7 @@
                 "id" : 102,
                 "properties" : {
                     "name" : "British Indian Ocean Territory",
-                    "countryCode" : "IO"
+                    "country_code" : "IO"
                 }
             },
             {
@@ -3661,7 +3661,7 @@
                 "id" : 103,
                 "properties" : {
                     "name" : "Ireland",
-                    "countryCode" : "IE",
+                    "country_code" : "IE",
                     "capital" : "Dublin",
                     "lat" : "53.31666666666667",
                     "lon" : "-6.233333333333333"
@@ -3680,7 +3680,7 @@
                 "id" : 104,
                 "properties" : {
                     "name" : "Iran, Islamic Republic of",
-                    "countryCode" : "IR",
+                    "country_code" : "IR",
                     "capital" : "Tehran",
                     "lat" : "35.7",
                     "lon" : "51.416666666666664"
@@ -3694,7 +3694,7 @@
                 "id" : 105,
                 "properties" : {
                     "name" : "Iraq",
-                    "countryCode" : "IQ",
+                    "country_code" : "IQ",
                     "capital" : "Baghdad",
                     "lat" : "33.333333333333336",
                     "lon" : "44.4"
@@ -3708,7 +3708,7 @@
                 "id" : 106,
                 "properties" : {
                     "name" : "Iceland",
-                    "countryCode" : "IS",
+                    "country_code" : "IS",
                     "capital" : "Reykjavik",
                     "lat" : "64.15",
                     "lon" : "-21.95"
@@ -3722,7 +3722,7 @@
                 "id" : 107,
                 "properties" : {
                     "name" : "Israel",
-                    "countryCode" : "IL",
+                    "country_code" : "IL",
                     "capital" : "Jerusalem",
                     "lat" : "31.766666666666666",
                     "lon" : "35.233333333333334"
@@ -3760,7 +3760,7 @@
                 "id" : 108,
                 "properties" : {
                     "name" : "Italy",
-                    "countryCode" : "IT",
+                    "country_code" : "IT",
                     "capital" : "Rome",
                     "lat" : "41.9",
                     "lon" : "12.483333333333333"
@@ -3774,7 +3774,7 @@
                 "id" : 109,
                 "properties" : {
                     "name" : "Jamaica",
-                    "countryCode" : "JM",
+                    "country_code" : "JM",
                     "capital" : "Kingston",
                     "lat" : "18",
                     "lon" : "-76.8"
@@ -3788,7 +3788,7 @@
                 "id" : 110,
                 "properties" : {
                     "name" : "Jersey",
-                    "countryCode" : "JE",
+                    "country_code" : "JE",
                     "capital" : "Saint Helier",
                     "lat" : "49.18333333333333",
                     "lon" : "-2.1"
@@ -3802,7 +3802,7 @@
                 "id" : 111,
                 "properties" : {
                     "name" : "Jordan",
-                    "countryCode" : "JO",
+                    "country_code" : "JO",
                     "capital" : "Amman",
                     "lat" : "31.95",
                     "lon" : "35.93333333333333"
@@ -3914,7 +3914,7 @@
                 "id" : 112,
                 "properties" : {
                     "name" : "Japan",
-                    "countryCode" : "JP",
+                    "country_code" : "JP",
                     "capital" : "Tokyo",
                     "lat" : "35.68333333333333",
                     "lon" : "139.75"
@@ -3950,7 +3950,7 @@
                 "id" : 114,
                 "properties" : {
                     "name" : "Kazakhstan",
-                    "countryCode" : "KZ",
+                    "country_code" : "KZ",
                     "capital" : "Astana",
                     "lat" : "51.166666666666664",
                     "lon" : "71.41666666666667"
@@ -3969,7 +3969,7 @@
                 "id" : 115,
                 "properties" : {
                     "name" : "Kenya",
-                    "countryCode" : "KE",
+                    "country_code" : "KE",
                     "capital" : "Nairobi",
                     "lat" : "-1.2833333333333332",
                     "lon" : "36.81666666666667"
@@ -3986,7 +3986,7 @@
                 "id" : 116,
                 "properties" : {
                     "name" : "Kyrgyzstan",
-                    "countryCode" : "KG",
+                    "country_code" : "KG",
                     "capital" : "Bishkek",
                     "lat" : "42.86666666666667",
                     "lon" : "74.6"
@@ -4005,7 +4005,7 @@
                 "id" : 117,
                 "properties" : {
                     "name" : "Cambodia",
-                    "countryCode" : "KH",
+                    "country_code" : "KH",
                     "capital" : "Phnom Penh",
                     "lat" : "11.55",
                     "lon" : "104.91666666666667"
@@ -4039,7 +4039,7 @@
                 "id" : 118,
                 "properties" : {
                     "name" : "Kiribati",
-                    "countryCode" : "KI",
+                    "country_code" : "KI",
                     "capital" : "Tarawa",
                     "lat" : "-0.8833333333333333",
                     "lon" : "169.53333333333333"
@@ -4058,7 +4058,7 @@
                 "id" : 119,
                 "properties" : {
                     "name" : "Saint Kitts and Nevis",
-                    "countryCode" : "KN",
+                    "country_code" : "KN",
                     "capital" : "Basseterre",
                     "lat" : "17.3",
                     "lon" : "-62.71666666666667"
@@ -4104,7 +4104,7 @@
                 "id" : 120,
                 "properties" : {
                     "name" : "Korea, Republic of",
-                    "countryCode" : "KR",
+                    "country_code" : "KR",
                     "capital" : "Seoul",
                     "lat" : "37.55",
                     "lon" : "126.98333333333333"
@@ -4137,7 +4137,7 @@
                 "id" : 122,
                 "properties" : {
                     "name" : "Kuwait",
-                    "countryCode" : "KW",
+                    "country_code" : "KW",
                     "capital" : "Kuwait City",
                     "lat" : "29.366666666666667",
                     "lon" : "47.96666666666667"
@@ -4151,7 +4151,7 @@
                 "id" : 123,
                 "properties" : {
                     "name" : "Lao People's Democratic Republic",
-                    "countryCode" : "LA"
+                    "country_code" : "LA"
                 }
             },
             {
@@ -4162,7 +4162,7 @@
                 "id" : 124,
                 "properties" : {
                     "name" : "Lebanon",
-                    "countryCode" : "LB",
+                    "country_code" : "LB",
                     "capital" : "Beirut",
                     "lat" : "33.86666666666667",
                     "lon" : "35.5"
@@ -4176,7 +4176,7 @@
                 "id" : 125,
                 "properties" : {
                     "name" : "Liberia",
-                    "countryCode" : "LR",
+                    "country_code" : "LR",
                     "capital" : "Monrovia",
                     "lat" : "6.3",
                     "lon" : "-10.8"
@@ -4190,7 +4190,7 @@
                 "id" : 126,
                 "properties" : {
                     "name" : "Libya",
-                    "countryCode" : "LY",
+                    "country_code" : "LY",
                     "capital" : "Tripoli",
                     "lat" : "32.88333333333333",
                     "lon" : "13.166666666666666"
@@ -4204,7 +4204,7 @@
                 "id" : 127,
                 "properties" : {
                     "name" : "Saint Lucia",
-                    "countryCode" : "LC",
+                    "country_code" : "LC",
                     "capital" : "Castries",
                     "lat" : "14",
                     "lon" : "-61"
@@ -4218,7 +4218,7 @@
                 "id" : 128,
                 "properties" : {
                     "name" : "Liechtenstein",
-                    "countryCode" : "LI",
+                    "country_code" : "LI",
                     "capital" : "Vaduz",
                     "lat" : "47.13333333333333",
                     "lon" : "9.516666666666667"
@@ -4240,7 +4240,7 @@
                 "id" : 129,
                 "properties" : {
                     "name" : "Sri Lanka",
-                    "countryCode" : "LK",
+                    "country_code" : "LK",
                     "capital" : "Colombo",
                     "lat" : "6.916666666666667",
                     "lon" : "79.83333333333333"
@@ -4254,7 +4254,7 @@
                 "id" : 130,
                 "properties" : {
                     "name" : "Lesotho",
-                    "countryCode" : "LS",
+                    "country_code" : "LS",
                     "capital" : "Maseru",
                     "lat" : "-29.316666666666666",
                     "lon" : "27.483333333333334"
@@ -4273,7 +4273,7 @@
                 "id" : 131,
                 "properties" : {
                     "name" : "Lithuania",
-                    "countryCode" : "LT",
+                    "country_code" : "LT",
                     "capital" : "Vilnius",
                     "lat" : "54.68333333333333",
                     "lon" : "25.316666666666666"
@@ -4287,7 +4287,7 @@
                 "id" : 132,
                 "properties" : {
                     "name" : "Luxembourg",
-                    "countryCode" : "LU",
+                    "country_code" : "LU",
                     "capital" : "Luxembourg",
                     "lat" : "49.6",
                     "lon" : "6.116666666666666"
@@ -4301,7 +4301,7 @@
                 "id" : 133,
                 "properties" : {
                     "name" : "Latvia",
-                    "countryCode" : "LV",
+                    "country_code" : "LV",
                     "capital" : "Riga",
                     "lat" : "56.95",
                     "lon" : "24.1"
@@ -4315,7 +4315,7 @@
                 "id" : 134,
                 "properties" : {
                     "name" : "Macao",
-                    "countryCode" : "MO"
+                    "country_code" : "MO"
                 }
             },
             {
@@ -4326,7 +4326,7 @@
                 "id" : 135,
                 "properties" : {
                     "name" : "Saint Martin (French part)",
-                    "countryCode" : "MF",
+                    "country_code" : "MF",
                     "capital" : "Marigot",
                     "lat" : "18.0731",
                     "lon" : "-63.0822"
@@ -4340,7 +4340,7 @@
                 "id" : 136,
                 "properties" : {
                     "name" : "Morocco",
-                    "countryCode" : "MA",
+                    "country_code" : "MA",
                     "capital" : "Rabat",
                     "lat" : "34.016666666666666",
                     "lon" : "-6.816666666666666"
@@ -4354,7 +4354,7 @@
                 "id" : 137,
                 "properties" : {
                     "name" : "Monaco",
-                    "countryCode" : "MC",
+                    "country_code" : "MC",
                     "capital" : "Monaco",
                     "lat" : "43.733333333333334",
                     "lon" : "7.416666666666667"
@@ -4368,7 +4368,7 @@
                 "id" : 138,
                 "properties" : {
                     "name" : "Moldova, Republic of",
-                    "countryCode" : "MD",
+                    "country_code" : "MD",
                     "capital" : "Chisinau",
                     "lat" : "47",
                     "lon" : "28.85"
@@ -4390,7 +4390,7 @@
                 "id" : 139,
                 "properties" : {
                     "name" : "Madagascar",
-                    "countryCode" : "MG",
+                    "country_code" : "MG",
                     "capital" : "Antananarivo",
                     "lat" : "-18.916666666666668",
                     "lon" : "47.516666666666666"
@@ -4409,7 +4409,7 @@
                 "id" : 140,
                 "properties" : {
                     "name" : "Maldives",
-                    "countryCode" : "MV",
+                    "country_code" : "MV",
                     "capital" : "Male",
                     "lat" : "4.166666666666667",
                     "lon" : "73.5"
@@ -4464,7 +4464,7 @@
                 "id" : 141,
                 "properties" : {
                     "name" : "Mexico",
-                    "countryCode" : "MX",
+                    "country_code" : "MX",
                     "capital" : "Mexico City",
                     "lat" : "19.433333333333334",
                     "lon" : "-99.13333333333334"
@@ -4483,7 +4483,7 @@
                 "id" : 142,
                 "properties" : {
                     "name" : "Marshall Islands",
-                    "countryCode" : "MH",
+                    "country_code" : "MH",
                     "capital" : "Majuro",
                     "lat" : "7.1",
                     "lon" : "171.38333333333333"
@@ -4497,7 +4497,7 @@
                 "id" : 143,
                 "properties" : {
                     "name" : "Macedonia, the former Yugoslav Republic of",
-                    "countryCode" : "MD",
+                    "country_code" : "MD",
                     "capital" : "Skopje",
                     "lat" : "42",
                     "lon" : "21.433333333333334"
@@ -4511,7 +4511,7 @@
                 "id" : 144,
                 "properties" : {
                     "name" : "Mali",
-                    "countryCode" : "ML",
+                    "country_code" : "ML",
                     "capital" : "Bamako",
                     "lat" : "12.65",
                     "lon" : "-8"
@@ -4525,7 +4525,7 @@
                 "id" : 145,
                 "properties" : {
                     "name" : "Malta",
-                    "countryCode" : "MT",
+                    "country_code" : "MT",
                     "capital" : "Valletta",
                     "lat" : "35.88333333333333",
                     "lon" : "14.5"
@@ -4589,7 +4589,7 @@
                 "id" : 146,
                 "properties" : {
                     "name" : "Myanmar",
-                    "countryCode" : "MM",
+                    "country_code" : "MM",
                     "capital" : "Rangoon",
                     "lat" : "16.8",
                     "lon" : "96.15"
@@ -4603,7 +4603,7 @@
                 "id" : 147,
                 "properties" : {
                     "name" : "Montenegro",
-                    "countryCode" : "ME",
+                    "country_code" : "ME",
                     "capital" : "Podgorica; note - the Old Royal Capital is Cetinje mentioned in the constitution",
                     "lat" : "42.43333333333333",
                     "lon" : "19.266666666666666"
@@ -4617,7 +4617,7 @@
                 "id" : 148,
                 "properties" : {
                     "name" : "Mongolia",
-                    "countryCode" : "MN",
+                    "country_code" : "MN",
                     "capital" : "Ulaanbaatar",
                     "lat" : "47.916666666666664",
                     "lon" : "106.91666666666667"
@@ -4648,7 +4648,7 @@
                 "id" : 149,
                 "properties" : {
                     "name" : "Northern Mariana Islands",
-                    "countryCode" : "MP",
+                    "country_code" : "MP",
                     "capital" : "Saipan",
                     "lat" : "15.2",
                     "lon" : "145.75"
@@ -4664,7 +4664,7 @@
                 "id" : 150,
                 "properties" : {
                     "name" : "Mozambique",
-                    "countryCode" : "MZ",
+                    "country_code" : "MZ",
                     "capital" : "Maputo",
                     "lat" : "-25.95",
                     "lon" : "32.583333333333336"
@@ -4683,7 +4683,7 @@
                 "id" : 151,
                 "properties" : {
                     "name" : "Mauritania",
-                    "countryCode" : "MR",
+                    "country_code" : "MR",
                     "capital" : "Nouakchott",
                     "lat" : "18.066666666666666",
                     "lon" : "-15.966666666666667"
@@ -4697,7 +4697,7 @@
                 "id" : 152,
                 "properties" : {
                     "name" : "Montserrat",
-                    "countryCode" : "MS",
+                    "country_code" : "MS",
                     "capital" : "Plymouth",
                     "lat" : "16.7",
                     "lon" : "-62.21666666666667"
@@ -4711,7 +4711,7 @@
                 "id" : 153,
                 "properties" : {
                     "name" : "Mauritius",
-                    "countryCode" : "MU",
+                    "country_code" : "MU",
                     "capital" : "Port Louis",
                     "lat" : "-20.15",
                     "lon" : "57.483333333333334"
@@ -4733,7 +4733,7 @@
                 "id" : 154,
                 "properties" : {
                     "name" : "Malawi",
-                    "countryCode" : "MW",
+                    "country_code" : "MW",
                     "capital" : "Lilongwe",
                     "lat" : "-13.966666666666667",
                     "lon" : "33.78333333333333"
@@ -4770,7 +4770,7 @@
                 "id" : 155,
                 "properties" : {
                     "name" : "Malaysia",
-                    "countryCode" : "MY",
+                    "country_code" : "MY",
                     "capital" : "Kuala Lumpur",
                     "lat" : "3.1666666666666665",
                     "lon" : "101.7"
@@ -4784,7 +4784,7 @@
                 "id" : 156,
                 "properties" : {
                     "name" : "Namibia",
-                    "countryCode" : "NA",
+                    "country_code" : "NA",
                     "capital" : "Windhoek",
                     "lat" : "-22.566666666666666",
                     "lon" : "17.083333333333332"
@@ -4812,7 +4812,7 @@
                 "id" : 157,
                 "properties" : {
                     "name" : "New Caledonia",
-                    "countryCode" : "NC",
+                    "country_code" : "NC",
                     "capital" : "Noumea",
                     "lat" : "-22.266666666666666",
                     "lon" : "166.45"
@@ -4826,7 +4826,7 @@
                 "id" : 158,
                 "properties" : {
                     "name" : "Niger",
-                    "countryCode" : "NE",
+                    "country_code" : "NE",
                     "capital" : "Niamey",
                     "lat" : "13.516666666666667",
                     "lon" : "2.1166666666666667"
@@ -4840,7 +4840,7 @@
                 "id" : 159,
                 "properties" : {
                     "name" : "Norfolk Island",
-                    "countryCode" : "NF",
+                    "country_code" : "NF",
                     "capital" : "Kingston",
                     "lat" : "-29.05",
                     "lon" : "167.96666666666667"
@@ -4859,7 +4859,7 @@
                 "id" : 160,
                 "properties" : {
                     "name" : "Nigeria",
-                    "countryCode" : "NG",
+                    "country_code" : "NG",
                     "capital" : "Abuja",
                     "lat" : "9.083333333333334",
                     "lon" : "7.533333333333333"
@@ -4873,7 +4873,7 @@
                 "id" : 161,
                 "properties" : {
                     "name" : "Nicaragua",
-                    "countryCode" : "NI",
+                    "country_code" : "NI",
                     "capital" : "Managua",
                     "lat" : "12.133333333333333",
                     "lon" : "-86.25"
@@ -4887,7 +4887,7 @@
                 "id" : 162,
                 "properties" : {
                     "name" : "Niue",
-                    "countryCode" : "NU",
+                    "country_code" : "NU",
                     "capital" : "Alofi",
                     "lat" : "-19.016666666666666",
                     "lon" : "-169.91666666666666"
@@ -4927,7 +4927,7 @@
                 "id" : 163,
                 "properties" : {
                     "name" : "Netherlands",
-                    "countryCode" : "NL",
+                    "country_code" : "NL",
                     "capital" : "Amsterdam",
                     "lat" : "52.35",
                     "lon" : "4.916666666666667"
@@ -5036,7 +5036,7 @@
                 "id" : 164,
                 "properties" : {
                     "name" : "Norway",
-                    "countryCode" : "NO",
+                    "country_code" : "NO",
                     "capital" : "Oslo",
                     "lat" : "59.916666666666664",
                     "lon" : "10.75"
@@ -5050,7 +5050,7 @@
                 "id" : 165,
                 "properties" : {
                     "name" : "Nepal",
-                    "countryCode" : "NP",
+                    "country_code" : "NP",
                     "capital" : "Kathmandu",
                     "lat" : "27.716666666666665",
                     "lon" : "85.31666666666666"
@@ -5061,7 +5061,7 @@
                 "id" : 166,
                 "properties" : {
                     "name" : "Nauru",
-                    "countryCode" : "NR",
+                    "country_code" : "NR",
                     "capital" : "Yaren",
                     "lat" : "-0.5477",
                     "lon" : "166.920867"
@@ -5107,7 +5107,7 @@
                 "id" : 167,
                 "properties" : {
                     "name" : "New Zealand",
-                    "countryCode" : "NZ",
+                    "country_code" : "NZ",
                     "capital" : "Wellington",
                     "lat" : "-41.3",
                     "lon" : "174.78333333333333"
@@ -5132,7 +5132,7 @@
                 "id" : 168,
                 "properties" : {
                     "name" : "Oman",
-                    "countryCode" : "OM",
+                    "country_code" : "OM",
                     "capital" : "Muscat",
                     "lat" : "23.616666666666667",
                     "lon" : "58.583333333333336"
@@ -5146,7 +5146,7 @@
                 "id" : 169,
                 "properties" : {
                     "name" : "Pakistan",
-                    "countryCode" : "PK",
+                    "country_code" : "PK",
                     "capital" : "Islamabad",
                     "lat" : "33.68333333333333",
                     "lon" : "73.05"
@@ -5171,7 +5171,7 @@
                 "id" : 170,
                 "properties" : {
                     "name" : "Panama",
-                    "countryCode" : "PA",
+                    "country_code" : "PA",
                     "capital" : "Panama City",
                     "lat" : "8.966666666666667",
                     "lon" : "-79.53333333333333"
@@ -5185,7 +5185,7 @@
                 "id" : 171,
                 "properties" : {
                     "name" : "Pitcairn",
-                    "countryCode" : "PN",
+                    "country_code" : "PN",
                     "capital" : "Adamstown",
                     "lat" : "-25.066666666666666",
                     "lon" : "-130.08333333333334"
@@ -5199,7 +5199,7 @@
                 "id" : 172,
                 "properties" : {
                     "name" : "Peru",
-                    "countryCode" : "PE",
+                    "country_code" : "PE",
                     "capital" : "Lima",
                     "lat" : "-12.05",
                     "lon" : "-77.05"
@@ -5356,7 +5356,7 @@
                 "id" : 173,
                 "properties" : {
                     "name" : "Philippines",
-                    "countryCode" : "PH",
+                    "country_code" : "PH",
                     "capital" : "Manila",
                     "lat" : "14.6",
                     "lon" : "120.96666666666667"
@@ -5370,7 +5370,7 @@
                 "id" : 174,
                 "properties" : {
                     "name" : "Palau",
-                    "countryCode" : "PW",
+                    "country_code" : "PW",
                     "capital" : "Melekeok",
                     "lat" : "7.483333333333333",
                     "lon" : "134.63333333333333"
@@ -5461,7 +5461,7 @@
                 "id" : 175,
                 "properties" : {
                     "name" : "Papua New Guinea",
-                    "countryCode" : "PG",
+                    "country_code" : "PG",
                     "capital" : "Port Moresby",
                     "lat" : "-9.45",
                     "lon" : "147.18333333333334"
@@ -5475,7 +5475,7 @@
                 "id" : 176,
                 "properties" : {
                     "name" : "Poland",
-                    "countryCode" : "PL",
+                    "country_code" : "PL",
                     "capital" : "Warsaw",
                     "lat" : "52.25",
                     "lon" : "21"
@@ -5497,7 +5497,7 @@
                 "id" : 177,
                 "properties" : {
                     "name" : "Puerto Rico",
-                    "countryCode" : "PR",
+                    "country_code" : "PR",
                     "capital" : "San Juan",
                     "lat" : "18.466666666666665",
                     "lon" : "-66.11666666666666"
@@ -5511,7 +5511,7 @@
                 "id" : 178,
                 "properties" : {
                     "name" : "Korea, Democratic People's Republic of",
-                    "countryCode" : "KP",
+                    "country_code" : "KP",
                     "capital" : "Pyongyang",
                     "lat" : "39.016666666666666",
                     "lon" : "125.75"
@@ -5548,7 +5548,7 @@
                 "id" : 179,
                 "properties" : {
                     "name" : "Portugal",
-                    "countryCode" : "PT",
+                    "country_code" : "PT",
                     "capital" : "Lisbon",
                     "lat" : "38.71666666666667",
                     "lon" : "-9.133333333333333"
@@ -5562,7 +5562,7 @@
                 "id" : 180,
                 "properties" : {
                     "name" : "Paraguay",
-                    "countryCode" : "PY",
+                    "country_code" : "PY",
                     "capital" : "Asuncion",
                     "lat" : "-25.266666666666666",
                     "lon" : "-57.666666666666664"
@@ -5581,7 +5581,7 @@
                 "id" : 181,
                 "properties" : {
                     "name" : "Palestine, State of",
-                    "countryCode" : "PS",
+                    "country_code" : "PS",
                     "capital" : "Jerusalem",
                     "lat" : "31.766666666666666",
                     "lon" : "35.233333333333334"
@@ -5627,7 +5627,7 @@
                 "id" : 182,
                 "properties" : {
                     "name" : "French Polynesia",
-                    "countryCode" : "PF",
+                    "country_code" : "PF",
                     "capital" : "Papeete",
                     "lat" : "-17.533333333333335",
                     "lon" : "-149.56666666666666"
@@ -5641,7 +5641,7 @@
                 "id" : 183,
                 "properties" : {
                     "name" : "Qatar",
-                    "countryCode" : "QA",
+                    "country_code" : "QA",
                     "capital" : "Doha",
                     "lat" : "25.283333333333335",
                     "lon" : "51.53333333333333"
@@ -5655,7 +5655,7 @@
                 "id" : 184,
                 "properties" : {
                     "name" : "Romania",
-                    "countryCode" : "RO",
+                    "country_code" : "RO",
                     "capital" : "Bucharest",
                     "lat" : "44.43333333333333",
                     "lon" : "26.1"
@@ -5956,7 +5956,7 @@
                 "id" : 185,
                 "properties" : {
                     "name" : "Russian Federation",
-                    "countryCode" : "RU",
+                    "country_code" : "RU",
                     "capital" : "Moscow",
                     "lat" : "55.75",
                     "lon" : "37.6"
@@ -5970,7 +5970,7 @@
                 "id" : 186,
                 "properties" : {
                     "name" : "Rwanda",
-                    "countryCode" : "RW",
+                    "country_code" : "RW",
                     "capital" : "Kigali",
                     "lat" : "-1.95",
                     "lon" : "30.05"
@@ -5984,7 +5984,7 @@
                 "id" : 187,
                 "properties" : {
                     "name" : "Western Sahara",
-                    "countryCode" : "EH",
+                    "country_code" : "EH",
                     "capital" : "El-Aaiún",
                     "lat" : "27.153611",
                     "lon" : "-13.203333"
@@ -6006,7 +6006,7 @@
                 "id" : 188,
                 "properties" : {
                     "name" : "Saudi Arabia",
-                    "countryCode" : "SA",
+                    "country_code" : "SA",
                     "capital" : "Riyadh",
                     "lat" : "24.65",
                     "lon" : "46.7"
@@ -6020,7 +6020,7 @@
                 "id" : 189,
                 "properties" : {
                     "name" : "Sudan",
-                    "countryCode" : "SD",
+                    "country_code" : "SD",
                     "capital" : "Khartoum",
                     "lat" : "15.6",
                     "lon" : "32.53333333333333"
@@ -6034,7 +6034,7 @@
                 "id" : 190,
                 "properties" : {
                     "name" : "South Sudan",
-                    "countryCode" : "SS",
+                    "country_code" : "SS",
                     "capital" : "Juba",
                     "lat" : "4.85",
                     "lon" : "31.616666666666667"
@@ -6048,7 +6048,7 @@
                 "id" : 191,
                 "properties" : {
                     "name" : "Senegal",
-                    "countryCode" : "SN",
+                    "country_code" : "SN",
                     "capital" : "Dakar",
                     "lat" : "14.733333333333333",
                     "lon" : "-17.633333333333333"
@@ -6062,7 +6062,7 @@
                 "id" : 192,
                 "properties" : {
                     "name" : "Singapore",
-                    "countryCode" : "SG",
+                    "country_code" : "SG",
                     "capital" : "Singapore",
                     "lat" : "1.2833333333333332",
                     "lon" : "103.85"
@@ -6081,7 +6081,7 @@
                 "id" : 193,
                 "properties" : {
                     "name" : "South Georgia and the South Sandwich Islands",
-                    "countryCode" : "GS",
+                    "country_code" : "GS",
                     "capital" : "King Edward Point",
                     "lat" : "-54.283333",
                     "lon" : "-36.5"
@@ -6100,7 +6100,7 @@
                 "id" : 194,
                 "properties" : {
                     "name" : "Saint Helena, Ascension and Tristan da Cunha",
-                    "countryCode" : "SH",
+                    "country_code" : "SH",
                     "capital" : "Jamestown",
                     "lat" : "-15.933333333333334",
                     "lon" : "-5.716666666666667"
@@ -6176,7 +6176,7 @@
                 "id" : 195,
                 "properties" : {
                     "name" : "Solomon Islands",
-                    "countryCode" : "SB",
+                    "country_code" : "SB",
                     "capital" : "Honiara",
                     "lat" : "-9.433333333333334",
                     "lon" : "159.95"
@@ -6195,7 +6195,7 @@
                 "id" : 196,
                 "properties" : {
                     "name" : "Sierra Leone",
-                    "countryCode" : "SL",
+                    "country_code" : "SL",
                     "capital" : "Freetown",
                     "lat" : "8.483333333333333",
                     "lon" : "-13.233333333333333"
@@ -6209,7 +6209,7 @@
                 "id" : 197,
                 "properties" : {
                     "name" : "El Salvador",
-                    "countryCode" : "SV",
+                    "country_code" : "SV",
                     "capital" : "San Salvador",
                     "lat" : "13.7",
                     "lon" : "-89.2"
@@ -6223,7 +6223,7 @@
                 "id" : 198,
                 "properties" : {
                     "name" : "San Marino",
-                    "countryCode" : "SM",
+                    "country_code" : "SM",
                     "capital" : "San Marino",
                     "lat" : "43.93333333333333",
                     "lon" : "12.416666666666666"
@@ -6237,7 +6237,7 @@
                 "id" : 199,
                 "properties" : {
                     "name" : "Somaliland",
-                    "countryCode" : "SO",
+                    "country_code" : "SO",
                     "capital" : "Hargeisa",
                     "lat" : "9.55",
                     "lon" : "44.05"
@@ -6251,7 +6251,7 @@
                 "id" : 200,
                 "properties" : {
                     "name" : "Somalia",
-                    "countryCode" : "SO",
+                    "country_code" : "SO",
                     "capital" : "Mogadishu",
                     "lat" : "2.066666666666667",
                     "lon" : "45.333333333333336"
@@ -6265,7 +6265,7 @@
                 "id" : 201,
                 "properties" : {
                     "name" : "Saint Pierre and Miquelon",
-                    "countryCode" : "PM",
+                    "country_code" : "PM",
                     "capital" : "Saint-Pierre",
                     "lat" : "46.766666666666666",
                     "lon" : "-56.18333333333333"
@@ -6279,7 +6279,7 @@
                 "id" : 202,
                 "properties" : {
                     "name" : "Serbia",
-                    "countryCode" : "RS",
+                    "country_code" : "RS",
                     "capital" : "Belgrade",
                     "lat" : "44.833333333333336",
                     "lon" : "20.5"
@@ -6298,7 +6298,7 @@
                 "id" : 203,
                 "properties" : {
                     "name" : "Sao Tome and Principe",
-                    "countryCode" : "ST",
+                    "country_code" : "ST",
                     "capital" : "Sao Tome",
                     "lat" : "0.3333333333333333",
                     "lon" : "6.733333333333333"
@@ -6312,7 +6312,7 @@
                 "id" : 204,
                 "properties" : {
                     "name" : "Suriname",
-                    "countryCode" : "SR",
+                    "country_code" : "SR",
                     "capital" : "Paramaribo",
                     "lat" : "5.833333333333333",
                     "lon" : "-55.166666666666664"
@@ -6326,7 +6326,7 @@
                 "id" : 205,
                 "properties" : {
                     "name" : "Slovakia",
-                    "countryCode" : "SK",
+                    "country_code" : "SK",
                     "capital" : "Bratislava",
                     "lat" : "48.15",
                     "lon" : "17.116666666666667"
@@ -6340,7 +6340,7 @@
                 "id" : 206,
                 "properties" : {
                     "name" : "Slovenia",
-                    "countryCode" : "SI",
+                    "country_code" : "SI",
                     "capital" : "Ljubljana",
                     "lat" : "46.05",
                     "lon" : "14.516666666666667"
@@ -6371,7 +6371,7 @@
                 "id" : 207,
                 "properties" : {
                     "name" : "Sweden",
-                    "countryCode" : "SE",
+                    "country_code" : "SE",
                     "capital" : "Stockholm",
                     "lat" : "59.333333333333336",
                     "lon" : "18.05"
@@ -6385,7 +6385,7 @@
                 "id" : 208,
                 "properties" : {
                     "name" : "Swaziland",
-                    "countryCode" : "SZ",
+                    "country_code" : "SZ",
                     "capital" : "Mbabane",
                     "lat" : "-26.316666666666666",
                     "lon" : "31.133333333333333"
@@ -6399,7 +6399,7 @@
                 "id" : 209,
                 "properties" : {
                     "name" : "Sint Maarten (Dutch part)",
-                    "countryCode" : "SX",
+                    "country_code" : "SX",
                     "capital" : "Philipsburg",
                     "lat" : "18.016666666666666",
                     "lon" : "-63.03333333333333"
@@ -6413,7 +6413,7 @@
                 "id" : 210,
                 "properties" : {
                     "name" : "Seychelles",
-                    "countryCode" : "SC",
+                    "country_code" : "SC",
                     "capital" : "Victoria",
                     "lat" : "-4.616666666666667",
                     "lon" : "55.45"
@@ -6427,7 +6427,7 @@
                 "id" : 211,
                 "properties" : {
                     "name" : "Syrian Arab Republic",
-                    "countryCode" : "SY",
+                    "country_code" : "SY",
                     "capital" : "Damascus",
                     "lat" : "33.5",
                     "lon" : "36.3"
@@ -6449,7 +6449,7 @@
                 "id" : 212,
                 "properties" : {
                     "name" : "Turks and Caicos Islands",
-                    "countryCode" : "TC",
+                    "country_code" : "TC",
                     "capital" : "Grand Turk",
                     "lat" : "21.466666666666665",
                     "lon" : "-71.13333333333334"
@@ -6463,7 +6463,7 @@
                 "id" : 213,
                 "properties" : {
                     "name" : "Chad",
-                    "countryCode" : "TD",
+                    "country_code" : "TD",
                     "capital" : "N'Djamena",
                     "lat" : "12.1",
                     "lon" : "15.033333333333333"
@@ -6477,7 +6477,7 @@
                 "id" : 214,
                 "properties" : {
                     "name" : "Togo",
-                    "countryCode" : "TG",
+                    "country_code" : "TG",
                     "capital" : "Lome",
                     "lat" : "6.116666666666666",
                     "lon" : "1.2166666666666668"
@@ -6520,7 +6520,7 @@
                 "id" : 215,
                 "properties" : {
                     "name" : "Thailand",
-                    "countryCode" : "TH",
+                    "country_code" : "TH",
                     "capital" : "Bangkok",
                     "lat" : "13.75",
                     "lon" : "100.51666666666667"
@@ -6542,7 +6542,7 @@
                 "id" : 216,
                 "properties" : {
                     "name" : "Tajikistan",
-                    "countryCode" : "TJ",
+                    "country_code" : "TJ",
                     "capital" : "Dushanbe",
                     "lat" : "38.55",
                     "lon" : "68.76666666666667"
@@ -6561,7 +6561,7 @@
                 "id" : 217,
                 "properties" : {
                     "name" : "Turkmenistan",
-                    "countryCode" : "TM",
+                    "country_code" : "TM",
                     "capital" : "Ashgabat",
                     "lat" : "37.95",
                     "lon" : "58.38333333333333"
@@ -6583,7 +6583,7 @@
                 "id" : 218,
                 "properties" : {
                     "name" : "Timor-Leste",
-                    "countryCode" : "TL",
+                    "country_code" : "TL",
                     "capital" : "Dili",
                     "lat" : "-8.583333333333334",
                     "lon" : "125.6"
@@ -6605,7 +6605,7 @@
                 "id" : 219,
                 "properties" : {
                     "name" : "Tonga",
-                    "countryCode" : "TO",
+                    "country_code" : "TO",
                     "capital" : "Nuku'alofa",
                     "lat" : "-21.133333333333333",
                     "lon" : "-175.2"
@@ -6624,7 +6624,7 @@
                 "id" : 220,
                 "properties" : {
                     "name" : "Trinidad and Tobago",
-                    "countryCode" : "TT",
+                    "country_code" : "TT",
                     "capital" : "Port of Spain",
                     "lat" : "10.65",
                     "lon" : "-61.516666666666666"
@@ -6646,7 +6646,7 @@
                 "id" : 221,
                 "properties" : {
                     "name" : "Tunisia",
-                    "countryCode" : "TN",
+                    "country_code" : "TN",
                     "capital" : "Tunis",
                     "lat" : "36.8",
                     "lon" : "10.183333333333334"
@@ -6668,7 +6668,7 @@
                 "id" : 222,
                 "properties" : {
                     "name" : "Turkey",
-                    "countryCode" : "TR",
+                    "country_code" : "TR",
                     "capital" : "Ankara",
                     "lat" : "39.93333333333333",
                     "lon" : "32.86666666666667"
@@ -6687,7 +6687,7 @@
                 "id" : 223,
                 "properties" : {
                     "name" : "Taiwan, Province of China",
-                    "countryCode" : "TW",
+                    "country_code" : "TW",
                     "capital" : "Taipei",
                     "lat" : "25.033333333333335",
                     "lon" : "121.51666666666667"
@@ -6712,7 +6712,7 @@
                 "id" : 224,
                 "properties" : {
                     "name" : "Tanzania, United Republic of",
-                    "countryCode" : "TZ",
+                    "country_code" : "TZ",
                     "capital" : "Dar es Salaam",
                     "lat" : "-6.8",
                     "lon" : "39.28333333333333"
@@ -6726,7 +6726,7 @@
                 "id" : 225,
                 "properties" : {
                     "name" : "Uganda",
-                    "countryCode" : "UG",
+                    "country_code" : "UG",
                     "capital" : "Kampala",
                     "lat" : "0.31666666666666665",
                     "lon" : "32.55"
@@ -6745,7 +6745,7 @@
                 "id" : 226,
                 "properties" : {
                     "name" : "Ukraine",
-                    "countryCode" : "UA",
+                    "country_code" : "UA",
                     "capital" : "Kyiv",
                     "lat" : "50.43333333333333",
                     "lon" : "30.516666666666666"
@@ -6759,7 +6759,7 @@
                 "id" : 227,
                 "properties" : {
                     "name" : "Uruguay",
-                    "countryCode" : "UY",
+                    "country_code" : "UY",
                     "capital" : "Montevideo",
                     "lat" : "-34.85",
                     "lon" : "-56.166666666666664"
@@ -7075,7 +7075,7 @@
                 "id" : 228,
                 "properties" : {
                     "name" : "United States",
-                    "countryCode" : "US",
+                    "country_code" : "US",
                     "capital" : "Washington, DC",
                     "lat" : "38.88333333333333",
                     "lon" : "-77.03333333333333"
@@ -7097,7 +7097,7 @@
                 "id" : 229,
                 "properties" : {
                     "name" : "Uzbekistan",
-                    "countryCode" : "UZ",
+                    "country_code" : "UZ",
                     "capital" : "Tashkent",
                     "lat" : "41.31666666666667",
                     "lon" : "69.25"
@@ -7111,7 +7111,7 @@
                 "id" : 230,
                 "properties" : {
                     "name" : "Saint Vincent and the Grenadines",
-                    "countryCode" : "VC",
+                    "country_code" : "VC",
                     "capital" : "Kingstown",
                     "lat" : "13.133333333333333",
                     "lon" : "-61.21666666666667"
@@ -7139,7 +7139,7 @@
                 "id" : 231,
                 "properties" : {
                     "name" : "Venezuela, Bolivarian Republic of",
-                    "countryCode" : "VE",
+                    "country_code" : "VE",
                     "capital" : "Caracas",
                     "lat" : "10.483333333333333",
                     "lon" : "-66.86666666666666"
@@ -7153,7 +7153,7 @@
                 "id" : 232,
                 "properties" : {
                     "name" : "Virgin Islands, British",
-                    "countryCode" : "VG",
+                    "country_code" : "VG",
                     "capital" : "Road Town",
                     "lat" : "18.416666666666668",
                     "lon" : "-64.61666666666666"
@@ -7175,7 +7175,7 @@
                 "id" : 233,
                 "properties" : {
                     "name" : "Virgin Islands, U.S.",
-                    "countryCode" : "VI",
+                    "country_code" : "VI",
                     "capital" : "Charlotte Amalie",
                     "lat" : "18.35",
                     "lon" : "-64.93333333333334"
@@ -7212,7 +7212,7 @@
                 "id" : 234,
                 "properties" : {
                     "name" : "Viet Nam",
-                    "countryCode" : "VN",
+                    "country_code" : "VN",
                     "capital" : "Hanoi",
                     "lat" : "21.033333333333335",
                     "lon" : "105.85"
@@ -7267,7 +7267,7 @@
                 "id" : 235,
                 "properties" : {
                     "name" : "Vanuatu",
-                    "countryCode" : "VU",
+                    "country_code" : "VU",
                     "capital" : "Port-Vila",
                     "lat" : "-17.733333333333334",
                     "lon" : "168.31666666666666"
@@ -7286,7 +7286,7 @@
                 "id" : 236,
                 "properties" : {
                     "name" : "Wallis and Futuna",
-                    "countryCode" : "WF",
+                    "country_code" : "WF",
                     "capital" : "Mata-Utu",
                     "lat" : "-13.95",
                     "lon" : "-171.93333333333334"
@@ -7305,7 +7305,7 @@
                 "id" : 237,
                 "properties" : {
                     "name" : "Samoa",
-                    "countryCode" : "WS",
+                    "country_code" : "WS",
                     "capital" : "Apia",
                     "lat" : "-13.816666666666666",
                     "lon" : "-171.76666666666668"
@@ -7330,7 +7330,7 @@
                 "id" : 238,
                 "properties" : {
                     "name" : "Yemen",
-                    "countryCode" : "YE",
+                    "country_code" : "YE",
                     "capital" : "Sanaa",
                     "lat" : "15.35",
                     "lon" : "44.2"
@@ -7350,7 +7350,7 @@
                 "id" : 239,
                 "properties" : {
                     "name" : "South Africa",
-                    "countryCode" : "ZA",
+                    "country_code" : "ZA",
                     "capital" : "Pretoria",
                     "lat" : "-25.7",
                     "lon" : "28.216666666666665"
@@ -7364,7 +7364,7 @@
                 "id" : 240,
                 "properties" : {
                     "name" : "Zambia",
-                    "countryCode" : "ZM",
+                    "country_code" : "ZM",
                     "capital" : "Lusaka",
                     "lat" : "-15.416666666666666",
                     "lon" : "28.283333333333335"
@@ -7378,7 +7378,7 @@
                 "id" : 241,
                 "properties" : {
                     "name" : "Zimbabwe",
-                    "countryCode" : "ZW",
+                    "country_code" : "ZW",
                     "capital" : "Harare",
                     "lat" : "-17.816666666666666",
                     "lon" : "31.033333333333335"
