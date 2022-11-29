@@ -13,6 +13,8 @@ export default {
     data() {
         return {
             id: "#map",
+            death_max: 1000000,
+            confirmed_max: 10000000,
             display_color: {
                 cum_confirmed_data: "red",
                 cum_death_data: "black",
@@ -30,15 +32,22 @@ export default {
     },
     mounted() {
         console.log("Mounted: My Main map data", this.csv_data[this.display_mode])
+
         this.initialize_map()
         this.draw_map()
     },
     updated() {
         console.log("Updated: My Main map data")
+        console.log("Curr is ", this.curr_date)
         this.draw_map()
     },
     methods: {
-
+        set_death_max() {
+            this.death_max = d3.max(death_data, d => {
+                // console.log(d)
+                return toNumber(d[this.today_date])
+            })
+        },
         process_country_feature(features) {
             features.forEach(c => {
                 if (!c.properties.country_code || c.properties.country_code.length == 3) return
@@ -53,9 +62,9 @@ export default {
             svg.append("g").attr("id", "map_legend");
         },
         draw_map() {
-            const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-            const height = 500 * 0.65;
-            const width = 960 * 0.65;
+            const margin = { top: 0, right: 0, bottom: 0, left: 0 };
+            const height = 400*1.2;
+            const width = 630*1.2;
             const unknown_color = "green"
             // "#949494"
             let death_data = this.csv_data.cum_death_data
@@ -71,23 +80,16 @@ export default {
 
             // Let's have different color...
             const color = d3.interpolateHsl("#969696", "#000000")
-            console.log(this.today_date)
-            const death_max = d3.max(death_data, d => {
-                // console.log(d)
-                return toNumber(d[this.today_date])
-            })
-            const confirmed_max = 1000000
 
-            console.log("max data is: ", death_max)
             const circle_radius = d3.scaleLinear()
-                .domain([0, death_max])
+                .domain([0, this.death_max])
                 .range([0.2, 60])
 
             const country_features = this.process_country_feature(topojson.feature(this.geo_data, this.geo_data.objects.countries).features);
 
             // Use regular flat projection
             const projection = d3.geoMercator()
-                .scale(100)
+                .scale(120)
                 .translate([width / 2, height / 1.5])
 
             const path = d3.geoPath(projection)
@@ -100,7 +102,7 @@ export default {
                     if (!country_code) return unknown_color
                     let target = confirmed_data.find(d => d.country_code == country_code)
                     if (!target || !target[this.curr_date]) return unknown_color
-                    return color(toNumber(target[this.curr_date]) / confirmed_max)
+                    return color(toNumber(target[this.curr_date]) / this.confirmed_max)
                 })
                 .attr("class", "countries")
                 .attr("d", path)
@@ -114,6 +116,9 @@ export default {
                     if (!country_code) return 0
                     let target = death_data.find(c => c.country_code == country_code && c.jurisdiction == "NAT_TOTAL")
                     if (!target) return 0
+                    if (toNumber(target[this.curr_date]) < 1){
+                        return 0
+                    } 
                     return circle_radius(toNumber(target[this.curr_date]))
                 })
                 .transition()

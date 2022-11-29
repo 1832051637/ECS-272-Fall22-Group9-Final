@@ -16,5 +16,7 @@ import './style/webslides.css'
 // SVG Icons (Font Awesome) css
 import './style/svg-icons.css'
 
+// Slider css
+import "./style/slider.css";
 
 createApp(App).mount('#app')

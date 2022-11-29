@@ -1,11 +1,11 @@
 <template>
-  <section>
+  <section class="fullscreen">
     <!--.wrap = container (width: 90%) -->
-    <div class="wrap size-50 aligncenter">
-      <h2><strong>Why WebSlides?</strong></h2>
-      <p class="text-intro"><a href="demos/why-webslides.html" title="Why WebSlides?">Presentations</a>, <a
+    <div class="wrap size-100 aligncenter">
+      <h2><strong>What happened to our earth?</strong></h2>
+      <!-- <p class="text-intro"><a href="demos/why-webslides.html" title="Why WebSlides?">Presentations</a>, <a
           href="demos/landings.html" title="Landings">landings</a>, <a href="demos/portfolios.html"
-          title="Portfolios">portfolios</a>, and <a href="demos/longforms.html" title="Longforms">longforms</a>.</p>
+          title="Portfolios">portfolios</a>, and <a href="demos/longforms.html" title="Longforms">longforms</a>.</p> -->
       <!-- <div class="bg-white shadow">
             <ul class="flexblock reasons">
               <li>
@@ -22,21 +22,33 @@
           </div> -->
 
       <!-- <BarChart/> -->
-      
+
       <!-- <select v-model="display_mode">
         <option disabled value="">Please select a data type to view</option>
         <option>cum_confirmed_data</option>
         <option>cum_death_data</option>
       </select> -->
-      
-      <select v-model="curr_date">
-        <option disabled value="">Please select a date</option>
-        <option>01Apr2020</option>
-        <option>01Apr2021</option>
-        <option>01Apr2022</option>
-      </select>
+      <div class="row px-5">
+        <div class="col pr-0">
+            <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>
+            <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
+        </div>
+        <div class="col-5">
+              <input type="range" v-bind:min="0" v-bind:max="date_array.length-1" class="slider mt-3 mx-0" id="date_slider"
+                v-model.number="curr_date_index">
+        </div>
+        <div class="col">
+          <h5>Date: {{
+          str_to_date(date_array[parseFloat(curr_date_index)]).toLocaleDateString(undefined, {
+              year: 'numeric', month: 'long', day:
+                'numeric'
+            })
+          }}</h5>
+        </div>
+      </div>
+
       <MapChart v-if="!fetching && geo_data_exists && cum_death_data_exists && cum_confirmed_data_exists"
-        :geo_data="geo_data" :csv_data="csv_data" :curr_date="curr_date" :display_mode="display_mode"
+        :geo_data="geo_data" :csv_data="csv_data" :curr_date="date_array[curr_date_index]" :display_mode="display_mode"
         :today_date="today_date" />
 
       <!-- .end .bg-white shadow -->
@@ -72,9 +84,18 @@ export default {
       date_array: [],
       first_date: "01Jan2020",
       second_date: "02Jan2020",
-      curr_date: "01Apr2020",
+      // curr_date: "01Jan2020",
+      curr_date_index: 0,
       today_date: "",
       display_mode: CONFIRMED_MODE,
+      is_playing: false,
+      play_speed_mode: "fast",
+      play_speed: {
+        fast: 100,
+        normal: 300,
+        slow: 500,
+      },
+      timer: NaN,
     }
   },
 
@@ -93,15 +114,36 @@ export default {
   },
   mounted() {
     console.log("slide2 is mounted")
+    window.addEventListener('wheel', this.handle_wheel);
     // this.tempGeoData = this.geo_data
   },
   updated() {
     console.log("slide2 is updated")
+    // this.curr_date = this.date_array[this.curr_date_index]
+  },
+  destroyed() {
+    console.log("slide2 is destroyed")
+    window.removeEventListener('wheel', this.handle_wheel);
   },
   methods: {
+    handle_wheel() {
+      this.pause()
+    },
+    play() {
+      this.is_playing = true
+      this.timer = setInterval(this.go_next_day, 200)
+    },
+    pause() {
+      this.is_playing = false
+      clearInterval(this.timer)
+      console.log("*****************The player has been paused!*********************")
+    },
     // date: a Javascript Date object
     // Return a string date for CSV data
     date_to_str(date) {
+      if (!date) {
+        return "error date"
+      }
       const day = date.toLocaleString('en-US', { day: 'numeric' });
       const month = date.toLocaleString('en-US', { month: 'short' });
       const year = date.toLocaleString('en-US', { year: 'numeric' });
@@ -121,6 +163,9 @@ export default {
     // date_Str: format like "01Apr2020"
     // return a Javascript Date object
     str_to_date(date_str) {
+      if (!date_str) {
+        return "error date"
+      }
       const day = date_str.substring(0, 2)
       const month = date_str.substring(2, 5)
       const year = date_str.substring(5, 9)
@@ -151,23 +196,33 @@ export default {
     },
 
     process_one_line_csv(line) {
-      line[this.first_date] = this.date_array[0] // Modify the first date
+      line[this.first_date] = String(toNumber(line[this.first_date])) // Modify the first date
 
       let yesterday_data = line[this.first_date]
       for (let i = 1; i < this.date_array.length; i++) {
         const today_str = this.date_array[i];
-        if (line[today_str]  == "" || line[today_str]  === undefined)
+        if (line[today_str] == "" || line[today_str] === undefined)
           line[today_str] = yesterday_data
         yesterday_data = line[today_str]
-      } 
+      }
       return line
     },
-    update_date() {
-      if (!playing) return
-      for (let i = 0; i < array.length; i++) {
-        const element = array[i];
 
+
+    go_next_day() {
+      if (this.date_array[this.curr_date_index] == this.today_date) {
+        this.is_playing = false
+        // this.curr_date = this.today_date
+        return
       }
+      // this.curr_date = this.date_array[this.curr_date_index]
+      this.curr_date_index += 1
+    },
+
+    waitforme(milisec) {
+      return new Promise(resolve => {
+        setTimeout(() => { resolve('') }, milisec);
+      })
     },
     read_geojson() {
       if (!geo_data) {
@@ -183,10 +238,7 @@ export default {
         .then((data) => {
           this.cum_death_data_exists = true
           this.csv_data.cum_death_data = this.process_csv_data(data)
-          let target = this.csv_data.cum_death_data.find(d => d.country_code == "USA")
         });
-
-
     },
     read_cum_confirmed() {
       //async method
