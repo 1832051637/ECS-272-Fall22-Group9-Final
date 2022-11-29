@@ -21,7 +21,6 @@
   <!-- end main -->
 </template>
 <script>
-// import * as d3 from "d3";
 import slide1 from "./slides/slide1.vue"
 import slide2 from "./slides/slide2.vue"
 import slide3 from "./slides/slide3.vue"
@@ -31,23 +30,8 @@ import slide6 from "./slides/slide6.vue"
 import slide7 from "./slides/slide7.vue"
 import slide8 from "./slides/slide8.vue"
 
-// import geoData from '../assets/data/world_topo.json'
-
-// const TIME_SERIES_CUM_DEATH = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/timeseries/confirmed_deaths.csv"
-
 export default {
   name: 'SlideContainer',
-  // data() {
-  //   return {
-  //     fetching: true,
-  //     geoDataExists: false,
-  //     cumDeathDataExists: false,
-  //     dataExists: false,
-  //     myGeoData: {},
-  //     myCumDeathData: [],
-      
-  //   }
-  // },
   components: {
     slide1,
     slide2,
@@ -59,34 +43,10 @@ export default {
     slide8,
   },
   created() {
-    // this.read_geojson()
-    // this.read_cum_death()
-    // this.fetching = false
   },
   mounted() {
     window.ws = new WebSlides();
-
   },
-  // methods: {
-  //   read_geojson() {
-  //     if (!geoData) {
-  //       console.log("myGeoData not found")
-  //       return
-  //     }
-  //     this.geoDataExists = true;
-  //     this.myGeoData = geoData
-  //   },
-  //   read_cum_death() {
-  //           //async method
-  //           d3.csv(TIME_SERIES_CUM_DEATH)
-  //               .then((data) => {
-  //                   // console.log(data)
-  //                   this.cumDeathDataExists = true
-  //                   this.myCumDeathData = data
-  //               });
-  //       },
-  // }
-
 }
 
 </script>
