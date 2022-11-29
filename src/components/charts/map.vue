@@ -8,9 +8,6 @@ import * as topojson from "topojson"
 import getCountryISO3 from "country-iso-2-to-3"
 import testData from "../../assets/data/test.json"; /* Example of reading in data direct from file*/
 
-
-
-
 export default {
     name: 'MapChart',
     data() {
@@ -32,8 +29,6 @@ export default {
         display_mode: String,
     },
     mounted() {
-        // console.log(testData);
-        // let localData = testData['data'];
         console.log("Mounted: My Main map data", this.csv_data[this.display_mode])
         this.initialize_map()
         this.draw_map()
@@ -66,7 +61,6 @@ export default {
             let death_data = this.csv_data.cum_death_data
             let confirmed_data = this.csv_data.cum_confirmed_data
 
-            // console.log(this.id)
             let svg = d3.select(this.id).select("svg")
                 .attr("class", "mapChart")
                 .attr("viewBox", [0, 0, width, height])
@@ -83,7 +77,6 @@ export default {
                 return toNumber(d[this.today_date])
             })
             const confirmed_max = 1000000
-            // d3.max(confirmed_data, d => toNumber(d[this.curr_date]))
 
             console.log("max data is: ", death_max)
             const circle_radius = d3.scaleLinear()
@@ -121,9 +114,7 @@ export default {
                     if (!country_code) return 0
                     let target = death_data.find(c => c.country_code == country_code && c.jurisdiction == "NAT_TOTAL")
                     if (!target) return 0
-                    // console.log(target[this.curr_date])
                     return circle_radius(toNumber(target[this.curr_date]))
-                    // return 10
                 })
                 .transition()
                 .attr("transform", (d) => {

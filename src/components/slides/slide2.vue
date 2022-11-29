@@ -22,11 +22,13 @@
           </div> -->
 
       <!-- <BarChart/> -->
-      <select v-model="display_mode">
+      
+      <!-- <select v-model="display_mode">
         <option disabled value="">Please select a data type to view</option>
         <option>cum_confirmed_data</option>
         <option>cum_death_data</option>
-      </select>
+      </select> -->
+      
       <select v-model="curr_date">
         <option disabled value="">Please select a date</option>
         <option>01Apr2020</option>
@@ -88,8 +90,6 @@ export default {
     this.read_cum_death()
     this.read_cum_confirmed()
     this.fetching = false   // Data has been loaded
-
-    // console.log(this.csv_data["cum_confirmed_data"])
   },
   mounted() {
     console.log("slide2 is mounted")
@@ -151,37 +151,15 @@ export default {
     },
 
     process_one_line_csv(line) {
-
-      // const second = this.str_to_date(this.date_array[1])
-      // const today = this.str_to_date(this.today_date)
-
       line[this.first_date] = this.date_array[0] // Modify the first date
 
       let yesterday_data = line[this.first_date]
-
-      // let curr = new Date(second)
-
       for (let i = 1; i < this.date_array.length; i++) {
         const today_str = this.date_array[i];
-        if (line[today_str]  == "" || line[today_str]  === undefined) {
+        if (line[today_str]  == "" || line[today_str]  === undefined)
           line[today_str] = yesterday_data
-        }
         yesterday_data = line[today_str]
       } 
-      // {
-      //   let today_data = line[this.date_to_str(curr)]
-      //   // console.log("Today is ", curr)
-      //   // console.log("today data is: ", today_data)
-      //   // console.log("Yesterday data is: ", yesterday_data)
-      //   if (today_data == "" || today_data === undefined) {
-      //     line[this.date_to_str(curr)] = yesterday_data
-      //     today_data = yesterday_data
-      //     // console.log("Today data has been set to yesterday: ", line[this.date_to_str(curr)])
-      //   }
-      //   yesterday_data = today_data
-      //   let next = curr.setDate(curr.getDate() + 1);
-      //   curr = new Date(next);
-      // }
       return line
     },
     update_date() {
