@@ -16,9 +16,10 @@ export default {
             death_max: 1000000,
             confirmed_max: 10000000,
             display_color: {
-                cum_confirmed_data: "red",
-                cum_death_data: "black",
+                cum_confirmed_data: "#b1d7fc",
+                cum_death_data: "red",
             },
+            unknown_color: "#949494",
 
         }
     },
@@ -65,7 +66,7 @@ export default {
             const margin = { top: 0, right: 0, bottom: 0, left: 0 };
             const height = 400*1.2;
             const width = 630*1.2;
-            const unknown_color = "green"
+            // const this.unknown_color = "green"
             // "#949494"
             let death_data = this.csv_data.cum_death_data
             let confirmed_data = this.csv_data.cum_confirmed_data
@@ -78,8 +79,8 @@ export default {
 
             let g = svg.select("#map_group");
 
-            // Let's have different color...
-            const color = d3.interpolateHsl("#969696", "#000000")
+            // Confirmed data color
+            const color = d3.interpolateHsl(this.display_color.cum_confirmed_data, "#000000")
 
             const circle_radius = d3.scaleLinear()
                 .domain([0, this.death_max])
@@ -97,11 +98,11 @@ export default {
             g.selectAll("path").data(country_features)
                 .join("path")
                 .attr("fill", (d, i) => {
-                    // return unknown_color // unknown data color
+                    // return this.unknown_color // unknown data color
                     let country_code = d.properties.country_code
-                    if (!country_code) return unknown_color
+                    if (!country_code) return this.unknown_color
                     let target = confirmed_data.find(d => d.country_code == country_code)
-                    if (!target || !target[this.curr_date]) return unknown_color
+                    if (!target || !target[this.curr_date]) return this.unknown_color
                     return color(toNumber(target[this.curr_date]) / this.confirmed_max)
                 })
                 .attr("class", "countries")
