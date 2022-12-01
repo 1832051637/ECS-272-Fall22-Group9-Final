@@ -29,10 +29,10 @@ export default {
         csv_data: Object,
         curr_date: String,
         today_date: String,
-        display_mode: String,
+        // display_mode: String,
     },
     mounted() {
-        console.log("Mounted: My Main map data", this.csv_data[this.display_mode])
+        console.log("Mounted: My Main map data", this.csv_data.event_data)
 
         this.initialize_map()
         this.draw_map()
@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         set_death_max() {
-            this.death_max = d3.max(death_data, d => {
+            this.death_max = d3.max(Object.values(death_data), d => {
                 // console.log(d)
                 return toNumber(d[this.today_date])
             })
@@ -64,8 +64,8 @@ export default {
         },
         draw_map() {
             const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-            const height = 400*1.2;
-            const width = 630*1.2;
+            const height = 400 * 1.2;
+            const width = 630 * 1.2;
             // const this.unknown_color = "green"
             // "#949494"
             let death_data = this.csv_data.cum_death_data
@@ -101,7 +101,8 @@ export default {
                     // return this.unknown_color // unknown data color
                     let country_code = d.properties.country_code
                     if (!country_code) return this.unknown_color
-                    let target = confirmed_data.find(d => d.country_code == country_code)
+                    // let target = confirmed_data.find(d => d.country_code == country_code)
+                    let target = confirmed_data[country_code]
                     if (!target || !target[this.curr_date]) return this.unknown_color
                     return color(toNumber(target[this.curr_date]) / this.confirmed_max)
                 })
@@ -115,11 +116,12 @@ export default {
                 .attr("r", (d) => {
                     let country_code = d.properties.country_code
                     if (!country_code) return 0
-                    let target = death_data.find(c => c.country_code == country_code && c.jurisdiction == "NAT_TOTAL")
+                    // let target = death_data.find(c => c.country_code == country_code && c.jurisdiction == "NAT_TOTAL")
+                    let target = death_data[country_code]
                     if (!target) return 0
-                    if (toNumber(target[this.curr_date]) < 1){
+                    if (toNumber(target[this.curr_date]) < 1) {
                         return 0
-                    } 
+                    }
                     return circle_radius(toNumber(target[this.curr_date]))
                 })
                 .transition()

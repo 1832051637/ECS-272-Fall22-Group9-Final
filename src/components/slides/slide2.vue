@@ -30,26 +30,25 @@
       </select> -->
       <div class="row px-5">
         <div class="col pr-0">
-            <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>
-            <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
+          <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>
+          <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
         </div>
         <div class="col-5">
-              <input type="range" v-bind:min="0" v-bind:max="date_array.length-1" class="slider mt-3 mx-0" id="date_slider"
-                v-model.number="curr_date_index">
+          <input type="range" v-bind:min="0" v-bind:max="date_array.length - 1" class="slider mt-3 mx-0" id="date_slider"
+            v-model.number="curr_date_index">
         </div>
         <div class="col">
           <h5>Date: {{
-          str_to_date(date_array[parseFloat(curr_date_index)]).toLocaleDateString(undefined, {
-              year: 'numeric', month: 'long', day:
-                'numeric'
-            })
+              str_to_date(date_array[parseFloat(curr_date_index)]).toLocaleDateString(undefined, {
+                year: 'numeric', month: 'long', day:
+                  'numeric'
+              })
           }}</h5>
         </div>
       </div>
 
-      <MapChart v-if="!fetching && geo_data_exists && cum_death_data_exists && cum_confirmed_data_exists"
-        :geo_data="geo_data" :csv_data="csv_data" :curr_date="date_array[curr_date_index]" :display_mode="display_mode"
-        :today_date="today_date" />
+      <MapChart v-if="is_all_data_ready" :geo_data="geo_data" :csv_data="csv_data"
+        :curr_date="date_array[curr_date_index]" :today_date="today_date" />
 
       <!-- .end .bg-white shadow -->
     </div>
@@ -65,6 +64,8 @@ import geo_data from '../../assets/data/world_topo.json'
 
 const TIME_SERIES_CUM_DEATH = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/timeseries/confirmed_deaths.csv"
 const TIME_SERIES_CUM_CONFIRMED = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/timeseries/confirmed_cases.csv"
+const EVENTS_DATA = window.location.origin+"/src/assets/data/events.csv"
+
 
 const CONFIRMED_MODE = "cum_confirmed_data"
 const DEATH_MODE = "cum_death_data"
@@ -74,20 +75,20 @@ export default {
   name: "slide2",
   data() {
     return {
-      playing: true,
       fetching: true,
       geo_data_exists: false,
       cum_death_data_exists: false,
       cum_confirmed_data_exists: false,
-      csv_data: { cum_death_data: [], cum_confirmed_data: [] },
+      event_data_exisited: false,
+      csv_data: { cum_death_data: {}, cum_confirmed_data: {}, event_data: {} },
       geo_data: {},
       date_array: [],
-      first_date: "01Jan2020",
-      second_date: "02Jan2020",
+      first_date: "31Dec2019",
+      // second_date: "02Jan2020",
       // curr_date: "01Jan2020",
       curr_date_index: 0,
       today_date: "",
-      display_mode: CONFIRMED_MODE,
+      // display_mode: CONFIRMED_MODE,
       is_playing: false,
       play_speed_mode: "fast",
       play_speed: {
@@ -104,12 +105,13 @@ export default {
     MapChart
   },
   created() {
-    console.log("slide2 is created")
+    console.log("slide2 is created at ", window.location.origin)
     this.set_today_date()
     this.set_date_array()
     this.read_geojson()
     this.read_cum_death()
     this.read_cum_confirmed()
+    this.read_events()
     this.fetching = false   // Data has been loaded
   },
   mounted() {
@@ -119,13 +121,21 @@ export default {
   },
   updated() {
     console.log("slide2 is updated")
-    // this.curr_date = this.date_array[this.curr_date_index]
+    if (this.date_array[this.curr_date_index] == this.today_date) {
+      this.pause()
+    }
   },
   destroyed() {
     console.log("slide2 is destroyed")
     window.removeEventListener('wheel', this.handle_wheel);
   },
+  computed: {
+    is_all_data_ready() {
+      return (!this.fetching && this.geo_data_exists && this.cum_death_data_exists && this.cum_confirmed_data_exists && this.event_data_exisited)
+    },
+  },
   methods: {
+
     handle_wheel() {
       this.pause()
     },
@@ -134,6 +144,7 @@ export default {
       this.timer = setInterval(this.go_next_day, 200)
     },
     pause() {
+      if (!this.is_playing) return
       this.is_playing = false
       clearInterval(this.timer)
       console.log("*****************The player has been paused!*********************")
@@ -186,13 +197,18 @@ export default {
 
     },
     process_csv_data(data) {
-      data.forEach((c, index) => {
-
-        this[index] = this.process_one_line_csv(c)
+      let processed_data = []
+      data.forEach((c) => {
+        if (c.jurisdiction != "NAT_TOTAL"){
+          // console.log("Ignore this data: ", c.jurisdiction, c)
+          return
+        }
+        // console.log("Save this data: ", c.jurisdiction, c)
+        processed_data.push(this.process_one_line_csv(c))
         // this[index] = c
-      }, data);
+      });
 
-      return data
+      return processed_data
     },
 
     process_one_line_csv(line) {
@@ -208,7 +224,14 @@ export default {
       return line
     },
 
-
+    array_to_obj(array, key) {
+      let rt = {}
+      array.forEach(element => {
+        rt[element[key]] = element
+      });
+      // rt[key] = 
+      return rt
+    },
     go_next_day() {
       if (this.date_array[this.curr_date_index] == this.today_date) {
         this.is_playing = false
@@ -219,11 +242,6 @@ export default {
       this.curr_date_index += 1
     },
 
-    waitforme(milisec) {
-      return new Promise(resolve => {
-        setTimeout(() => { resolve('') }, milisec);
-      })
-    },
     read_geojson() {
       if (!geo_data) {
         console.log("geo_data not found")
@@ -237,7 +255,8 @@ export default {
       d3.csv(TIME_SERIES_CUM_DEATH)
         .then((data) => {
           this.cum_death_data_exists = true
-          this.csv_data.cum_death_data = this.process_csv_data(data)
+          this.csv_data.cum_death_data = this.array_to_obj(this.process_csv_data(data),"country_code")
+          // console.log(this.array_to_obj(this.csv_data.cum_death_data, "country_code"))
         });
     },
     read_cum_confirmed() {
@@ -245,10 +264,23 @@ export default {
       d3.csv(TIME_SERIES_CUM_CONFIRMED)
         .then((data) => {
           this.cum_confirmed_data_exists = true
-          this.csv_data.cum_confirmed_data = this.process_csv_data(data)
+          this.csv_data.cum_confirmed_data = this.array_to_obj(this.process_csv_data(data),"country_code")
         });
     },
-
+    read_events() {
+      d3.csv(EVENTS_DATA)
+        .then((data) => {
+          this.event_data_exisited = true
+          let events_array = []
+          // this.csv_data.event_data = data
+          data.forEach(event => {
+            if (event.country_code)
+              events_array.push(event)
+          });
+          // this.array_to_obj(
+          this.csv_data.event_data = events_array
+        })
+    },
 
   },
 
