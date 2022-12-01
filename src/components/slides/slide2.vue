@@ -34,8 +34,8 @@
           <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
         </div>
         <div class="col-5">
-          <input type="range" v-bind:min="0" v-bind:max="date_array.length - 1" class="slider mt-3 mx-0" id="date_slider"
-            v-model.number="curr_date_index">
+          <input type="range" v-bind:min="0" v-bind:max="date_array.length - 1" class="slider mt-3 mx-0"
+            id="date_slider" v-model.number="curr_date_index">
         </div>
         <div class="col">
           <h5>Date: {{
@@ -48,7 +48,7 @@
       </div>
 
       <MapChart v-if="is_all_data_ready" :geo_data="geo_data" :csv_data="csv_data"
-        :curr_date="date_array[curr_date_index]" :today_date="today_date" />
+        :curr_date="date_array[curr_date_index]" :curr_date_index="curr_date_index" :today_date="today_date" />
 
       <!-- .end .bg-white shadow -->
     </div>
@@ -64,7 +64,7 @@ import geo_data from '../../assets/data/world_topo.json'
 
 const TIME_SERIES_CUM_DEATH = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/timeseries/confirmed_deaths.csv"
 const TIME_SERIES_CUM_CONFIRMED = "https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/timeseries/confirmed_cases.csv"
-const EVENTS_DATA = window.location.origin+"/src/assets/data/events.csv"
+const EVENTS_DATA = window.location.origin + "/src/assets/data/events.csv"
 
 
 const CONFIRMED_MODE = "cum_confirmed_data"
@@ -135,7 +135,6 @@ export default {
     },
   },
   methods: {
-
     handle_wheel() {
       this.pause()
     },
@@ -199,7 +198,7 @@ export default {
     process_csv_data(data) {
       let processed_data = []
       data.forEach((c) => {
-        if (c.jurisdiction != "NAT_TOTAL"){
+        if (c.jurisdiction != "NAT_TOTAL") {
           // console.log("Ignore this data: ", c.jurisdiction, c)
           return
         }
@@ -255,7 +254,7 @@ export default {
       d3.csv(TIME_SERIES_CUM_DEATH)
         .then((data) => {
           this.cum_death_data_exists = true
-          this.csv_data.cum_death_data = this.array_to_obj(this.process_csv_data(data),"country_code")
+          this.csv_data.cum_death_data = this.array_to_obj(this.process_csv_data(data), "country_code")
           // console.log(this.array_to_obj(this.csv_data.cum_death_data, "country_code"))
         });
     },
@@ -264,7 +263,7 @@ export default {
       d3.csv(TIME_SERIES_CUM_CONFIRMED)
         .then((data) => {
           this.cum_confirmed_data_exists = true
-          this.csv_data.cum_confirmed_data = this.array_to_obj(this.process_csv_data(data),"country_code")
+          this.csv_data.cum_confirmed_data = this.array_to_obj(this.process_csv_data(data), "country_code")
         });
     },
     read_events() {
@@ -274,8 +273,13 @@ export default {
           let events_array = []
           // this.csv_data.event_data = data
           data.forEach(event => {
-            if (event.country_code)
+            if (event.country_code) {
+              let converted_date_str = this.date_to_str(new Date(event.Date))
+              // console.log(converted_date_str)
+              event.Date = converted_date_str
+              event["date_index"] = this.date_array.findIndex(d=> d==event.Date)
               events_array.push(event)
+            }
           });
           // this.array_to_obj(
           this.csv_data.event_data = events_array

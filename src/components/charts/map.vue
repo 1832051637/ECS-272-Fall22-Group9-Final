@@ -8,6 +8,9 @@ import * as topojson from "topojson"
 import getCountryISO3 from "country-iso-2-to-3"
 import testData from "../../assets/data/test.json"; /* Example of reading in data direct from file*/
 
+const NOTICE_IMG_PATH = "/src/assets/images/notice_bubble.png"
+const GLOBAL_IMG_PATH = "/src/assets/images/global_event.png"
+
 export default {
     name: 'MapChart',
     data() {
@@ -20,7 +23,7 @@ export default {
                 cum_death_data: "red",
             },
             unknown_color: "#949494",
-
+            curr_event_array: Array(this.csv_data.event_data.length).fill(0),
         }
     },
     props: {
@@ -29,6 +32,7 @@ export default {
         csv_data: Object,
         curr_date: String,
         today_date: String,
+        curr_date_index: Number,
         // display_mode: String,
     },
     mounted() {
@@ -44,7 +48,7 @@ export default {
     },
     methods: {
         set_death_max() {
-            this.death_max = d3.max(Object.values(death_data), d => {
+            this.death_max = d3.max(Object.values(this.csv_data.cum_death_data), d => {
                 // console.log(d)
                 return toNumber(d[this.today_date])
             })
@@ -60,6 +64,15 @@ export default {
         initialize_map() {
             let svg = d3.select(this.id).append("svg")
             svg.append("g").attr("id", "map_group");
+            svg.append("image")
+                .attr("id", "map_g_event")
+                .attr('xlink:href', GLOBAL_IMG_PATH)
+                .attr("width", "50")
+                .attr("height", "50")
+                .attr("x", 0)
+                .attr("y", 0)
+                .transition()
+                .attr("display", "none")
             svg.append("g").attr("id", "map_legend");
         },
         draw_map() {
@@ -68,7 +81,7 @@ export default {
             const width = 630 * 1.2;
             // const this.unknown_color = "green"
             // "#949494"
-            let death_data = this.csv_data.cum_death_data
+            // let death_data = this.csv_data.cum_death_data
             let confirmed_data = this.csv_data.cum_confirmed_data
 
             let svg = d3.select(this.id).select("svg")
@@ -116,8 +129,8 @@ export default {
                 .attr("r", (d) => {
                     let country_code = d.properties.country_code
                     if (!country_code) return 0
-                    // let target = death_data.find(c => c.country_code == country_code && c.jurisdiction == "NAT_TOTAL")
-                    let target = death_data[country_code]
+                    // let target = this.csv_data.cum_death_data.find(c => c.country_code == country_code && c.jurisdiction == "NAT_TOTAL")
+                    let target = this.csv_data.cum_death_data[country_code]
                     if (!target) return 0
                     if (toNumber(target[this.curr_date]) < 1) {
                         return 0
@@ -133,6 +146,65 @@ export default {
                     return "translate(" + projection([lon, lat]) + ")";
                 });
 
+            g.selectAll("image").data(this.csv_data.event_data)
+                .join("image")
+                .attr('xlink:href', NOTICE_IMG_PATH)
+                .attr("width", "50")
+                .attr("height", "50")
+                .transition()
+                .duration(500)
+                .attr("display", (d, i) => {
+                    let global_event = svg.select("#map_g_event")
+                    // console.log(i, this.curr_event_array[i])
+                    if (this.curr_date_index < d.date_index || this.curr_date_index > d.date_index + 15) {
+                        // console.log("This event has not happened or happened far away before", d)
+                        this.curr_event_array[i] = 0
+                        // if (d.country_code == "G" && this.curr_event_array[i])
+                        //     global_event.attr("display", "none")
+                        return "none"
+                    }
+                    else if (this.curr_date_index == d.date_index && !this.curr_event_array[i]) {
+                        this.curr_event_array[i] = 1
+                        console.log("This event just happenes and and will last 15 days on map", d)
+                        if (d.country_code == "G")
+                            global_event.transition().attr("display", "block")
+
+                        return d.country_code == "G" ? "none" : "block"
+                    }
+                    else if (this.curr_date_index < d.date_index + 15 && this.curr_date_index > d.date_index
+                        && this.curr_event_array[i]) {
+
+                        // console.log("This event is still showing up on the map", d)
+                        if (i < this.csv_data.event_data.length
+                            && this.csv_data.event_data[i + 1].date_index == this.curr_date_index + 1
+                            && d.country_code == this.csv_data.event_data[i + 1].country_code) {
+                            this.curr_event_array[i] = 0
+                            if (d.country_code == "G")
+                                global_event.transition().attr("display", "none")
+                            return "none"
+                        }
+                        return d.country_code == "G" ? "none" : "block"
+                    }
+                    // console.log("Some edge cases happened...", d)
+                    this.curr_event_array[i] = 0
+                    if (d.country_code == "G")
+                        global_event.transition().attr("display", "none")
+                    return "none"
+                })
+                .attr("transform", (d) => {
+                    let target_country = country_features.find(c => c.properties.country_code == d.country_code)
+                    if (!target_country) return
+                    let lat = toNumber(target_country.properties.lat)
+                    let lon = toNumber(target_country.properties.lon)
+                    if (!lat || !lon)
+                        lat = lon = 0
+                    let event_coords = projection([lon, lat])
+                    event_coords[0] -= 15
+                    event_coords[1] -= 30
+                    // console.log(projection([lon, lat]))
+                    return "translate(" + event_coords + ")";
+                })
+            // g.
             let zoom = d3.zoom()
                 .scaleExtent([1, 12])
                 .on('zoom', (event) => {
