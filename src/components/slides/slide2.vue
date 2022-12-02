@@ -48,8 +48,8 @@
       </div>
 
       <MapChart v-if="is_all_data_ready" :geo_data="geo_data" :csv_data="csv_data"
-        :curr_date="date_array[curr_date_index]" :curr_date_index="curr_date_index" :today_date="today_date" />
-
+        :curr_date="date_array[curr_date_index]" :curr_date_index="curr_date_index" :today_date="today_date"
+        @toggle_player="toggle_player" />
       <!-- .end .bg-white shadow -->
     </div>
     <!-- .end .wrap -->
@@ -97,6 +97,7 @@ export default {
         slow: 500,
       },
       timer: NaN,
+      modal_interupt: false,
     }
   },
 
@@ -135,6 +136,20 @@ export default {
     },
   },
   methods: {
+    toggle_player(modal_open) {
+      // if (!this.is_playing) return
+      if (modal_open&&this.is_playing){
+        console.log("Model is open so player stopped")
+        this.modal_interupt = true
+        this.pause()
+        return
+      }else if (!modal_open && this.modal_interupt) {
+        console.log("Model is closed so playing continued")
+        this.play()
+    }
+    this.modal_interupt = false
+
+  },
     handle_wheel() {
       this.pause()
     },
@@ -277,7 +292,7 @@ export default {
               let converted_date_str = this.date_to_str(new Date(event.Date))
               // console.log(converted_date_str)
               event.Date = converted_date_str
-              event["date_index"] = this.date_array.findIndex(d=> d==event.Date)
+              event["date_index"] = this.date_array.findIndex(d => d == event.Date)
               events_array.push(event)
             }
           });

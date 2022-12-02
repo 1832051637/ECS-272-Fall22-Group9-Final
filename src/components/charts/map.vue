@@ -1,5 +1,5 @@
 <template>
-    <modal :show_modal="show_modal" @closed="hide_modal"/>
+    <modal :show_modal="show_modal" :event_date="event_date" :event_msg="event_msg" @toggle="toggle_modal"/>
     <div id="map"></div>
 </template>
 
@@ -16,6 +16,7 @@ const GLOBAL_IMG_PATH = "/src/assets/images/global_event.png"
 
 export default {
     name: 'MapChart',
+    emits: ['toggle_player'],
     data() {
         return {
             id: "#map",
@@ -28,7 +29,9 @@ export default {
             unknown_color: "#949494",
             curr_event_array: Array(this.csv_data.event_data.length).fill(0),
             img_size: 25,
-            show_modal: false
+            show_modal: false,
+            event_msg: "event_msg",
+            event_date: "event_date",
         }
     },
     props: {
@@ -38,6 +41,7 @@ export default {
         curr_date: String,
         today_date: String,
         curr_date_index: Number,
+        
         // display_mode: String,
     },
     components: {
@@ -55,9 +59,11 @@ export default {
         this.draw_map()
     },
     methods: {
-        hide_modal(hide) {
-            this.show_modal = hide
+        toggle_modal(changes) {
+            this.show_modal = changes
+            this.$emit("toggle_player", changes)
         },
+        
         set_death_max() {
             this.death_max = d3.max(Object.values(this.csv_data.cum_death_data), d => {
                 // console.log(d)
@@ -287,9 +293,12 @@ export default {
                 d3.select(this).transition().attr("width", img_size * 1.5).attr("height", img_size * 1.5)
             }).on("mouseleave", function (e) {
                 d3.select(this).transition().attr("width", img_size).attr("height", img_size)
-            }).on("click",  (e)=> {
+            }).on("click",  (e, d)=> {
                 // d3.select(this).transition().attr("width", img_size).attr("height", img_size)
+                // console.log(e, d)
                 this.show_modal = true
+                this.event_date = d.Date
+                this.event_msg = d.Event
                 // $('#exampleModalCenter').modal()
             })
             let zoom = d3.zoom()
