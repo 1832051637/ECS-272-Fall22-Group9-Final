@@ -90,7 +90,7 @@ export default {
       today_date: "",
       // display_mode: CONFIRMED_MODE,
       is_playing: false,
-      play_speed_mode: "fast",
+      play_speed_mode: "slow",
       play_speed: {
         fast: 100,
         normal: 300,
@@ -155,7 +155,7 @@ export default {
     },
     play() {
       this.is_playing = true
-      this.timer = setInterval(this.go_next_day, 200)
+      this.timer = setInterval(this.go_next_day, this.play_speed[this.play_speed_mode])
     },
     pause() {
       if (!this.is_playing) return
@@ -287,12 +287,13 @@ export default {
           this.event_data_exisited = true
           let events_array = []
           // this.csv_data.event_data = data
-          data.forEach(event => {
+          data.forEach((event, i) => {
             if (event.country_code) {
               let converted_date_str = this.date_to_str(new Date(event.Date))
               // console.log(converted_date_str)
               event.Date = converted_date_str
               event["date_index"] = this.date_array.findIndex(d => d == event.Date)
+              event["event_index"] = i
               events_array.push(event)
             }
           });

@@ -20,7 +20,7 @@ import './style/svg-icons.css'
 import "./style/slider.css";
 
 //
-import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 import "bootstrap"
 

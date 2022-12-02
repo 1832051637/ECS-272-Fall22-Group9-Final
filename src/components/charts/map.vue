@@ -1,5 +1,5 @@
 <template>
-    <modal :show_modal="show_modal" :event_date="event_date" :event_msg="event_msg" @toggle="toggle_modal"/>
+    <modal :show_modal="show_modal" :event_date="event_date" :event_msg="event_msg" @toggle="toggle_modal" />
     <div id="map"></div>
 </template>
 
@@ -8,6 +8,7 @@ import * as d3 from "d3";
 import * as topojson from "topojson"
 import getCountryISO3 from "country-iso-2-to-3"
 import modal from "./map_components/modal.vue"
+import { Tooltip } from "bootstrap";
 // import $ from 'jquery'
 // import testData from "../../assets/data/test.json"; /* Example of reading in data direct from file*/
 
@@ -28,6 +29,7 @@ export default {
             },
             unknown_color: "#949494",
             curr_event_array: Array(this.csv_data.event_data.length).fill(0),
+            curr_global_event: -1,
             img_size: 25,
             show_modal: false,
             event_msg: "event_msg",
@@ -41,7 +43,7 @@ export default {
         curr_date: String,
         today_date: String,
         curr_date_index: Number,
-        
+
         // display_mode: String,
     },
     components: {
@@ -63,7 +65,7 @@ export default {
             this.show_modal = changes
             this.$emit("toggle_player", changes)
         },
-        
+
         set_death_max() {
             this.death_max = d3.max(Object.values(this.csv_data.cum_death_data), d => {
                 // console.log(d)
@@ -79,16 +81,20 @@ export default {
             return features
         },
         initialize_map() {
+            
             let svg = d3.select(this.id).append("svg")
+            d3.select(this.id)
+                .append("div")
+                .attr("id", "map_mouse_handler")
             svg.append("g").attr("id", "map_group");
             svg.append("image")
                 .attr("id", "map_g_event")
                 .attr('xlink:href', GLOBAL_IMG_PATH)
-                .attr("width", "50")
-                .attr("height", "50")
+                .attr("width", this.img_size * 2)
+                .attr("height", this.img_size * 2)
                 .attr("x", 0)
                 .attr("y", 0)
-                .transition()
+                // .transition()
                 .attr("display", "none")
 
             // Add a legend
@@ -102,7 +108,7 @@ export default {
             const padding = 5
 
             let legend_g = svg.append("g").attr("id", "map_legend_group")
-                .attr("display", "none")
+                .attr("opacity", 0)
             legend_g.append("rect")
                 .attr("id", "map_legend_box")
                 .attr("x", legend_coord[0] - padding)
@@ -180,9 +186,11 @@ export default {
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
 
-            // if ()
+            let map = svg.select("#map_group");
+            let legend_group = svg.select("#map_legend_group")
 
-            let g = svg.select("#map_group");
+            if (this.curr_date_index > 100)
+                legend_group.transition().duration(1000).attr("opacity", 1)
 
             // Confirmed data color
             const color = d3.interpolateHsl(this.display_color.cum_confirmed_data, "#000000")
@@ -200,7 +208,45 @@ export default {
 
             const path = d3.geoPath(projection)
 
-            g.selectAll("path").data(country_features)
+
+            const map_mouse_handler = d3.select("#map_mouse_handler")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                .style("background-color", "white")
+                .style("border", "solid")
+                .style("border-width", "2px")
+                .style("border-radius", "5px")
+                .style("padding", "5px")
+
+            let mouse_over = function (event, d) {
+                map_mouse_handler
+                    .html("whatever")
+                    .style("opacity", 1)
+                d3.select(this)
+                    .transition()
+                    .duration(100)
+                    .style("opacity", 0.5)
+                    .style("stroke-width", "0.6px")
+                    .style("stroke", "black")
+            }
+            let mouse_move = function (event, d) {
+                map_mouse_handler
+                    // .style("transform", "translateX(150%)")
+                    .style("left", (event.offsetX) + 50 + "px")
+                    .style("top", (event.offsetY) + 400 + "px")
+            }
+            
+            let mouse_out = function (event, d) {
+                map_mouse_handler
+                    .style("opacity", 0)
+                d3.select(this)
+                    .transition()
+                    .duration(100)
+                    .style("opacity", 1)
+                    .style("stroke-width", "0.3px")
+                    .style("stroke", "white")
+            }
+            map.selectAll("path").data(country_features)
                 .join("path")
                 .attr("fill", (d, i) => {
                     let country_code = d.properties.country_code
@@ -211,9 +257,12 @@ export default {
                 })
                 .attr("class", "countries")
                 .attr("d", path)
+                .on("mouseover", mouse_over)
+                .on("mousemove", mouse_move)
+                // .on("click", mouse_click)
+                .on("mouseout", mouse_out)
 
-
-            g.selectAll("circle").data(country_features)
+            map.selectAll("circle").data(country_features)
                 .join("circle")
                 .attr("class", "mapCircle")
                 .attr("r", (d) => {
@@ -235,12 +284,10 @@ export default {
                     return "translate(" + projection([lon, lat]) + ")";
                 });
 
-            let notifications = g.selectAll("image").data(this.csv_data.event_data)
+            let notifications = map.selectAll("image").data(this.csv_data.event_data)
                 .join("image")
                 // .attr("class","mapNotification")
                 .attr('xlink:href', NOTICE_IMG_PATH)
-                .attr("width", this.img_size)
-                .attr("height", this.img_size)
                 .attr("transform", (d) => {
                     let target_country = country_features.find(c => c.properties.country_code == d.country_code)
                     if (!target_country) return
@@ -254,20 +301,34 @@ export default {
                     return "translate(" + event_coords + ")";
                 })
 
-            notifications.transition()
+            const img_size = this.img_size
+            let global_event = svg.select("#map_g_event")
+            notifications.on("mouseover", function (e, d) {
+                d3.select(this).transition().attr("width", img_size * 1.5).attr("height", img_size * 1.5).attr("opacity", 0.5)
+            }).on("mouseout", function (e, d) {
+                d3.select(this).transition().attr("width", img_size).attr("height", img_size).attr("opacity", 1)
+            }).on("click", (e, d) => {
+                this.show_modal = true
+                this.event_date = d.Date
+                this.event_msg = d.Event
+            })
+                .transition()
                 .duration(500)
+                .attr("width", d => this.img_size)
+                .attr("height", d => this.img_size)
+                .transition()
                 .attr("display", (d, i) => {
-                    let global_event = svg.select("#map_g_event")
-                    if (this.curr_date_index < d.date_index || this.curr_date_index > d.date_index + 15) {
+                    if (this.curr_date_index < d.date_index || this.curr_date_index >= d.date_index + 15) {
                         this.curr_event_array[i] = 0
                         return "none"
                     }
-                    else if (this.curr_date_index == d.date_index ) {
+                    else if (this.curr_date_index == d.date_index) {
                         this.curr_event_array[i] = 1
-                        console.log("This event just happenes and and will last 15 days on map", d)
-                        if (d.country_code == "G")
+                        // console.log("This event just happenes and and will last 15 days on map", d)
+                        if (d.country_code == "G") {
                             global_event.transition().attr("display", "block")
-
+                            this.curr_global_event = i
+                        }
                         return d.country_code == "G" ? "none" : "block"
                     }
                     else if (this.curr_date_index < d.date_index + 15 && this.curr_date_index > d.date_index
@@ -277,30 +338,34 @@ export default {
                             && d.country_code == this.csv_data.event_data[i + 1].country_code) {
                             this.curr_event_array[i] = 0
                             if (d.country_code == "G")
-                                global_event.transition().attr("display", "none")
+                                global_event.attr("display", "none")
                             return "none"
                         }
                         return d.country_code == "G" ? "none" : "block"
                     }
                     this.curr_event_array[i] = 0
                     if (d.country_code == "G")
-                        global_event.transition().attr("display", "none")
+                        global_event.attr("display", "none")
                     return "none"
                 })
 
-            const img_size = this.img_size
-            notifications.on("mouseover", function (e) {
-                d3.select(this).transition().attr("width", img_size * 1.5).attr("height", img_size * 1.5)
-            }).on("mouseleave", function (e) {
-                d3.select(this).transition().attr("width", img_size).attr("height", img_size)
-            }).on("click",  (e, d)=> {
-                // d3.select(this).transition().attr("width", img_size).attr("height", img_size)
-                // console.log(e, d)
-                this.show_modal = true
-                this.event_date = d.Date
-                this.event_msg = d.Event
-                // $('#exampleModalCenter').modal()
+
+            global_event.attr("display", d => {
+                if (this.curr_global_event == -1) return "none"
+                return this.csv_data.event_data[this.curr_global_event].date_index + 15 <= this.curr_date_index ? "none" : null
             })
+                .on("mouseover", (e) => {
+                    global_event.transition().attr("opacity", 0.5).attr("width", img_size * 2 * 1.5).attr("height", img_size * 2 * 1.5)
+                }).on("mouseout", (e) => {
+                    global_event.transition().attr("opacity", 1).attr("width", img_size * 2).attr("height", img_size * 2)
+                }).on("click", (e) => {
+                    this.show_modal = true
+                    this.event_date = this.csv_data.event_data[this.curr_global_event].Date
+                    this.event_msg = this.csv_data.event_data[this.curr_global_event].Event
+                }).a
+
+
+
             let zoom = d3.zoom()
                 .scaleExtent([1, 12])
                 .on('zoom', (event) => {
@@ -315,7 +380,7 @@ export default {
                     return
                 }
 
-                // g.select("#map_" + selected_country_code)
+                // map.select("#map_" + selected_country_code)
                 //     .transition()
                 //     .duration(transition_duration)
                 //     .style("stroke", "transparent")
