@@ -20,10 +20,11 @@ import './style/svg-icons.css'
 import "./style/slider.css";
 
 //
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.css"
 
 import "bootstrap"
 
 import "bootstrap/dist/js/bootstrap.js"
+import "bootstrap/dist/js/bootstrap.bundle.js"
 
 createApp(App).mount('#app')

@@ -2,7 +2,7 @@
   <section class="fullscreen">
     <!--.wrap = container (width: 90%) -->
     <div class="wrap size-100 aligncenter">
-      <h2><strong>What happened to our earth?</strong></h2>
+      <h1><strong>What happened to our earth?</strong></h1>
       <!-- <p class="text-intro"><a href="demos/why-webslides.html" title="Why WebSlides?">Presentations</a>, <a
           href="demos/landings.html" title="Landings">landings</a>, <a href="demos/portfolios.html"
           title="Portfolios">portfolios</a>, and <a href="demos/longforms.html" title="Longforms">longforms</a>.</p> -->
@@ -24,7 +24,7 @@
       <!-- <BarChart/> -->
 
       <!-- <select v-model="display_mode">
-        <option disabled value="">Please select a data type to view</option>
+        <option disabled play_speed_mode="">Please select a data type to view</option>
         <option>cum_confirmed_data</option>
         <option>cum_death_data</option>
       </select> -->
@@ -33,17 +33,30 @@
           <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>
           <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
         </div>
-        <div class="col-5">
+        <div class="col">
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Play speed: {{ play_speed_mode }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" role="menu">
+              <li v-for="option in Object.keys(play_speed)" :key="option">
+                <a class="dropdown-item" @click="play_speed_mode = option">{{ option }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-5 pl-0">
           <input type="range" v-bind:min="0" v-bind:max="date_array.length - 1" class="slider mt-3 mx-0"
             id="date_slider" v-model.number="curr_date_index">
         </div>
         <div class="col">
-          <h5>Date: {{
+          <h2><b>Date: {{
               str_to_date(date_array[parseFloat(curr_date_index)]).toLocaleDateString(undefined, {
                 year: 'numeric', month: 'long', day:
                   'numeric'
               })
-          }}</h5>
+          }}</b></h2>
         </div>
       </div>
 
@@ -80,24 +93,21 @@ export default {
       cum_death_data_exists: false,
       cum_confirmed_data_exists: false,
       event_data_exisited: false,
-      csv_data: { cum_death_data: {}, cum_confirmed_data: {}, event_data: {} },
+      csv_data: { cum_death_data: {}, cum_confirmed_data: {}, event_data: {}, global_event_data: {}, },
       geo_data: {},
       date_array: [],
       first_date: "31Dec2019",
-      // second_date: "02Jan2020",
-      // curr_date: "01Jan2020",
       curr_date_index: 0,
       today_date: "",
-      // display_mode: CONFIRMED_MODE,
       is_playing: false,
-      play_speed_mode: "slow",
+      play_speed_mode: "normal",
       play_speed: {
-        fast: 100,
+        fast: 20,
         normal: 300,
-        slow: 500,
+        slow: 1000,
       },
       timer: NaN,
-      modal_interupt: false,
+      modal_interupt: false,  // When a modal is opened and player is playing
     }
   },
 
@@ -118,10 +128,10 @@ export default {
   mounted() {
     console.log("slide2 is mounted")
     window.addEventListener('wheel', this.handle_wheel);
-    // this.tempGeoData = this.geo_data
   },
   updated() {
     console.log("slide2 is updated")
+    this.reset_timer()
     if (this.date_array[this.curr_date_index] == this.today_date) {
       this.pause()
     }
@@ -137,21 +147,25 @@ export default {
   },
   methods: {
     toggle_player(modal_open) {
-      // if (!this.is_playing) return
-      if (modal_open&&this.is_playing){
+      if (modal_open && this.is_playing) {
         console.log("Model is open so player stopped")
         this.modal_interupt = true
         this.pause()
         return
-      }else if (!modal_open && this.modal_interupt) {
+      } else if (!modal_open && this.modal_interupt) {
         console.log("Model is closed so playing continued")
         this.play()
-    }
-    this.modal_interupt = false
+      }
+      this.modal_interupt = false
 
-  },
+    },
     handle_wheel() {
       this.pause()
+    },
+    reset_timer() {
+      if (!this.is_playing) return
+      clearInterval(this.timer)
+      this.timer = setInterval(this.go_next_day, this.play_speed[this.play_speed_mode])
     },
     play() {
       this.is_playing = true
@@ -161,7 +175,7 @@ export default {
       if (!this.is_playing) return
       this.is_playing = false
       clearInterval(this.timer)
-      console.log("*****************The player has been paused!*********************")
+      console.log("*******The player has been paused!********")
     },
     // date: a Javascript Date object
     // Return a string date for CSV data
@@ -178,7 +192,7 @@ export default {
       return day + month + year
     },
     set_today_date() {
-      const date = new Date();  // 2009-11-10
+      const date = new Date();
       date.setDate(date.getDate() - 1)
       this.date_to_str(date)
       console.log("Today is " + this.date_to_str(date));
@@ -208,18 +222,13 @@ export default {
         curr = new Date(next);
       }
       console.log("Array of all date...", this.date_array)
-
     },
     process_csv_data(data) {
       let processed_data = []
       data.forEach((c) => {
-        if (c.jurisdiction != "NAT_TOTAL") {
-          // console.log("Ignore this data: ", c.jurisdiction, c)
+        if (c.jurisdiction != "NAT_TOTAL")
           return
-        }
-        // console.log("Save this data: ", c.jurisdiction, c)
         processed_data.push(this.process_one_line_csv(c))
-        // this[index] = c
       });
 
       return processed_data
@@ -243,16 +252,13 @@ export default {
       array.forEach(element => {
         rt[element[key]] = element
       });
-      // rt[key] = 
       return rt
     },
     go_next_day() {
       if (this.date_array[this.curr_date_index] == this.today_date) {
         this.is_playing = false
-        // this.curr_date = this.today_date
         return
       }
-      // this.curr_date = this.date_array[this.curr_date_index]
       this.curr_date_index += 1
     },
 
@@ -270,7 +276,6 @@ export default {
         .then((data) => {
           this.cum_death_data_exists = true
           this.csv_data.cum_death_data = this.array_to_obj(this.process_csv_data(data), "country_code")
-          // console.log(this.array_to_obj(this.csv_data.cum_death_data, "country_code"))
         });
     },
     read_cum_confirmed() {
@@ -285,20 +290,39 @@ export default {
       d3.csv(EVENTS_DATA)
         .then((data) => {
           this.event_data_exisited = true
-          let events_array = []
-          // this.csv_data.event_data = data
+          let event_array = []
+          let global_event_array = []
           data.forEach((event, i) => {
             if (event.country_code) {
               let converted_date_str = this.date_to_str(new Date(event.Date))
-              // console.log(converted_date_str)
               event.Date = converted_date_str
               event["date_index"] = this.date_array.findIndex(d => d == event.Date)
-              event["event_index"] = i
-              events_array.push(event)
+              if (event.country_code != "G") {
+
+                // event["event_index"] = i
+                event_array.push(event)
+              } else {
+                global_event_array.push(event)
+              }
             }
           });
-          // this.array_to_obj(
-          this.csv_data.event_data = events_array
+          this.date_array.forEach((day, i) => {
+            this.csv_data.event_data[i] = []
+            event_array.forEach((e, j) => {
+              if (day == e.Date) {
+                e["event_index"] = j
+                this.csv_data.event_data[i].push(e)
+              }
+            })
+
+          });
+          // this.csv_data.event_data = event_array
+
+          global_event_array.forEach((g, k) => {
+            g["event_index"] = k
+            this.csv_data.global_event_data[g["date_index"]] = g
+          })
+          console.log(this.csv_data.global_event_data)
         })
     },
 

@@ -1,18 +1,17 @@
 <template>
   <!-- Modal -->
-  <div class="modal fade" data-backdrop="false" id="exampleModal" tabindex="-1">
-    <div class="modal-dialog">
+  <div class="modal fade" data-backdrop="false" id="event_modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">{{event_date}}</h5>
+          <h2 class="modal-title"><b>{{event_date}}</b></h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>{{event_msg}}</p>
+          <h3>{{event_msg}}</h3>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" v-on:click="hide">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" v-on:click="hide">Okay</button>
         </div>
       </div>
     </div>
@@ -50,8 +49,8 @@ export default {
     display() {
       if (!this.show_modal) return
       let options = undefined
-      document.body.appendChild(document.getElementById('exampleModal'))
-      this.modal = new Modal(document.getElementById('exampleModal'), options)
+      document.body.appendChild(document.getElementById('event_modal'))
+      this.modal = new Modal(document.getElementById('event_modal'), options)
       this.modal.show()
       
       let is_open = true

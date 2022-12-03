@@ -28,12 +28,15 @@ export default {
                 cum_death_data: "red",
             },
             unknown_color: "#949494",
-            curr_event_array: Array(this.csv_data.event_data.length).fill(0),
-            curr_global_event: -1,
+            curr_event_array: Array(this.csv_data.event_data.length).fill({ show: 0 }),
+            curr_global_event: undefined,
             img_size: 25,
             show_modal: false,
             event_msg: "event_msg",
             event_date: "event_date",
+            legend_drawed: false,
+            evented_countries: {}
+            // events_on_map: [],
         }
     },
     props: {
@@ -51,16 +54,42 @@ export default {
     },
     mounted() {
         console.log("Mounted: My Main map data", this.csv_data.event_data)
-
+        this.set_evented_countries()
+        console.log(this.evented_countries)
+        this.set_death_max()
         this.initialize_map()
         this.draw_map()
     },
     updated() {
         console.log("Updated: My Main map data")
         console.log("Curr is ", this.curr_date)
+        // this.set_evented_countries()
         this.draw_map()
+        console.log(this.evented_countries)
     },
     methods: {
+        get_country_event(country_code) {
+            return this.evented_countries[country_code]
+        },
+        set_country_evented(country_code, event_index) {
+            this.evented_countries[country_code].push(event_index)
+        },
+        set_country_unevented(country_code, event_index) {
+            let array = this.evented_countries[country_code]
+            let index = array.indexOf(event_index);
+            if (index !== -1) {
+                array.splice(index, 1);
+            }
+            // this.evented_countries[country_code].shift()
+        },
+        // Get all countries with event
+        set_evented_countries() {
+            Object.values(this.csv_data.event_data).forEach(day => {
+                day.forEach(event => {
+                    this.evented_countries[event["country_code"]] = []
+                });
+            });
+        },
         toggle_modal(changes) {
             this.show_modal = changes
             this.$emit("toggle_player", changes)
@@ -81,12 +110,14 @@ export default {
             return features
         },
         initialize_map() {
-            
             let svg = d3.select(this.id).append("svg")
-            d3.select(this.id)
-                .append("div")
-                .attr("id", "map_mouse_handler")
+
             svg.append("g").attr("id", "map_group");
+
+            d3.select(this.id).append("div")
+                .attr("id", "map_mouse_handler")
+                .style("position", "absolute")
+
             svg.append("image")
                 .attr("id", "map_g_event")
                 .attr('xlink:href', GLOBAL_IMG_PATH)
@@ -94,21 +125,24 @@ export default {
                 .attr("height", this.img_size * 2)
                 .attr("x", 0)
                 .attr("y", 0)
-                // .transition()
                 .attr("display", "none")
 
             // Add a legend
+            svg.append("g").attr("id", "map_legend_group")
+                .attr("opacity", 0)
+        },
+        draw_legend(legend_g) {
+            if (this.legend_drawed) return
+            legend_g.transition().duration(1000).attr("opacity", 1)
             const interval = []
             const legend_count = 6      // Last legend will be unknown data
             const legend_width = 10
             const legend_height = 10
             const legend_coord = [20, 320]
-            const legend_box_width = legend_width * 14
+            const legend_box_width = legend_width * 12
             const legend_box_height = legend_height * 15
             const padding = 5
 
-            let legend_g = svg.append("g").attr("id", "map_legend_group")
-                .attr("opacity", 0)
             legend_g.append("rect")
                 .attr("id", "map_legend_box")
                 .attr("x", legend_coord[0] - padding)
@@ -180,6 +214,10 @@ export default {
             const height = 400 * 1.2;
             const width = 630 * 1.2;
 
+            const curr_date = this.curr_date
+            const death_data = this.csv_data.cum_death_data
+            const confirmed_data = this.csv_data.cum_confirmed_data
+
             let svg = d3.select(this.id).select("svg")
                 .attr("class", "mapChart")
                 .attr("viewBox", [0, 0, width, height])
@@ -189,8 +227,11 @@ export default {
             let map = svg.select("#map_group");
             let legend_group = svg.select("#map_legend_group")
 
-            if (this.curr_date_index > 100)
-                legend_group.transition().duration(1000).attr("opacity", 1)
+            if (this.curr_date_index > 100) {
+                // legend_group
+                this.draw_legend(legend_group)
+                this.legend_drawed = true
+            }
 
             // Confirmed data color
             const color = d3.interpolateHsl(this.display_color.cum_confirmed_data, "#000000")
@@ -210,18 +251,22 @@ export default {
 
 
             const map_mouse_handler = d3.select("#map_mouse_handler")
-                .style("opacity", 0)
                 .attr("class", "tooltip")
-                .style("background-color", "white")
-                .style("border", "solid")
-                .style("border-width", "2px")
-                .style("border-radius", "5px")
-                .style("padding", "5px")
+                .style('font-size', '12px')
 
             let mouse_over = function (event, d) {
+                let country_code = d.properties.country_code
+                let country_name = d.properties.name
+                let confirmed_cases = (confirmed_data[country_code]) ? confirmed_data[country_code][curr_date] : "Unknown"
+                let deceased = (death_data[country_code]) ? death_data[country_code][curr_date] : "Unknown"
                 map_mouse_handler
-                    .html("whatever")
+                    .html("<span><b>" + country_name + "</b><br>" +
+                        "<b>Confirmed: </b>" + confirmed_cases + "<br>" +
+                        "<b>Deceased: </b>" + deceased + "</span>")
+                    .transition()
+                    .duration(500)
                     .style("opacity", 1)
+
                 d3.select(this)
                     .transition()
                     .duration(100)
@@ -231,11 +276,10 @@ export default {
             }
             let mouse_move = function (event, d) {
                 map_mouse_handler
-                    // .style("transform", "translateX(150%)")
-                    .style("left", (event.offsetX) + 50 + "px")
-                    .style("top", (event.offsetY) + 400 + "px")
+                    .style("left", (event.offsetX) + 250 + "px")
+                    .style("top", (event.offsetY) + "px")
             }
-            
+
             let mouse_out = function (event, d) {
                 map_mouse_handler
                     .style("opacity", 0)
@@ -246,12 +290,13 @@ export default {
                     .style("stroke-width", "0.3px")
                     .style("stroke", "white")
             }
+
             map.selectAll("path").data(country_features)
                 .join("path")
                 .attr("fill", (d, i) => {
                     let country_code = d.properties.country_code
                     if (!country_code) return this.unknown_color
-                    let target = this.csv_data.cum_confirmed_data[country_code]
+                    let target = confirmed_data[country_code]
                     if (!target || !target[this.curr_date]) return this.unknown_color
                     return color(toNumber(target[this.curr_date]) / this.confirmed_max)
                 })
@@ -259,7 +304,6 @@ export default {
                 .attr("d", path)
                 .on("mouseover", mouse_over)
                 .on("mousemove", mouse_move)
-                // .on("click", mouse_click)
                 .on("mouseout", mouse_out)
 
             map.selectAll("circle").data(country_features)
@@ -268,7 +312,7 @@ export default {
                 .attr("r", (d) => {
                     let country_code = d.properties.country_code
                     if (!country_code) return 0
-                    let target = this.csv_data.cum_death_data[country_code]
+                    let target = death_data[country_code]
                     if (!target) return 0
                     if (toNumber(target[this.curr_date]) < 1) {
                         return 0
@@ -284,87 +328,235 @@ export default {
                     return "translate(" + projection([lon, lat]) + ")";
                 });
 
-            let notifications = map.selectAll("image").data(this.csv_data.event_data)
-                .join("image")
-                // .attr("class","mapNotification")
-                .attr('xlink:href', NOTICE_IMG_PATH)
-                .attr("transform", (d) => {
-                    let target_country = country_features.find(c => c.properties.country_code == d.country_code)
-                    if (!target_country) return
-                    let lat = toNumber(target_country.properties.lat)
-                    let lon = toNumber(target_country.properties.lon)
-                    if (!lat || !lon)
-                        lat = lon = 0
-                    let event_coords = projection([lon, lat])
-                    event_coords[0] -= 5
-                    event_coords[1] -= 20
-                    return "translate(" + event_coords + ")";
-                })
-
-            const img_size = this.img_size
+            // Only one global event in one day
             let global_event = svg.select("#map_g_event")
-            notifications.on("mouseover", function (e, d) {
-                d3.select(this).transition().attr("width", img_size * 1.5).attr("height", img_size * 1.5).attr("opacity", 0.5)
-            }).on("mouseout", function (e, d) {
-                d3.select(this).transition().attr("width", img_size).attr("height", img_size).attr("opacity", 1)
-            }).on("click", (e, d) => {
-                this.show_modal = true
-                this.event_date = d.Date
-                this.event_msg = d.Event
-            })
-                .transition()
-                .duration(500)
-                .attr("width", d => this.img_size)
-                .attr("height", d => this.img_size)
-                .transition()
-                .attr("display", (d, i) => {
-                    if (this.curr_date_index < d.date_index || this.curr_date_index >= d.date_index + 15) {
-                        this.curr_event_array[i] = 0
-                        return "none"
-                    }
-                    else if (this.curr_date_index == d.date_index) {
-                        this.curr_event_array[i] = 1
-                        // console.log("This event just happenes and and will last 15 days on map", d)
-                        if (d.country_code == "G") {
-                            global_event.transition().attr("display", "block")
-                            this.curr_global_event = i
-                        }
-                        return d.country_code == "G" ? "none" : "block"
-                    }
-                    else if (this.curr_date_index < d.date_index + 15 && this.curr_date_index > d.date_index
-                        && this.curr_event_array[i]) {
-                        if (i < this.csv_data.event_data.length
-                            && this.csv_data.event_data[i + 1].date_index == this.curr_date_index + 1
-                            && d.country_code == this.csv_data.event_data[i + 1].country_code) {
-                            this.curr_event_array[i] = 0
-                            if (d.country_code == "G")
-                                global_event.attr("display", "none")
-                            return "none"
-                        }
-                        return d.country_code == "G" ? "none" : "block"
-                    }
-                    this.curr_event_array[i] = 0
-                    if (d.country_code == "G")
-                        global_event.attr("display", "none")
-                    return "none"
-                })
+            let curr_global_event = this.csv_data.global_event_data[this.curr_date_index]
+            let tomorrow_event = this.csv_data.global_event_data[this.curr_date_index + 1]
+            if (tomorrow_event && tomorrow_event["date_index"] == toNumber(global_event.attr("date_index")) + 1)
+                global_event.attr("display", "none")
 
-
-            global_event.attr("display", d => {
-                if (this.curr_global_event == -1) return "none"
-                return this.csv_data.event_data[this.curr_global_event].date_index + 15 <= this.curr_date_index ? "none" : null
-            })
-                .on("mouseover", (e) => {
+            if (curr_global_event) {
+                this.curr_global_event = curr_global_event
+                global_event.transition()
+                    .attr("display", "block")
+                    .attr("event_index", curr_global_event["event_index"])
+                    .attr("date_index", curr_global_event["date_index"])
+                
+            } else {
+                if (this.curr_date_index - toNumber(global_event.attr("date_index")) > 15 || this.curr_date_index  < toNumber(global_event.attr("date_index"))) {
+                    // If this global event has passed 15 days
+                    global_event
+                        .attr("display", "none")
+                        .transition()
+                        .attr("opcaity", 0)
+                }
+            }
+            
+            global_event.on("mouseover", (e) => {
                     global_event.transition().attr("opacity", 0.5).attr("width", img_size * 2 * 1.5).attr("height", img_size * 2 * 1.5)
                 }).on("mouseout", (e) => {
                     global_event.transition().attr("opacity", 1).attr("width", img_size * 2).attr("height", img_size * 2)
                 }).on("click", (e) => {
                     this.show_modal = true
-                    this.event_date = this.csv_data.event_data[this.curr_global_event].Date
-                    this.event_msg = this.csv_data.event_data[this.curr_global_event].Event
-                }).a
+                    this.event_date = this.curr_global_event.Date
+                    this.event_msg = this.curr_global_event.Event
+                })
+
+            const curr_date_index = this.curr_date_index
+            const img_size = this.img_size
+            let set_country_evented = this.set_country_evented
+            let set_country_unevented = this.set_country_unevented
+            let get_country_event = this.get_country_event
 
 
+            // Append new event at that day
+
+            this.csv_data.event_data[this.curr_date_index].forEach((e, i) => {
+                // Remove previous occupied event at this location
+                // const curr_date_index = this.curr_date_index
+                // map.selectAll(".map_local_event")
+                //     .each(function () {
+                //         let local_event = d3.select(this)
+                //         let local_country_code = local_event.attr("country_code")
+                //         // console.log(local_country_code)
+                //         // console.log(local_event.attr("country_code"), local_event.attr("date_index"))
+                //         let local_date_index = toNumber(local_event.attr("date_index"))
+                //         // console.log(d3.select(this).attr("date_index"))  
+                //         if (local_country_code == e["country_code"]
+                //             && toNumber(local_event.attr("date_index")) + 15 >= toNumber(e["date_index"])){
+                //             local_event.attr("display", "none")
+                //             set_country_unevented(local_country_code)
+                //             return
+                //             }
+
+                //         if (curr_date_index < local_date_index) {
+                //             // Never display future local events
+                //             local_event.attr("display", "none")
+                //         } else if (curr_date_index - local_date_index > 15) {
+                //             // Dont display events more than 15 days before this day
+                //             local_event.attr("display", "none")
+                //         } else if (curr_date_index - local_date_index <= 15) {
+                //             // show recent events in 15 days in different location 
+                //             if (local_country_code != e["country_code"]) {
+                //                 console.log("Recent 15 day event and location not overlapped", local_date_index, local_country_code)
+                //                 local_event.attr("display", "block")
+                //             }
+
+                //             else {
+                //                 console.log("Recent 15 day events but same location overlapped", local_event)
+                //                 local_event.attr("display", "none")
+                //             }
+                //         }
+
+                //     })
+                if (get_country_event(e["country_code"]).at(-1) == e["event_index"])
+                    return
+                console.log("this day has new event: ", e)
+                map.append("image")
+                    .attr("class", "map_local_event")
+                    .attr("date_index", e["date_index"])
+                    .attr("event_index", e["event_index"])
+                    .attr("country_code", e["country_code"])
+                    .attr('xlink:href', NOTICE_IMG_PATH)
+                    .attr("width", this.img_size)
+                    .attr("height", this.img_size)
+                    .attr("transform", () => {
+                        let target_country = country_features.find(c => c.properties.country_code == e.country_code)
+                        if (!target_country) return
+                        let lat = toNumber(target_country.properties.lat)
+                        let lon = toNumber(target_country.properties.lon)
+                        if (!lat || !lon)
+                            lat = lon = 0
+                        let event_coords = projection([lon, lat])
+                        event_coords[0] -= 5
+                        event_coords[1] -= 20
+                        return "translate(" + event_coords + ")";
+                    })
+                    .on("mouseover", function (e, d) {
+                        d3.select(this).transition().attr("width", img_size * 1.5).attr("height", img_size * 1.5).attr("opacity", 0.5)
+                    }).on("mouseout", function (e, d) {
+                        d3.select(this).transition().attr("width", img_size).attr("height", img_size).attr("opacity", 1)
+                    }).on("click", () => {
+                        this.show_modal = true
+                        this.event_date = this.str_to_date(e.Date).toLocaleDateString(undefined, {
+                            year: 'numeric', month: 'long', day: 'numeric'
+                        })
+                        this.event_msg = e.Event
+                    }).transition()
+                    .attr("display", "block")
+                    
+                this.set_country_evented(e["country_code"], toNumber(e["event_index"]))
+                // console.log(e["country_code"], toNumber(e["event_index"]), this.evented_countries)
+            });
+            map.selectAll(".map_local_event")
+                .each(function () {
+
+                    let local_event = d3.select(this)
+                    let local_country_code = local_event.attr("country_code")
+                    let local_date_index = toNumber(local_event.attr("date_index"))
+                    let local_event_index = toNumber(local_event.attr("event_index"))
+                    console.log(local_date_index, local_country_code)
+                    if (curr_date_index < local_date_index || curr_date_index - local_date_index > 15) {
+                        // Never display future local events OR
+                        // Dont display events more than 15 days before current day
+                        local_event.attr("display", "none")
+
+                        set_country_unevented(local_country_code,local_event_index)
+                    } else {
+                        if (local_event_index == get_country_event(local_country_code).at(-1)) {
+                            console.log("this is just the current event")
+                            return //If it is itself
+                        }
+                        if (get_country_event(local_country_code).at(-1) != local_event_index ) {
+                            // if it is already occupied
+                            local_event.attr("display", "none")
+                            set_country_unevented(local_country_code,local_event_index)
+                        }
+                    }
+                })
+            // Check all map local event
+
+            // let notifications = map.selectAll("image").data(this.csv_data.event_data)
+            //     .join("image")
+            //     .attr('xlink:href', NOTICE_IMG_PATH)
+            // .attr("transform", (d) => {
+            //     let target_country = country_features.find(c => c.properties.country_code == d.country_code)
+            //     if (!target_country) return
+            //     let lat = toNumber(target_country.properties.lat)
+            //     let lon = toNumber(target_country.properties.lon)
+            //     if (!lat || !lon)
+            //         lat = lon = 0
+            //     let event_coords = projection([lon, lat])
+            //     event_coords[0] -= 5
+            //     event_coords[1] -= 20
+            //     return "translate(" + event_coords + ")";
+            // })
+
+            // // if (this.curr_date_index = )
+            // const img_size = this.img_size
+
+            // notifications.on("mouseover", function (e, d) {
+            //     d3.select(this).transition().attr("width", img_size * 1.5).attr("height", img_size * 1.5).attr("opacity", 0.5)
+            // }).on("mouseout", function (e, d) {
+            //     d3.select(this).transition().attr("width", img_size).attr("height", img_size).attr("opacity", 1)
+            // }).on("click", (e, d) => {
+            //     this.show_modal = true
+            //     this.event_date = this.str_to_date(d.Date).toLocaleDateString(undefined, {
+            //     year: 'numeric', month: 'long', day:
+            //       'numeric'
+            //   })
+            //     this.event_msg = d.Event
+            // })
+            //     .transition()
+            //     .duration(500)
+            //     .attr("width", d => this.img_size)
+            //     .attr("height", d => this.img_size)
+            //     .transition()
+            //     .attr("display", (d, i) => {
+            //         if (this.curr_date_index < d.date_index || this.curr_date_index >= d.date_index + 15) {
+            //             this.curr_event_array[i] = 0
+            //             return "none"
+            //         }
+            //         else if (this.curr_date_index == d.date_index) {
+            //             this.curr_event_array[i] = 1
+            //             if (d.country_code == "G") {
+            //                 global_event.transition().attr("display", "block")
+            //                 this.curr_global_event = i
+            //             }
+            //             return d.country_code == "G" ? "none" : "block"
+            //         }
+            //         else if (this.curr_date_index < d.date_index + 15 && this.curr_date_index > d.date_index
+            //             && this.curr_event_array[i]) {
+            //             if (i < this.csv_data.event_data.length
+            //                 && this.csv_data.event_data[i + 1].date_index == this.curr_date_index + 1
+            //                 && d.country_code == this.csv_data.event_data[i + 1].country_code) {
+            //                 this.curr_event_array[i] = 0
+            //                 if (d.country_code == "G")
+            //                     global_event.attr("display", "none")
+            //                 return "none"
+            //             }
+            //             return d.country_code == "G" ? "none" : "block"
+            //         }
+            //         this.curr_event_array[i] = 0
+            //         if (d.country_code == "G")
+            //             global_event.attr("display", "none")
+            //         return "none"
+            //     })
+
+
+            // global_event.attr("display", d => {
+            //     if (this.curr_global_event == -1) return "none"
+            //     return this.csv_data.event_data[this.curr_global_event].date_index + 15 <= this.curr_date_index ? "none" : null
+            // })
+            //     .on("mouseover", (e) => {
+            //         global_event.transition().attr("opacity", 0.5).attr("width", img_size * 2 * 1.5).attr("height", img_size * 2 * 1.5)
+            //     }).on("mouseout", (e) => {
+            //         global_event.transition().attr("opacity", 1).attr("width", img_size * 2).attr("height", img_size * 2)
+            //     }).on("click", (e) => {
+            //         this.show_modal = true
+            //         this.event_date = this.csv_data.event_data[this.curr_global_event].Date
+            //         this.event_msg = this.csv_data.event_data[this.curr_global_event].Event
+            //     }).a
 
             let zoom = d3.zoom()
                 .scaleExtent([1, 12])
@@ -380,16 +572,6 @@ export default {
                     return
                 }
 
-                // map.select("#map_" + selected_country_code)
-                //     .transition()
-                //     .duration(transition_duration)
-                //     .style("stroke", "transparent")
-                //     .style("stroke-width", origin_width)
-                //     .style("opacity", "1")
-
-                // selected_country_code = 'no country selected'
-                // set_country()
-
                 svg.transition().duration(750).call(
                     zoom.transform,
                     d3.zoomIdentity,
@@ -398,6 +580,17 @@ export default {
             }
             svg.call(zoom);
             svg.on("click", reset);
+        },    // date_Str: format like "01Apr2020"
+        // return a Javascript Date object
+        str_to_date(date_str) {
+            if (!date_str) {
+                return "error date"
+            }
+            const day = date_str.substring(0, 2)
+            const month = date_str.substring(2, 5)
+            const year = date_str.substring(5, 9)
+            let date = new Date(day + " " + month + " " + year)
+            return date
         },
     }
 }
