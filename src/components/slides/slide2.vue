@@ -29,28 +29,32 @@
         <option>cum_death_data</option>
       </select> -->
       <div class="row px-5">
-        <div class="col pr-0">
-          <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>
-          <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
-        </div>
-        <div class="col">
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              Play speed: {{ play_speed_mode }}
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" role="menu">
-              <li v-for="option in Object.keys(play_speed)" :key="option">
-                <a class="dropdown-item" @click="play_speed_mode = option">{{ option }}</a>
-              </li>
-            </ul>
+        <div class="col-3">
+          <div class="row">
+            <div class="col px-0">
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Play speed: {{ play_speed_mode }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" role="menu">
+                  <li v-for="option in Object.keys(play_speed)" :key="option">
+                    <a class="dropdown-item" @click="play_speed_mode = option">{{ option }}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col px-0">
+              <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>
+              <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
+            </div>
           </div>
         </div>
-        <div class="col-5 pl-0">
-          <input type="range" v-bind:min="0" v-bind:max="date_array.length - 1" class="slider mt-3 mx-0"
-            id="date_slider" v-model.number="curr_date_index">
-        </div>
-        <div class="col">
+        <div class="col-6 pl-0">
+              <input type="range" v-bind:min="0" v-bind:max="date_array.length - 1" class="slider mt-3 mx-0"
+                id="date_slider" v-model.number="curr_date_index">
+            </div>
+        <div class="col-3">
           <h2><b>Date: {{
               str_to_date(date_array[parseFloat(curr_date_index)]).toLocaleDateString(undefined, {
                 year: 'numeric', month: 'long', day:
