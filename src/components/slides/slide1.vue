@@ -1,6 +1,6 @@
 <template>
     <section>
-        <span class="background" style="background-image:url('https://webslides.tv/static/images/nature.jpg')"></span>
+        <span class="background" :style="'background-image: '+ `url('`+ img_path+ `')`"></span>
         <!--.wrap = container (width: 90%) -->
         <div class="wrap aligncenter">
           <h1><strong>Stories of Covid 19</strong></h1>
@@ -22,8 +22,14 @@
 </template>
 
 <script>
+
 export default {
     name: "slide1",
+    data() {
+      return {
+        img_path:  "/src/assets/images/global_event.png"
+      }
+    },
     components: {
 
     },
