@@ -1865,6 +1865,7 @@ section,
 
 /* slide alignment - top */
 .slide-top {
+  padding-top: 4%;
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;

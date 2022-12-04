@@ -4,6 +4,8 @@
 }
 
 .mapChart {
+    border:2px solid grey;
+    border-radius: 5px;
     height: auto;
     width: auto;
 }
@@ -35,4 +37,11 @@ border-width: 2px;
 border-radius: 5px;
 padding: 5px;
 /* font-size: 200px; */
+}
+
+.sankeyChart {
+    border:2px solid grey;
+    border-radius: 5px;
+    height: auto;
+    width: auto;
 }

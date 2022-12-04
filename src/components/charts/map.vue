@@ -1,6 +1,6 @@
 <template>
     <modal :show_modal="show_modal" :event_date="event_date" :event_msg="event_msg" @toggle="toggle_modal" />
-    <div id="map"></div>
+    <div id="map" class="mt-4 align-item-center"></div>
 </template>
 
 <script>
@@ -25,15 +25,13 @@ export default {
                 cum_death_data: "red",
             },
             unknown_color: "#949494",
-            curr_event_array: Array(this.csv_data.event_data.length).fill({ show: 0 }),
             curr_global_event: undefined,
-            img_size: 25,
+            img_size: 30,
             show_modal: false,
             event_msg: "event_msg",
             event_date: "event_date",
             legend_drawed: false,
-            evented_countries: {}
-            // events_on_map: [],
+            evented_countries: {},
         }
     },
     props: {
@@ -47,11 +45,13 @@ export default {
     components: {
         modal,
     },
-    mounted() {
-        console.log("Mounted: My Main map data", this.csv_data.event_data)
+    created() {
+        console.log("Created: My Main map data")
         this.set_evented_countries()
-        console.log(this.evented_countries)
         this.set_death_max()
+    },
+    mounted() {
+        console.log("Mounted: My Main map data")
         this.initialize_map()
         this.draw_map()
     },
@@ -59,7 +59,6 @@ export default {
         console.log("Updated: My Main map data")
         console.log("Curr is ", this.curr_date)
         this.draw_map()
-        console.log(this.evented_countries)
     },
     methods: {
         get_country_event(country_code) {
@@ -132,10 +131,10 @@ export default {
             const legend_width = 10
             const legend_height = 10
             const legend_coord = [20, 320]
-            const legend_box_width = legend_width * 12
-            const legend_box_height = legend_height * 15
-            const padding = 5
-
+            const legend_box_width = legend_width * 15
+            const legend_box_height = legend_height * 18
+            const padding = 6.5
+            const legend_font_size = 15
             legend_g.append("rect")
                 .attr("id", "map_legend_box")
                 .attr("x", legend_coord[0] - padding)
@@ -149,7 +148,6 @@ export default {
 
             let legend = legend_g.append("g").attr("id", "map_legend")
 
-            // = svg.select("#map_legend")
             for (let i = 0; i < legend_count + 1; i++) {
                 interval.push(i)
             }
@@ -185,27 +183,27 @@ export default {
                     }
                     return parseInt(this.confirmed_max / (legend_count - 1) * d)
                 })
-                .attr("font-size", "13")
+                .attr("font-size", legend_font_size)
                 .attr("font-weight", "bold")
 
             legend.append("text").attr("id", "map_legend_unit")
                 .attr("x", legend_coord[0] + padding)
                 .attr("y", legend_coord[1] - padding)
                 .text("Confirmed Cases")
-                .attr("font-size", "13")
+                .attr("font-size", legend_font_size)
                 .attr("font-weight", "bold")
 
             legend.append("text").attr("id", "map_legend_circle_text")
                 .attr("x", legend_coord[0] + legend_width * 2 + padding)
-                .attr("y", legend_coord[1] + legend_box_height - (legend_height + padding) * 2)
+                .attr("y", legend_coord[1] + (legend_height + padding) * 8)
                 .text("Deceased")
-                .attr("font-size", "13")
+                .attr("font-size", legend_font_size)
                 .attr("font-weight", "bold")
         },
         draw_map() {
             const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-            const height = 400 * 1.2;
-            const width = 630 * 1.2;
+            const height = 400 * 1.35;
+            const width = 630 * 1.35;
 
             const curr_date = this.curr_date
             const death_data = this.csv_data.cum_death_data
@@ -228,16 +226,16 @@ export default {
 
             // Confirmed data color
             const color = d3.interpolateHsl(this.display_color.cum_confirmed_data, "#000000")
-
+            const radius_max = 90
             const circle_radius = d3.scaleLinear()
                 .domain([0, this.death_max])
-                .range([0.2, 60])
+                .range([0.2, radius_max])
 
             const country_features = this.process_country_feature(topojson.feature(this.geo_data, this.geo_data.objects.countries).features);
 
             // Use regular flat projection
             const projection = d3.geoMercator()
-                .scale(120)
+                .scale(136)
                 .translate([width / 2, height / 1.5])
 
             const path = d3.geoPath(projection)
@@ -269,8 +267,8 @@ export default {
             }
             let mouse_move = function (event, d) {
                 map_mouse_handler
-                    .style("left", (event.offsetX) + 250 + "px")
-                    .style("top", (event.offsetY) + "px")
+                    .style("left", (event.offsetX) + 260 + "px")
+                    .style("top", (event.offsetY) + 80+ "px")
             }
 
             let mouse_out = function (event, d) {
@@ -334,9 +332,9 @@ export default {
                     .attr("display", "block")
                     .attr("event_index", curr_global_event["event_index"])
                     .attr("date_index", curr_global_event["date_index"])
-                
+
             } else {
-                if (this.curr_date_index - toNumber(global_event.attr("date_index")) > 15 || this.curr_date_index  < toNumber(global_event.attr("date_index"))) {
+                if (this.curr_date_index - toNumber(global_event.attr("date_index")) > 15 || this.curr_date_index < toNumber(global_event.attr("date_index"))) {
                     // If this global event has passed 15 days
                     global_event
                         .attr("display", "none")
@@ -344,26 +342,23 @@ export default {
                         .attr("opcaity", 0)
                 }
             }
-            
+
             global_event.on("mouseover", (e) => {
-                    global_event.transition().attr("opacity", 0.5).attr("width", img_size * 2 * 1.5).attr("height", img_size * 2 * 1.5)
-                }).on("mouseout", (e) => {
-                    global_event.transition().attr("opacity", 1).attr("width", img_size * 2).attr("height", img_size * 2)
-                }).on("click", (e) => {
-                    this.show_modal = true
-                    this.event_date = this.curr_global_event.Date
-                    this.event_msg = this.curr_global_event.Event
-                })
+                global_event.transition().attr("opacity", 0.5).attr("width", img_size * 2 * 1.5).attr("height", img_size * 2 * 1.5)
+            }).on("mouseout", (e) => {
+                global_event.transition().attr("opacity", 1).attr("width", img_size * 2).attr("height", img_size * 2)
+            }).on("click", (e) => {
+                this.show_modal = true
+                this.event_date = this.curr_global_event.Date
+                this.event_msg = this.curr_global_event.Event
+            })
 
             const curr_date_index = this.curr_date_index
             const img_size = this.img_size
-            let set_country_evented = this.set_country_evented
             let set_country_unevented = this.set_country_unevented
             let get_country_event = this.get_country_event
 
-
             // Append new event at that day
-
             this.csv_data.event_data[this.curr_date_index].forEach((e, i) => {
                 if (get_country_event(e["country_code"]).at(-1) == e["event_index"])
                     return
@@ -384,8 +379,8 @@ export default {
                         if (!lat || !lon)
                             lat = lon = 0
                         let event_coords = projection([lon, lat])
-                        event_coords[0] -= 5
-                        event_coords[1] -= 20
+                        event_coords[0] -= this.img_size * 0.05
+                        event_coords[1] -= this.img_size * 0.9
                         return "translate(" + event_coords + ")";
                     })
                     .on("mouseover", function (e, d) {
@@ -400,7 +395,7 @@ export default {
                         this.event_msg = e.Event
                     }).transition()
                     .attr("display", "block")
-                    
+
                 this.set_country_evented(e["country_code"], toNumber(e["event_index"]))
             });
             map.selectAll(".map_local_event")
@@ -416,16 +411,16 @@ export default {
                         // Dont display events more than 15 days before current day
                         local_event.attr("display", "none")
 
-                        set_country_unevented(local_country_code,local_event_index)
+                        set_country_unevented(local_country_code, local_event_index)
                     } else {
                         if (local_event_index == get_country_event(local_country_code).at(-1)) {
                             console.log("this is just the current event")
                             return //If it is itself
                         }
-                        if (get_country_event(local_country_code).at(-1) != local_event_index ) {
+                        if (get_country_event(local_country_code).at(-1) != local_event_index) {
                             // if it is already occupied
                             local_event.attr("display", "none")
-                            set_country_unevented(local_country_code,local_event_index)
+                            set_country_unevented(local_country_code, local_event_index)
                         }
                     }
                 })
@@ -451,7 +446,7 @@ export default {
             }
             svg.call(zoom);
             svg.on("click", reset);
-        },    
+        },
         // date_Str: format like "01Apr2020"
         // return a Javascript Date object
         str_to_date(date_str) {
