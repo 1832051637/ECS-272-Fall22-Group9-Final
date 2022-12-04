@@ -1,37 +1,12 @@
 <template>
-  <section class="fullscreen">
+  <section class="fullscreen slide-top">
     <!--.wrap = container (width: 90%) -->
-    <div class="wrap size-100 aligncenter">
-      <h1><strong>What happened to our earth?</strong></h1>
-      <!-- <p class="text-intro"><a href="demos/why-webslides.html" title="Why WebSlides?">Presentations</a>, <a
-          href="demos/landings.html" title="Landings">landings</a>, <a href="demos/portfolios.html"
-          title="Portfolios">portfolios</a>, and <a href="demos/longforms.html" title="Longforms">longforms</a>.</p> -->
-      <!-- <div class="bg-white shadow">
-            <ul class="flexblock reasons">
-              <li>
-                <h2>An opportunity to engage.</h2>
-                <p>WebSlides is about good karma. This is about telling the story, and sharing it in a beautiful way.
-                  HTML and CSS as narrative elements.</p>
-              </li>
-              <li>
-                <h2>Work better, faster.</h2>
-                <p>Designers, marketers, and journalists can now focus on the content. Simply <a href="demos/index.html"
-                    title="WebSlides Demos">choose a demo</a> and customize it in minutes.</p>
-              </li>
-            </ul>
-          </div> -->
-
-      <!-- <BarChart/> -->
-
-      <!-- <select v-model="display_mode">
-        <option disabled play_speed_mode="">Please select a data type to view</option>
-        <option>cum_confirmed_data</option>
-        <option>cum_death_data</option>
-      </select> -->
-      <div class="row px-5">
-        <div class="col-3">
+    <div class="container-fluid text-center">
+      <h1 class="display-1"><strong>What happened to our earth?</strong></h1>
+      <div class="row align-items-center ">
+        <div class="col-3  d-flex flex-row-reverse">
           <div class="row">
-            <div class="col px-0">
+            <div class="col-auto">
               <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
                   data-bs-toggle="dropdown" aria-expanded="false">
@@ -44,17 +19,17 @@
                 </ul>
               </div>
             </div>
-            <div class="col px-0">
+            <div class="col-auto">
               <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>
               <button class="btn btn-outline-primary btn-lg mr-0" @click="play" v-if="!is_playing">Play</button>
             </div>
           </div>
         </div>
-        <div class="col-6 pl-0">
+        <div class="col-6">
               <input type="range" v-bind:min="0" v-bind:max="date_array.length - 1" class="slider mt-3 mx-0"
                 id="date_slider" v-model.number="curr_date_index">
             </div>
-        <div class="col-3">
+        <div class="col-3 d-flex flex-row">
           <h2><b>Date: {{
               str_to_date(date_array[parseFloat(curr_date_index)]).toLocaleDateString(undefined, {
                 year: 'numeric', month: 'long', day:

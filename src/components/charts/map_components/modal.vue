@@ -34,16 +34,13 @@ export default {
   },
   created() {
     console.log("modal created", this.show_modal)
-    // this.modalShow = this.show_modal
   },
   mounted() {
     console.log("modal mounted", this.show_modal, this.event_msg, this.event_date)
-    // this.modalShow = this.show_modal
   },
   updated() {
     console.log("modal updated", this.show_modal, this.event_msg, this.event_date)
     this.display()
-    // this.modalShow = this.show_modal
   },
   methods: {
     display() {
