@@ -26,7 +26,7 @@ export default {
             all_sankey_data: {},
             max_country: 5,
             curr_date_index: 0,
-            curr_date: "2020-12-14"
+            curr_date: "2020-12-18"
         }
     },
     components: {

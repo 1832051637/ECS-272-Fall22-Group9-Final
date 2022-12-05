@@ -1,4 +1,4 @@
-import * as d3 from "d3"
+import * as d3 from "d3v4"
 
 export  function d3_sankey() {
     var sankey = {},
