@@ -5,7 +5,9 @@
 <script>
 import * as d3 from "d3";
 import * as d3_sankey from "d3-sankey"
-// import { d3_sankey } from '../../js/sankey.js'
+
+// We used an Online example as basic code to save ton of time. 
+// Resources URL: https://bl.ocks.org/d3noob/102603765773940cae0e16128929c0a9
 
 export default {
     name: "SankeyGraph",
@@ -41,11 +43,8 @@ export default {
             const margin = { top: 10, right: 10, bottom: 10, left: 10 };
             const height = 500;
             const width = 900;
-            let units = "Widgets";
 
-
-            // format variables
-            let formatNumber = d3.format(",.0f"), // zero decimal places
+            let formatNumber = d3.format(",.0f"),
                 format = (d) => { return formatNumber(d); },
                 color = d3.scaleOrdinal(d3.schemeCategory10);
             let svg = d3.select(this.id).select("svg")
@@ -71,7 +70,7 @@ export default {
             let graph = sankey(sankeydata);
             // console.log(graph)
             let link = svg.select("#sankey_link_group")
-                
+
 
             link.selectAll(".link")
                 .data(graph.links)
@@ -79,7 +78,7 @@ export default {
                 .attr("class", "link")
                 .attr("d", d3_sankey.sankeyLinkHorizontal())
                 .style("stroke-width", (d) => { return d.width >= this.link_min_width ? d.width : this.link_min_width })
-                
+
             link.selectAll(".link")
                 .data(graph.links)
                 .join("title")
@@ -90,14 +89,10 @@ export default {
                 });
 
             let node = svg.select("#sankey_node_group")
-                // .selectAll(".node")
-                // .data(graph.nodes)
-                // .join("g")
-                
 
             node.selectAll("rect").data(graph.nodes)
-            .join("rect")
-            .attr("class", "node")
+                .join("rect")
+                .attr("class", "node")
                 .attr("x", (d) => { return d.x0; })
                 .attr("y", (d) => { return d.y0; })
                 .attr("height", (d) => { return d.y1 - d.y0 >= this.node_min_height ? d.y1 - d.y0 : this.node_min_height; })
@@ -114,8 +109,8 @@ export default {
                 });
 
             node.selectAll("text").data(graph.nodes)
-            .join("text")
-            .attr("class", "node")
+                .join("text")
+                .attr("class", "node")
                 .attr("x", (d) => { return d.x0 - 6; })
                 .attr("y", (d) => { return (d.y1 + d.y0) / 2; })
                 .attr("dy", "0.35em")
