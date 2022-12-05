@@ -21,6 +21,12 @@
     stroke: white;
     stroke-width: 0.3px;
 }
+.bubbleChart{
+    /* border:2px solid grey;
+    border-radius: 5px; */
+    height: auto;
+    width: auto;
+}
 
 /* .mapNotification {
     width: 25;

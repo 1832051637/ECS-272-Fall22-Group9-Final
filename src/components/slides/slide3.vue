@@ -43,7 +43,7 @@ export default {
                 this.process_date_array(data)
                 // console.log(this.date_array)
                 let processed_data = this.get_processed_csv_data(data)
-                console.log(processed_data)
+                // console.log(processed_data)
                 this.process_all_sankey_data(processed_data)
                 console.log(this.all_sankey_data)
                 this.data_exists = true
