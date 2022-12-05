@@ -362,7 +362,7 @@ export default {
             this.csv_data.event_data[this.curr_date_index].forEach((e, i) => {
                 if (get_country_event(e["country_code"]).at(-1) == e["event_index"])
                     return
-                console.log("this day has new event: ", e)
+                // console.log("this day has new event: ", e)
                 map.append("image")
                     .attr("class", "map_local_event")
                     .attr("date_index", e["date_index"])
@@ -405,7 +405,7 @@ export default {
                     let local_country_code = local_event.attr("country_code")
                     let local_date_index = toNumber(local_event.attr("date_index"))
                     let local_event_index = toNumber(local_event.attr("event_index"))
-                    console.log(local_date_index, local_country_code)
+                    // console.log(local_date_index, local_country_code)
                     if (curr_date_index < local_date_index || curr_date_index - local_date_index > 15) {
                         // Never display future local events OR
                         // Dont display events more than 15 days before current day

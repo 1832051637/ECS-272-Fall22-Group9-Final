@@ -1,5 +1,5 @@
 country_code,Date,Event,Source,URL
-CHN,12/31/19,Chinese Health officials inform the WHO about a cluster of 41 patients with a mysterious pneumonia. Most are connected to Huanan Seafood Wholesale Market.,Business Insider,https://www.businessinsider.com/coronavirus-pandemic-timeline-history-major-events-2020-3
+CHN,12/31/19,"Chinese Health officials inform the WHO about a cluster of 41 patients with a mysterious pneumonia. Most are connected to Huanan Seafood Wholesale Market., Wuhan",Business Insider,https://www.businessinsider.com/coronavirus-pandemic-timeline-history-major-events-2020-3
 ,1/1/20,Huanan Seafood Wholesale Market closes.,Business Insider,https://www.businessinsider.com/coronavirus-pandemic-timeline-history-major-events-2020-3
 CHN,1/7/20,Chinese authorities identify a new type of coronavirus (called novel coronavirus or nCoV).,Business Insider,https://www.businessinsider.com/coronavirus-pandemic-timeline-history-major-events-2020-3
 CHN,1/11/20,China records its first death.,Business Insider,https://www.businessinsider.com/coronavirus-pandemic-timeline-history-major-events-2020-3
@@ -331,19 +331,19 @@ CHE,8/3/20,The WHO warned there may never be a 'silver bullet' for Covid-19.,NBC
 ,8/8/20,The U.S. reached five million Covid-19 cases.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154343
 ,8/11/20,The world crossed the 20 million case mark.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154344
 ,8/14/20,The CDC suggested recovered COVID-19 patients have protection for 3 months.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154345
-,8/28/20,"COVID-19 reinfection reported in Nevada patient, researchers said.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154346
+USA,8/28/20,"COVID-19 reinfection reported in Nevada patient, researchers said.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154346
 ,8/30/20,The U.S. recorded its six millionth Covid-19 case.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154347
 ,9/2/20,The WHO strongly recommends steroids for seriously ill COVID-19 patients.,Business Insider,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154348
 ,9/10/20,The CDC released a report linking dining out to increased COVID-19 risk.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154349
 ,9/18/20,The world crosses the 30 million Covid-19 case mark.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154350
-,9/19/20,"The U.S. counted its 200,000th Covid-19 death.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154351
+USA,9/19/20,"The U.S. counted its 200,000th Covid-19 death.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154351
 ,9/24/20,The U.S. crosses the seven million case mark.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154352
 ,9/26/20,Canadian Prime Minister Trudeau announced that the country is already experiencing its second wave of the virus.,,
 AZE,9/27/22,Azerbaijian-Armenia war began,,
 G,9/29/20,One million dead of Covid-19 worldwide.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154353
 USA,10/2/20,President Trump announced that he tested positive for Covid-19.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154354
 ,10/15/20,The U.S. reached eight million Covid-19 cases.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154355
-,10/20/20,The world crossed the 40 million case mark.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154356
+G,10/20/20,The world crossed the 40 million case mark.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154356
 ,10/21/20,"The CDC changed guidance on close contacts, emphasizing the importance of wearing 
 masks.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154357
 ,10/23/20,"The US enters its third surge of coronavirus cases, the beginning of its deadliest phase yet",Business Insider,https://www.businessinsider.com/coronavirus-pandemic-timeline-history-major-events-2020-3#november-17-2019-a-person-displayed-the-first-detectable-case-of-covid-19-in-china-1
@@ -351,7 +351,7 @@ masks.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline
 ,11/4/20,"U.S. tallied 100,000 new cases in a day for the first time.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154360
 USA,11/7/20,Biden won the US Presidential Election,,
 ,11/8/20,The U.S. topped 10 million coronavirus cases.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154361
-,11/9/20,Fifty million Covid-19 cases recorded worldwide.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154362
+G,11/9/20,Fifty million Covid-19 cases recorded worldwide.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154362
 ,11/15/20,Eleven million Covid-19 cases counted in the U.S.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154363
 USA,11/16/20,"Moderna announced its Covid-19 vaccine candidate, said it’s 94.5 percent effective.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154364
 ,11/17/20,The FDA authorized the first at-home Covid-19 test that gives users results quickly,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154365
@@ -373,7 +373,7 @@ BioNTech Covid-19 vaccine.",NBC News,https://www.nbcnews.com/health/health-news/
 ,12/5/20,Demand for Covid testing in the U.S. threatened to overwhelm the country’s capacity.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154378
 ,12/6/20,President Trump announced his lawyer Rudy Giuliani has Covid-19.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154379
 ,12/8/20,The U.S. counted its 15 millionth Covid-19 case.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154380
-,12/8/20,"Britain’s Margaret Keenan, 90, became the first person in the world to receive a 
+GBR,12/8/20,"Britain’s Margaret Keenan, 90, became the first person in the world to receive a 
 clinically approved vaccine.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154381
 ARE,12/9/20,The United Arab Emirates became the first nation to give approval to China's vaccine.,NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154382
 ,12/9/20,"The U.S. reported a record 3,103 Covid deaths, its first tally of more than 3,000 in a day.",NBC News,https://www.nbcnews.com/health/health-news/coronavirus-timeline-tracking-critical-moments-covid-19-n1154383
@@ -397,7 +397,7 @@ Defense",https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Time
 ,1/12/21,"The CDC announces that beginning January 26, the U.S. will require proof of a negative COVID-19 test for all air passengers arriving from foreign countries.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,1/12/21,The CDC and HHS update the vaccine allocation guidance.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,1/14/21,"The U.S. improves its COVID vaccine rollout, which nears 1 million doses per day.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,1/15/21,Global COVID-19 related deaths surpass 2M,"US Department of
+G,1/15/21,Global COVID-19 related deaths surpass 2M,"US Department of
 Defense",https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,1/17/21,"For the first time in two weeks, the U.S. has records fewer than 200,000 newly confirmed infections. The number of patients hospitalized with COVID-19 across the country also drops.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,1/17/21,"California public health officials announce that a Coronavirus variant (L452R), which has previously been detected in other countries and states, is increasingly being identified in multiple counties across the state","US Department of
@@ -439,7 +439,7 @@ of schools and early childhood education providers.","US Department of
 Defense",https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,1/22/21,CDC releases updated guidance allowing the second dose of Pfizer-BioNTech and Moderna COVID-19 vaccines to be scheduled for administration up to 6 weeks after the first dose.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,1/25/21,U.S. COVID-19 confirmed cases surpass 25 million.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,1/25/21,The first U.S. case of a highly transmissible Brazil coronavirus variant (P.1) is identified in Minnesota.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,1/25/21,The first U.S. case of a highly transmissible Brazil coronavirus variant (P.1) is identified in Minnesota.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,1/25/21,Merck ends the development of two potential COVID-19 vaccines.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,1/25/21,"POTUS issues a Proclamation on the suspension of entry as immigrants and 
 non-immigrants of certain additional persons who pose a risk of transmitting 
@@ -457,7 +457,7 @@ Defense",https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Time
 ,2/22/21,"The U.S. has records 500,000 deaths from COVID-19.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,2/25/21,The Biden administration reports that 50 million COVID-19 vaccine doses have been administered.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,2/27/21,The FDA issues an EUA to Janssen for the third COVID-19 vaccine.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,3/1/21,Janssen ships the first doses of its COVID-19 vaccine.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,3/1/21,Janssen ships the first doses of its COVID-19 vaccine.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,3/2/21,President Biden announces that the U.S. will achieve a vaccine supply for all adults by May.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 G,3/5/21,"More than 2,750 cases of COVID-19 variants have been detected.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,3/8/21,The CDC issues its first set of recommendations for people who are fully vaccinated.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
@@ -541,9 +541,9 @@ through COVAX","US Department of
 Defense",https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,6/27/21,The Delta coronavirus variant now accounts for about 40% of positive COVID-19 test samples in the U.S.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,7/1/21,The Biden Administration releases the U.S. COVID-19 Global Response and Recovery Framework.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,7/1/21,Johnson & Johnson announces its vaccine is effective against the coronavirus Delta variant.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,7/1/21,Johnson & Johnson announces its vaccine is effective against the coronavirus Delta variant.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,7/4/21,"CDC reports that 67.1 percent of all American adults have received at least one vaccine dose, while 58.2 percent of American adults are fully vaccinated.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,7/7/21,Global COVID-19 related deaths surpass 4M,"US Department of
+G,7/7/21,Global COVID-19 related deaths surpass 4M,"US Department of
 Defense",https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,7/8/21,"The CDC and FDA announce that at this time, there is no need for fully vaccinated people to get a booster COVID-19 shot.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,7/8/21,"According to the CDC, 183.2 million people have received at least one dose of a COVID-19 vaccine, and 158.3 million are fully vaccinated.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
@@ -576,7 +576,7 @@ AFG,8/15/21,The Taliban capture Kabul; the Afghan government surrenders to the T
 ,8/18/21,"POTUS announces new actions to protect Americans from COVID-⁠19: administrating booster shots starting the week of September 20, pending final Food and Drug Administration evaluation and recommendations from the Centers for Disease Control and Prevention; requiring COVID-19 vaccinations for long-term care workers who serve Medicare and Medicaid enrollees; directing the Department of Education to use all available tools to safely reopen schools; extending 100% federal reimbursement to states for eligible COVID-19 emergency response costs; and extending 100% federal reimbursement to states for mobilizing National Guard personnel to support COVID-19 response efforts.",US Department of Defense,https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,8/23/21,"Food and Drug Administration approves the first COVID-19 vaccine. Previously known as the Pfizer-BioNTech vaccine, it will now be marketed as Comirnaty for COVID-19 prevention in individuals 16 and older. The vaccine continues to be available under emergency use authorization, including for individuals 12 through 15 and for a third dose in certain immunocompromised individuals.","US Department of
 Defense",https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
-,8/25/21,Johnson & Johnson reports data to support boosting its single-shot COVID-19 vaccine.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+G,8/25/21,Johnson & Johnson reports data to support boosting its single-shot COVID-19 vaccine.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,8/31/21,"The CDC recommends that unvaccinated Americans should not travel for the Labor Day holiday, and all Americans should wear masks indoors.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,9/3/21,The CDC reports a fivefold increase in COVID-19 hospitalization rates for children and adolescents during the summer months.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,9/7/21,The U.S. surpasses 40 million COVID-19 cases.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
@@ -591,7 +591,7 @@ USA,9/15/21,Tracking data from Johns Hopkins University reveals that 1 out of ev
 ,10/2/21,"COVID-19 deaths in the U.S. eclipses 700,000.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,10/6/21,The White House announces a $1 billion purchase of at-home rapid coronavirus tests to quadruple the number of tests available to Americans by December,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,10/7/21,Pfizer and BioNTech seek FDA authorization of COVID-19 vaccine for children ages 5 to 11. ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,10/12/21,The U.S. announces it will reopen its land borders to fully vaccinated travelers starting November.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,10/12/21,The U.S. announces it will reopen its land borders to fully vaccinated travelers starting November.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,10/13/21,The White House reports that one-third of older Americans have received COVID-19 boosters.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,10/20/21,Food and Drug Administration authorizes booster dose of Moderna and Johnson and Johnson COVID-19 vaccines for eligible populations.,US Department of Defense,https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,10/20/21,"POTUS announces a plan that, if a vaccine is authorized for children ages 5-11, it is quickly distributed and made conveniently and equitably available to families across the country.",US Department of Defense,https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
@@ -626,7 +626,7 @@ USA,1/3/22,"The U.S. reports a record single-day number of daily COVID-19 cases,
 ,1/4/22,"Centers for Disease Control and Prevention updates its guidance and recommends a Pfizer booster at 5 months, and an additional primary dose for certain immunocompromised children.",US Department of Defense,https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,1/5/22,Centers for Disease Control and Prevention expands booster shot eligibility and strengthens recommendations for 12-17 year olds.,US Department of Defense,https://www.defense.gov/Explore/Spotlight/Coronavirus-DOD-Response/Timeline/
 ,1/10/22,"The U.S. records more than 145,000 COVID-19 hospitalizations – the highest since the pandemic began. ",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,1/10/22,"The U.S. is now averaging more than 700,000 cases of the coronavirus every day - a record.",NPR,https://www.npr.org/2022/01/10/1071766924/there-is-a-record-number-of-new-covid-cases-as-well-as-hospitalizations
+USA,1/10/22,"The U.S. is now averaging more than 700,000 cases of the coronavirus every day - a record.",NPR,https://www.npr.org/2022/01/10/1071766924/there-is-a-record-number-of-new-covid-cases-as-well-as-hospitalizations
 ,1/10/22,"In the US, about 825 kids are being admitted to the hospital per day with COVID right now. This is a 40% increase compared to the prior week",NPR,https://www.npr.org/2022/01/10/1071766924/there-is-a-record-number-of-new-covid-cases-as-well-as-hospitalizations
 ,1/11/22,"The omicron-driven surge has sent COVID-19 hospitalizations skyrocketing across the U.S., reaching a new pandemic high this week with 145,982 patients hospitalized.",NPR,https://www.npr.org/sections/health-shots/2022/01/11/1071568846/u-s-covid-hospitalizations-hit-new-record-high-raising-risks-for-patients
 ,1/11/22,Patients with COVID now fill about 30% of ICU beds in the nation and pediatric COVID hospitalizations are also at the highest rate of the pandemic.,NPR,https://www.npr.org/sections/health-shots/2022/01/11/1071568846/u-s-covid-hospitalizations-hit-new-record-high-raising-risks-for-patients
@@ -641,6 +641,7 @@ USA,1/3/22,"The U.S. reports a record single-day number of daily COVID-19 cases,
 ,2/4/22,"U.S. Covid Death Toll Surpasses 900,000",New York Times,https://www.nytimes.com/2022/02/04/us/us-covid-deaths.html
 CHN,2/4/22,"The 2022 Winter Olympics are held in Beijing, China",,
 ,2/11/22,Pfizer postpones the FDA request to use the COVID vaccine for kids under five years old. ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+UKR,2/20/22,"Russia invaded Ukraine, with infantry divisions and armoured and air support in Eastern Ukraine, and dozens of missile attacks across both Eastern Ukraine and Western Ukraine. The first fighting took place in Luhansk Oblast near Milove village on the border with Russia at 3:40 am Kyiv time.",,
 ,2/15/22,Centers for Disease Control and Prevention updates its guidance regarding mask wearing based on risk.,US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
 ,2/22/22,New COVID-19 cases plummet 90% from the U.S. pandemic high.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,2/23/22,The White House announces that 90% of free at-home COVID-19 tests have shipped.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
@@ -648,14 +649,14 @@ CHN,2/4/22,"The 2022 Winter Olympics are held in Beijing, China",,
 ,2/25/22,"CDC announces relaxing its COVID-19 masking guidelines for 70% of the country, including inside schools. ",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,2/28/22,A study suggests that the Pfizer COVID-19 vaccine is less effective  in kids 5 to 11.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,3/2/22,"POTUS announces he is launching the ""Test to Treat"" initiative so people can get tested at a pharmacy and, if they prove positive, receive the antiviral pills on the spot at no cost.",US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
-,3/7/22,Global COVID-19 related deaths surpass 6M.,US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
+G,3/7/22,Global COVID-19 related deaths surpass 6M.,US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
 ,3/29/22,Food and Drug Administration authorizes a second booster dose of either the Pfizer-BioNTech or Moderna COVID-19 vaccine for people 50 years of age and older and certain immunocompromised individuals.,US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
 ,3/30/22,A  large study shows that Ivermectin fails to curb COVID-1 hospitalizations.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,4/4/22,The U.S. Senate negotiators reached a $10 billion COVID aid bill . ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,4/4/22,The U.S. Senate negotiators reached a $10 billion COVID aid bill . ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,4/8/22,"A report suggests that the U.S. COVID-19 vaccination campaign prevented about 2.2 million deaths, 17 million hospitalizations, and 66 million infections. It also estimates that healthcare costs saved were about $899.4 billion. ",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,4/13/22,The CDC  extends  the mask mandate on planes and public transportation.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,4/18/22,The CDC’s mask mandate  for public transportation has been reversed.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,4/22/22,CDC reports that COVID-19 was the third leading cause of death in the U.S. in 2021. ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,4/22/22,CDC reports that COVID-19 was the third leading cause of death in the U.S. in 2021. ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,5/4/22,The US surpassed 1 million COVID-19 deaths.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,5/5/22,"For the first time since February 2022, the US records more than  100,000 new  COVID-19 cases.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,5/17/22,Food and Drug Administration expands eligibility for Pfizer-BioNTech COVID-19 vaccine booster dose to children 5 through 11 years.,US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
@@ -669,10 +670,10 @@ CHN,2/4/22,"The 2022 Winter Olympics are held in Beijing, China",,
 ,7/14/22,The FDA authorizes the Novavax COVID-19 vaccine for adults. ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,7/18/22,The CDC ends the COVID program for cruise ships.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,7/18/22,HHS extends COVID-19 public health emergency for another 90 days.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,8/3/22,The Biden-Harris administration released reports on long COVID.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,8/3/22,The Biden-Harris administration released reports on long COVID.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,8/11/22,Centers for Disease Control and Prevention streamlines COVID-19 guidance to help the public better protect themselves and understand their risk.,US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
 ,8/11/22,The CDC drops quarantine and social distancing recommendations for COVID-19. ,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,8/18/22,"U.S. plans to roll back coverage of COVID-19 vaccines, treatments starting this fall.",Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
 ,8/31/22,Food and Drug Administration authorizes Moderna and Pfizer-BioNTech bivalent COVID-19 vaccines for use as a booster dose.,US Department of Defense,https://www.defense.gov/Spotlights/Coronavirus-DOD-Response/Timeline/
 ,9/19/22,President Joe Biden has declared that the COVID-19  pandemic is over  in the U.S.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
-,10/3/22,The CDC ends its COVID-19  country-specific  travel health notices.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
+USA,10/3/22,The CDC ends its COVID-19  country-specific  travel health notices.,Maximus,https://storymaps.arcgis.com/stories/463f2d26aca94edda07753fe31f61f11
