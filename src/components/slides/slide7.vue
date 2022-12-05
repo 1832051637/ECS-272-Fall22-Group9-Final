@@ -2,8 +2,8 @@
     <section class="aligncenter">
         <!-- .wrap = container (width: 90%) -->
         <div class="wrap">
-            <h2><strong>Ready to Start?</strong> </h2>
-            <p class="text-intro">Create your own presentation instantly. <br>120+ premium slides ready to use.</p>
+            <h1><strong>On March 11, 2020</strong> </h1>
+            <!-- <p class="text-intro">Create your own presentation instantly. <br>120+ premium slides ready to use.</p>
             <p>
                 <a href="https://webslides.tv/webslides-latest.zip" class="button" title="Download WebSlides">
                     <svg class="fa-cloud-download">
@@ -19,7 +19,12 @@
                         Pay what you want.
                     </a>
                 </span>
-            </p>
+            </p> -->
+            <p class="text-intro">The World Health Organization (WHO), declared the novel coronavirus (COVID-19) outbreak a global pandemic due to its rapid spread. 
+            The COVID-19 pandemic has led to a dramatic loss of human life worldwide and presents an unprecedented challenge to public health, food systems, and the world of work.<br>
+            This dashboard tells the COVID-19 story through a timeline, providing you an immersive journey of how COVID-19 spreads and people fight against the virus.<br>...
+          </p>
+          <p class="display-3"><strong>Let's get back to where we started ...</strong> </p>
         </div>
         <!-- .end .wrap -->
     </section>

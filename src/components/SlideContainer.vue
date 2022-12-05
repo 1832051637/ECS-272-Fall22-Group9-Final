@@ -7,14 +7,12 @@
           - <div class="wrap"> = container 90% / <div class="wrap size-50"> = 45%;
         -->
       <slide1 />
+      <slide7 />
       <!-- <slide2 v-if="!fetching && geoDataExists && cumDeathDataExists" :myGeoData="myGeoData" :myCumDeathData="myCumDeathData" /> -->
       <slide2 />
       <slide3 />
       <slide4 />
-      <!-- <slide5 /> -->
-      <!-- <slide6 /> -->
-      <!-- <slide7 /> -->
-      <!-- <slide8 /> -->
+      <slide8 />
     </article>
     <!-- end article -->
   </main>
