@@ -4,7 +4,9 @@
         <!--.wrap = container (width: 90%) -->
         <div class="wrap aligncenter">
           <h1><strong>Stories of Covid 19</strong></h1>
-          <p class="text-intro">Write an introductions for covid-19<br>
+          <p class="text-intro">The World Health Organization (WHO) on March 11, 2020, declared the novel coronavirus (COVID-19) outbreak a global pandemic due to its rapid spread. 
+            The COVID-19 pandemic has led to a dramatic loss of human life worldwide and presents an unprecedented challenge to public health, food systems, and the world of work.<br>
+            This dashboard tells the COVID-19 story through a timeline, providing you an immersive journey of how COVID-19 spreads and people fight against the virus.<br>
             By Erjie Zhang, Yun Qin
           </p>
           <p>
@@ -27,7 +29,7 @@ export default {
     name: "slide1",
     data() {
       return {
-        img_path:  "/src/assets/images/global_event.png"
+        img_path:  "/src/assets/images/covid-background.jpeg"
       }
     },
     components: {
