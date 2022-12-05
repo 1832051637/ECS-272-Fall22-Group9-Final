@@ -2,11 +2,21 @@
 
     <section>
         <div class="row wrap size-100 ">
-            <div class="col-3 border">
-                <h1><strong>What happened to our earth?</strong></h1>
+            <div class="col-3">
+                <h1 class="display-2"><strong>How are vaccines administered?</strong></h1>
+                <!-- <h2>Still, not everyone has been vaccinated</h2> -->
             </div>
-            <div class="col-9 border">
-                <SankeyGraph v-if="data_exists" :all_sankey_data="all_sankey_data" :curr_date="curr_date"/>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col"><input type="range" v-bind:min="0" v-bind:max="date_array.length - 1"
+                        class="slider mt-3 mx-0" id="sankey_date_slider" v-model.number="curr_date_index"></div>
+                    <div class="col-md-auto"><h2><b>Date: {{date_array[curr_date_index]}}</b></h2></div>
+                </div>
+                <div class="row">
+                    <SankeyGraph v-if="data_exists" :all_sankey_data="all_sankey_data"
+                        :curr_date="date_array[curr_date_index]" />
+                </div>
+
             </div>
         </div>
     </section>
@@ -26,7 +36,7 @@ export default {
             all_sankey_data: {},
             max_country: 5,
             curr_date_index: 0,
-            curr_date: "2020-12-19"
+            curr_date: "2020-12-28"
         }
     },
     components: {
@@ -35,6 +45,9 @@ export default {
     created() {
         console.log("slide2 is created")
         this.read_csv()
+    },
+    updated() {
+
     },
     methods: {
         read_csv() {
@@ -115,11 +128,11 @@ export default {
                 // console.log(processed_csv[day])
                 processed_csv[day].forEach(region => {
                     if (day == "2020-12-14")
-                    console.log(region)
+                        console.log(region)
                     if (region["Country_Region"] == "World") {
                         graph.nodes.push({ "name": "Partially vaccinated" })
-                    graph.nodes.push({ "name": "Fully vaccinated" })
-                    graph.nodes.push({ "name": "Ungiven Doses" })
+                        graph.nodes.push({ "name": "Fully vaccinated" })
+                        graph.nodes.push({ "name": "Ungiven Doses" })
                         return
                     }
                     graph.nodes.push({
@@ -145,7 +158,7 @@ export default {
                         "target": "Ungiven Doses",
                         "value": region["Ungiven"]
                     })
-                    
+
                 })
                 this.all_sankey_data[day] = graph
             });

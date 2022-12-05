@@ -58,9 +58,12 @@ padding: 5px;
   }
   
   .node text {
-    font-size: 15;
+    /* font-size: large; */
+    font-weight: bold;
     pointer-events: none;
-    text-shadow: 0 1px 0 #fff;
+    /* stroke: white; */
+    /* stroke-width: 0.05px; */
+    /* text-shadow: 0 1px 0 #fff; */
   }
   
   .link {

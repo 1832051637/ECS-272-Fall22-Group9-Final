@@ -11,7 +11,9 @@ export default {
     name: "SankeyGraph",
     data() {
         return {
-            id: "#sankey"
+            id: "#sankey",
+            node_min_height: 3,
+            link_min_width: 3,
         }
     },
     props: {
@@ -32,7 +34,7 @@ export default {
         initialize_sankey() {
             let svg = d3.select(this.id).append("svg")
             svg.append("g").attr("id", "sankey_link_group");
-            svg.append("g").attr("id", "sankey_node_group").attr("class", "node");
+            svg.append("g").attr("id", "sankey_node_group");
 
         },
         draw_sankey() {
@@ -44,7 +46,7 @@ export default {
 
             // format variables
             let formatNumber = d3.format(",.0f"), // zero decimal places
-                format = function (d) { return formatNumber(d); },
+                format = (d) => { return formatNumber(d); },
                 color = d3.scaleOrdinal(d3.schemeCategory10);
             let svg = d3.select(this.id).select("svg")
                 .attr("class", "sankeyChart")
@@ -76,12 +78,13 @@ export default {
                 .join("path")
                 .attr("class", "link")
                 .attr("d", d3_sankey.sankeyLinkHorizontal())
-                .style("stroke-width", function (d) { return d.width })
+                .style("stroke-width", (d) => { return d.width >= this.link_min_width ? d.width : this.link_min_width })
                 
             link.selectAll(".link")
                 .data(graph.links)
                 .join("title")
-                .text(function (d) {
+                .attr("class", "link")
+                .text((d) => {
                     return d.source.name + " → " +
                         d.target.name + "\n" + format(d.value);
                 });
@@ -92,33 +95,36 @@ export default {
                 // .join("g")
                 
 
-            node.selectAll(".node").data(graph.nodes)
+            node.selectAll("rect").data(graph.nodes)
             .join("rect")
-                .attr("x", function (d) { return d.x0; })
-                .attr("y", function (d) { return d.y0; })
-                .attr("height", function (d) { return d.y1 - d.y0; })
+            .attr("class", "node")
+                .attr("x", (d) => { return d.x0; })
+                .attr("y", (d) => { return d.y0; })
+                .attr("height", (d) => { return d.y1 - d.y0 >= this.node_min_height ? d.y1 - d.y0 : this.node_min_height; })
                 .attr("width", sankey.nodeWidth())
-                .style("fill", function (d) {
+                .style("fill", (d) => {
                     return d.color = color(d.name.replace(/ .*/, ""));
                 })
-                .style("stroke", function (d) {
+                .style("stroke", (d) => {
                     return d3.rgb(d.color).darker(2);
                 })
                 .append("title")
-                .text(function (d) {
+                .text((d) => {
                     return d.name + "\n" + format(d.value);
                 });
 
-            node.selectAll(".node").data(graph.nodes)
+            node.selectAll("text").data(graph.nodes)
             .join("text")
-                .attr("x", function (d) { return d.x0 - 6; })
-                .attr("y", function (d) { return (d.y1 + d.y0) / 2; })
+            .attr("class", "node")
+                .attr("x", (d) => { return d.x0 - 6; })
+                .attr("y", (d) => { return (d.y1 + d.y0) / 2; })
                 .attr("dy", "0.35em")
                 .attr("text-anchor", "end")
-                .text(function (d) { return d.name; })
-                .filter(function (d) { return d.x0 < width / 2; })
-                .attr("x", function (d) { return d.x1 + 6; })
-                .attr("text-anchor", "start");
+                .text((d) => { return d.name; })
+                .filter((d) => { return d.x0 < width / 2; })
+                .attr("x", (d) => { return d.x1 + 6; })
+                .attr("text-anchor", "start")
+                .style("font-size", 20)
         }
     }
 }

@@ -1,7 +1,8 @@
 <template>
   <section class="fullscreen slide-top">
     <div class="container-fluid text-center">
-      <h1 class="display-1"><strong>Bubble Chart</strong></h1>
+      <h1 class="display-1"><b>What about our economy?</b></h1>
+      <h1><strong>And how did we respond to it?</strong></h1>
       <div class="row align-items-center">
         <div class="col">
           <button class="btn btn-outline-primary btn-lg mr-0" @click="pause" v-if="is_playing">Pause</button>

@@ -1,6 +1,6 @@
 <template>
     <modal :show_modal="show_modal" :event_date="event_date" :event_msg="event_msg" @toggle="toggle_modal" />
-    <div id="map" class="mt-4 align-item-center"></div>
+    <div id="map" class=" align-item-center  mt-3"></div>
 </template>
 
 <script>
@@ -202,7 +202,7 @@ export default {
         },
         draw_map() {
             const margin = { top: 0, right: 0, bottom: 0, left: 0 };
-            const height = 400 * 1.35;
+            const height = 400 * 1.3;
             const width = 630 * 1.35;
 
             const curr_date = this.curr_date
