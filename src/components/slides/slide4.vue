@@ -1,5 +1,5 @@
 <template>
-  <section class="fullscreen slide-top py-4">
+  <section class="fullscreen slide-top py-4 fadeIn">
     <div class="container-fluid text-center">
       <h1 class="display-1"><b>What about our economy?</b></h1>
       <h1><strong>And how did we respond to it?</strong></h1>

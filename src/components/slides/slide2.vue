@@ -1,9 +1,9 @@
 <template>
-  <section class="fullscreen slide-top">
+  <section class="fullscreen slide-top fadeIn">
     <!--.wrap = container (width: 90%) -->
     <div class="container-fluid text-center">
       <h1 class="display-1"><strong>What happened in these years?</strong></h1>
-      <h1 class=" my-0 py-0">Yep, these things all happened...</h1>
+      <h1 class="fadeIn my-0 py-0">Yep, these things all happened...</h1>
       <div class="row align-items-center py-0 my-0">
         <div class="col-3  d-flex flex-row-reverse">
           <div class="row">

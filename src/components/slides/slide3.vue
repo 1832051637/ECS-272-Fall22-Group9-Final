@@ -1,6 +1,6 @@
 <template>
 
-    <section>
+    <section class="fadeIn">
         <div class="row wrap size-100 ">
             <div class="col-3">
                 <h1 class="display-2"><strong>How are vaccines administered?</strong></h1>

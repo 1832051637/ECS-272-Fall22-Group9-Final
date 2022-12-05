@@ -1,5 +1,5 @@
 <template>
-    <section class="aligncenter">
+    <section class="aligncenter fadeIn">
         <!-- .wrap = container (width: 90%) -->
         <div class="wrap">
             <h1><strong>On March 11, 2020</strong> </h1>

@@ -1,5 +1,5 @@
 <template>
-    <section class="slide-bottom">
+    <section class="slide-bottom fadeIn">
         <div class="wrap">
             <div class="content-right text-serif">
                 

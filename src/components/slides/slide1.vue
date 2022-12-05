@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="fadeIn">
         <span class="background" :style="'background-image: '+ `url('`+ img_path+ `')`"></span>
         <!--.wrap = container (width: 90%) -->
         <div class="wrap aligncenter bg-info bg-gradient p-2 bg-opacity-50 py-5">

@@ -628,8 +628,8 @@ https://github.com/daneden/animate.css */
 }
 
 .fadeIn {
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 2s;
+  animation: fadeIn 2s;
 }
 
 /*-- fadeInUp -- */
