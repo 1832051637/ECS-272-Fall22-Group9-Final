@@ -25,9 +25,9 @@
                             '#CB2821', '#B32428', '#75151E', '#E1CC4F', '#D95030', '#A03472', '#287233', '#F8F32B', '#343a40'],
                 date_array: [],
                 tooltip: null,
-                margin: { top: 40, right: 20, bottom: 40, left: 80 },
-                width: 900,
-                height: 500,
+                margin: { top: 40, right: 150, bottom: 40, left: 80 },
+                width: 1000,
+                height: 480,
             }
         },
         props:{
@@ -70,25 +70,85 @@
                 svg.append("g").attr("id", "bubbleXAxisGroup")
                     .attr("class", "x-axis")
                     .attr("transform", `translate(0,${this.height - this.margin.bottom})`)
-                    .append("text")
-                    .style("text-anchor", "middle")
-                    .style("font-size", 15)
-                    .style("fill", "black")
+                    
+                svg.append("text")
+                    .attr("text-anchor", "end")
+                    .attr("x", 530)
+                    .attr("y", 480)
+                    .attr("font-size", 15)
+                    .attr("fill", "black")
                     .text("Confirmed Rate (%)");
 
                 svg.append("g").attr("id", "bubbleYAxisGroup")
                     .attr("class", "y-axis")
                     .attr("transform", `translate(${this.margin.left},0)`)
-                    .append("text")
-                    .style("text-anchor", "end")
-                    .style("font-size", 15)
-                    .style("fill", "black")
-                    .text("CPI");
+
+                svg.append("text")
+                    .attr("text-anchor", "end")
+                    .attr("font-size", 15)
+                    .attr("fill", "black")
+                    .attr("transform", "translate(30,130) rotate(-90)")
+                    .text("Consumer Price Index");
+
                 svg.append("g").attr("id", "circleGroup");
                 
                 d3.select(id).append("div")
                     .attr("id", "bubble_mouse_handler")
                     .style("position", "absolute")
+
+                // add legends
+                // Add legend: circles
+                // Add a scale for bubble size
+                svg.append("g").attr("id", "bubbleLegendGroup");
+                let z = d3.scaleLinear()
+                    .domain([0, 80])
+                    .range([0, 70]);
+                var valuesToShow = [5, 20, 40];
+                var xCircle = 750;
+                var xLabel = 805;
+                svg
+                .selectAll("legend")
+                .data(valuesToShow)
+                .enter()
+                .append("circle")
+                    .attr("cx", xCircle)
+                    .attr("cy", function(d){ return 80 - z(d) } )
+                    .attr("r", function(d){ return z(d) })
+                    .style("fill", "none")
+                    .attr("stroke", "black")
+
+                // Add legend: segments
+                svg
+                .selectAll("legend")
+                .data(valuesToShow)
+                .enter()
+                .append("line")
+                    .attr('x1', function(d){ return xCircle + z(d) } )
+                    .attr('x2', xLabel)
+                    .attr('y1', function(d){ return 80 - z(d) } )
+                    .attr('y2', function(d){ return 80 - z(d) } )
+                    .attr('stroke', 'black')
+                    .style('stroke-dasharray', ('4,2'))
+
+                // Add legend: labels
+                svg
+                .selectAll("legend")
+                .data(valuesToShow)
+                .enter()
+                .append("text")
+                    .attr('x', xLabel+5)
+                    .attr('y', function(d){ return 80 - z(d) } )
+                    .text( function(d){ return d } )
+                    .style("font-size", 12)
+                    .attr('alignment-baseline', 'middle')
+
+                // Legend title
+                svg.append("text")
+                .attr('x', xCircle)
+                .attr("y", 100)
+                .style("font-size", 12)
+                .text("Government Response Index")
+                .attr("text-anchor", "middle")
             },
 
             drawBubble() {
@@ -130,6 +190,90 @@
 
                 d3.select("#bubbleYAxisGroup") 
                     .call(yAxis);
+                
+                // Add a scale for bubble size
+                let z = d3.scaleLinear()
+                    .domain([0, 80])
+                    .range([0, 70]);
+
+                let size = 20
+                let x_country_label1 = 850;
+                d3.select('#bubbleLegendGroup')
+                .selectAll("myrect1")
+                .data(country_list.slice(0, 16))
+                .join(
+                    enter => {enter.append("circle")
+                                    .attr("cx", x_country_label1)
+                                    .attr("cy", function(d,i){ return 10 + i*(size+5) })
+                                    .attr("r", 7)
+                                    .attr("fill", function(d, i) { return color_list[i] })},
+                    // update => {update
+                    //                 .attr("cx", x_country_label1)
+                    //                 .attr("cy", function(d,i){ return 10 + i*(size+5) })
+                    //                 .attr("r", 7)},
+                    exit => exit.remove()
+                    );    
+
+                // Add labels beside legend dots
+                d3.select('#bubbleLegendGroup')
+                .selectAll("mylabels1")
+                .data(country_list.slice(0, 16))
+                .join(
+                    enter => {enter.append("text")
+                                    .attr("x", x_country_label1 + size*.8)
+                                    .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+                                    .text(function(d){ return d})
+                                    .attr("text-anchor", "left")
+                                    .style("alignment-baseline", "middle")
+                                    .attr("fill", function(d, i) { return color_list[i] })},
+                    // update => {update
+                    //                 .attr("x", x_country_label1 + size*.8)
+                    //                 .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+                    //                 .text(function(d){ return d})
+                    //                 .attr("text-anchor", "left")
+                    //                 .style("alignment-baseline", "middle")
+                    //                 .attr("fill", function(d, i) { return color_list[i] })},
+                    exit => exit.remove()
+                    );  
+
+                let x_country_label2 = 930;
+                d3.select('#bubbleLegendGroup')
+                .selectAll("myrect2")
+                .data(country_list.slice(16, 34))
+                .join(
+                    enter => {enter.append("circle")
+                                    .attr("cx", x_country_label2)
+                                    .attr("cy", function(d,i){ return 10 + i*(size+5) })
+                                    .attr("r", 7)
+                                    .attr("fill", function(d, i) { return color_list[i+16] })},
+                    // update => {update
+                    //                 .attr("cx", x_country_label2)
+                    //                 .attr("cy", function(d,i){ return 10 + i*(size+5) })
+                    //                 .attr("r", 7)},
+                    exit => exit.remove()
+                    );    
+
+                // Add labels beside legend dots
+                d3.select('#bubbleLegendGroup')
+                .selectAll("mylabels2")
+                .data(country_list.slice(16, 34))
+                .join(
+                    enter => {enter.append("text")
+                                    .attr("x", x_country_label2 + size*.8)
+                                    .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+                                    .text(function(d){ return d})
+                                    .attr("text-anchor", "left")
+                                    .style("alignment-baseline", "middle")
+                                    .attr("fill", function(d, i) { return color_list[i+16] })},
+                    // update => {update
+                    //                 .attr("x", x_country_label2 + size*.8)
+                    //                 .attr("y", function(d,i){ return i * (size + 5) + (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+                    //                 .text(function(d){ return d})
+                    //                 .attr("text-anchor", "left")
+                    //                 .style("alignment-baseline", "middle")
+                    //                 .attr("fill", function(d, i) { return color_list[i+16] })},
+                    exit => exit.remove()
+                    );  
 
                 const bubble_mouse_handler = d3.select("#bubble_mouse_handler")
                     .attr("class", "tooltip")
@@ -145,8 +289,9 @@
 
                         bubble_mouse_handler
                             .html("<span><b>" + d.country + "</b><br>" +
-                                "<b>Confirmed: </b>" + d.cpi + "<br>" +
-                                "<b>Deceased: </b>" + d.gov + "</span>")
+                                "<b>CPI: </b>" + d3.format(",.2f")(d.cpi) + "<br>" +
+                                "<b>Confirmed Rate: </b>" + d3.format(",.2f")(d.rate) + "%<br>" + 
+                                "<b>Government Response Index: </b>" + d3.format(",.2f")(d.gov) + "</span>")
                             .transition()
                             .duration(500)
                             .style("opacity", 1)
@@ -181,7 +326,7 @@
                         enter => {enter.append("circle")
                                         .attr("cx", function(d) { return x(+d.rate) })
                                         .attr("cy", function(d) { return y(+d.cpi) })
-                                        .attr("r", function(d) { return +d.gov })
+                                        .attr("r", function(d) { return z(+d.gov) })
                                         .attr("fill", function(d) { return d.color })
                                         .style("opacity", 0.8)
                                         .on("mouseover", mouseOver)
@@ -192,7 +337,7 @@
                                         .duration(800)
                                         .attr("cx", function(d) { return x(+d.rate) })
                                         .attr("cy", function(d) { return y(+d.cpi) })
-                                        .attr("r", function(d) { return +d.gov })},
+                                        .attr("r", function(d) { return z(+d.gov) })},
                         exit => exit.remove()
                     );                    
             },
