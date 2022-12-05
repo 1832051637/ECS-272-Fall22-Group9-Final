@@ -53,12 +53,12 @@ padding: 5px;
 }
 
 .node rect {
-    cursor: move;
     fill-opacity: .9;
     shape-rendering: crispEdges;
   }
   
   .node text {
+    font-size: 15;
     pointer-events: none;
     text-shadow: 0 1px 0 #fff;
   }

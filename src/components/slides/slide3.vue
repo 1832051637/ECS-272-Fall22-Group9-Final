@@ -26,7 +26,7 @@ export default {
             all_sankey_data: {},
             max_country: 5,
             curr_date_index: 0,
-            curr_date: "2020-12-18"
+            curr_date: "2020-12-19"
         }
     },
     components: {
@@ -95,6 +95,8 @@ export default {
                     others["Doses_admin"] = doses_adm_sum
                     others["People_partially_vaccinated"] = partially_sum
                     others["People_fully_vaccinated"] = fully_sum
+                    let ungiven = doses_adm_sum - partially_sum - fully_sum * 2
+                    others["Ungiven"] = ungiven >= 0 ? ungiven : 0
                     day_data = day_data.slice(0, this.max_country + 1)
                     day_data.push(others)
                 }
@@ -114,7 +116,12 @@ export default {
                 processed_csv[day].forEach(region => {
                     if (day == "2020-12-14")
                     console.log(region)
-                    if (region["Country_Region"] == "World") return
+                    if (region["Country_Region"] == "World") {
+                        graph.nodes.push({ "name": "Partially vaccinated" })
+                    graph.nodes.push({ "name": "Fully vaccinated" })
+                    graph.nodes.push({ "name": "Ungiven Doses" })
+                        return
+                    }
                     graph.nodes.push({
                         "name": region["Country_Region"] + " Doses Admin"
                     })
@@ -138,9 +145,7 @@ export default {
                         "target": "Ungiven Doses",
                         "value": region["Ungiven"]
                     })
-                    graph.nodes.push({ "name": "Partially vaccinated" })
-                    graph.nodes.push({ "name": "Fully vaccinated" })
-                    graph.nodes.push({ "name": "Ungiven Doses" })
+                    
                 })
                 this.all_sankey_data[day] = graph
             });
