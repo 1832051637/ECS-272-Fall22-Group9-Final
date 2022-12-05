@@ -1,10 +1,5 @@
 <template>
-    <div class="bubbleChartContainer">
-        <h1 class="bubbleChartTitle">Bubble Chart</h1>
-        <div id="bubbleWrapper" class="bubbleChart">
-            <svg id="bubble" :height="height" :width="width"></svg>
-        </div>
-    </div>
+    <div id="bubble"></div>
 </template>
 
 <script>
@@ -26,12 +21,12 @@
                             'Thailand', 'Ukraine'],
                 color_list: ['#1f77b4', '#aec7e8', '#ff7f0e', '#ffbb78', '#2ca02c', '#98df8a', '#d62728', '#ff9896',
                             '#9467bd', '#c5b0d5', '#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7',
-                            '#bcbd22', '#dbdb8d', '#17becf', '#9edae5', '#C7B446', '#1B5583', '#354D73', '#A65E2E',
-                            '#CB2821', '#B32428', '#75151E', '#E1CC4F', '#D95030', '#A03472', '#287233', '#F8F32B', '#8F8F8F'],
-                current_date: null,
+                            '#bcbd22', '#dbdb8d', '#17becf', '#9edae5', '#C7B446', '#1B5583', '#0d6efd', '#A65E2E',
+                            '#CB2821', '#B32428', '#75151E', '#E1CC4F', '#D95030', '#A03472', '#287233', '#F8F32B', '#343a40'],
+                date_array: [],
                 tooltip: null,
-                margin: {},
-                width: 500,
+                margin: { top: 40, right: 20, bottom: 40, left: 80 },
+                width: 900,
                 height: 500,
             }
         },
@@ -39,51 +34,61 @@
             mycpiData: Object,
             mygovData: Object,
             myrateData: Object,
-            current_date: String,
+            curr_date_index: Number,
         },
         mounted(){
-            console.log("Mounted: Bubble data", this.myrateData);
+            console.log("Mounted: Bubble data", this.curr_date_index);
+            this.set_date_array();
             this.init('#bubble');
             this.drawBubble();
         },
         updated(){
             console.log("Updated: Bubble data");
-            console.log("Current Bubble date: ", this.current_date);
+            console.log("Current Bubble date: ", this.curr_date_index);
             this.drawBubble();
         },
         methods: {
+            set_date_array() {
+                for (var i=2; i < 13; i++){
+                    this.date_array.push("2020-"+String(i))
+                };
+                for (var i=1; i < 13; i++){
+                    this.date_array.push("2021-"+String(i))
+                };
+                for (var i=1; i < 11; i++){
+                    this.date_array.push("2022-"+String(i))
+                }
+                console.log("Date array for bubble", this.date_array);
+                },
             init(id){
-                this.margin = { top: 10, right: 20, bottom: 40, left: 20 };
-                this.width = document.getElementById("bubbleWrapper").clientWidth ;
-                this.height = document.getElementById("bubbleWrapper").clientHeight;
-                this.cpi_data = this.mycpiData;
-                this.gov_data = this.mygovData;
-                this.rate_data = this.myrateData;
-                let svg = d3.select(id);
+                let svg = d3.select(id).append("svg")
+                        .attr("class", "bubbleChart")
+                        .attr("viewBox", [0, 0, this.width, this.height])
+                        .attr("width", this.width + this.margin.left + this.margin.right)
+                        .attr("height", this.height + this.margin.top + this.margin.bottom);
+
                 svg.append("g").attr("id", "bubbleXAxisGroup")
+                    .attr("class", "x-axis")
+                    .attr("transform", `translate(0,${this.height - this.margin.bottom})`)
                     .append("text")
-                    .style("text-anchor", "end")
-                    .style("font-size", 12)
+                    .style("text-anchor", "middle")
+                    .style("font-size", 15)
                     .style("fill", "black")
                     .text("Confirmed Rate (%)");
+
                 svg.append("g").attr("id", "bubbleYAxisGroup")
+                    .attr("class", "y-axis")
+                    .attr("transform", `translate(${this.margin.left},0)`)
                     .append("text")
-                    .style("text-anchor", "start")
-                    .style("font-size", 12)
+                    .style("text-anchor", "end")
+                    .style("font-size", 15)
                     .style("fill", "black")
                     .text("CPI");
                 svg.append("g").attr("id", "circleGroup");
                 
-                this.tooltip = d3.select("#bubbleWrapper").append("div")
-                    .style("opacity", 0)
-                    .attr("class", "tooltip")
-                    .style("background-color", "white")
-                    .style("border", "solid")
-                    .style("border-width", "1px")
-                    .style("border-radius", "5px")
-                    .style("width", "fit-content")
-                    .style("padding", "4px")
-                    .style("position", "relative")
+                d3.select(id).append("div")
+                    .attr("id", "bubble_mouse_handler")
+                    .style("position", "absolute")
             },
 
             drawBubble() {
@@ -93,54 +98,71 @@
                 let gov_data = this.mygovData;
                 let country_list = this.country_list;
                 let color_list = this.color_list;
-                let current_date = this.current_date;
-                let vueThis = this;
+                let current_date = this.date_array[this.curr_date_index];
 
-                let date = "2020-2";
                 var data = [];
                 for (var i = 0; i < country_list.length; i++){
                     var cpi_idx = cpi_data.map(function(d) { return d.country_name; }).indexOf(country_list[i]);
                     var gov_idx = gov_data.map(function(d) { return d.country_name; }).indexOf(country_list[i]);
                     var rate_idx = rate_data.map(function(d) { return d.country_name; }).indexOf(country_list[i]);
-                    data.push({country: country_list[i], cpi: cpi_data[cpi_idx][date], 
-                                gov: gov_data[gov_idx][date], rate: rate_data[rate_idx][date],
+                    data.push({country: country_list[i], cpi: +cpi_data[cpi_idx][current_date], 
+                                gov: +gov_data[gov_idx][current_date], rate: +rate_data[rate_idx][current_date],
                                 color: color_list[i]});
                 };
-                console.log("output data for 2020-2: ", data);
 
-                let x_axis = d3.scaleLinear()
-                    .domain([0, 100])
-                    .range([this.margin.left, this.width - this.margin.right]);
+                let x = d3.scaleLinear()
+                    .domain([0, 60])
+                    .rangeRound([this.margin.left, this.width - this.margin.right]);
 
-                let y_axis = d3.scaleLinear()
-                    .domain([[d3.min(data, function(d){ return d.cpi;}), d3.max(data, function(d){ return d.cpi;})]])
-                    .range([ this.height - this.margin.bottom, this.margin.top ]);
+                let y = d3.scaleLinear()
+                    // .domain([d3.min(data, d => +d.cpi), d3.max(data, d => +d.cpi)]).nice()
+                    .domain([0, 1100])
+                    .rangeRound([ this.height - this.margin.bottom, this.margin.top ]);
+
+                const xAxis = g => g
+                    .call(d3.axisBottom(x))
+
+                const yAxis = g => g
+                    .call(d3.axisLeft(y))
 
                 d3.select("#bubbleXAxisGroup")
-                    .attr("class", "x-axis")
-                    .attr("transform", `translate(0,${this.height - this.margin.bottom})`)
-                    .call(d3.axisBottom(x_axis));
+                    .call(xAxis);
 
-                d3.select("#bublleYAxisGroup")
-                    .attr("class", "y-axis")
-                    .attr("transform", `translate(${this.margin.left},0)`)
-                    .call(d3.axisLeft(y_axis).ticks(200));
-                
-                let mouseOver = function(d){
+                d3.select("#bubbleYAxisGroup") 
+                    .call(yAxis);
+
+                const bubble_mouse_handler = d3.select("#bubble_mouse_handler")
+                    .attr("class", "tooltip")
+                    .style('font-size', '12px')
+
+                let mouseOver = function(event, d){
                         d3.select(this)
                             .transition()
                             .duration(200)
                             .style("opacity", 1)
                             .style("stroke", "black")
                             .style("stroke-width", 4)
-                        vueThis.tooltip.style("opacity", 1)
-                            .html(d.country +":<br>Confirmed rate is "+d3.format(",.2f")(d.rate)+"%<br>CPI is ")
-                            .style("left", (d3.mouse(this)[0]) + "px")
-                            .style("top", (d3.mouse(this)[1]) + "px")
+
+                        bubble_mouse_handler
+                            .html("<span><b>" + d.country + "</b><br>" +
+                                "<b>Confirmed: </b>" + d.cpi + "<br>" +
+                                "<b>Deceased: </b>" + d.gov + "</span>")
+                            .transition()
+                            .duration(500)
+                            .style("opacity", 1)
                 }
 
-                let mouseLeave = function(d){
-                    vueThis.tooltip.style("opacity", 0)
+                let mouseMove = function(event, d) {
+                    console.log(event)
+
+                    bubble_mouse_handler
+                        .style("left", (event.offsetX) + 260 + "px")
+                        .style("top", (event.offsetY) + 80+ "px")
+            }
+
+                let mouseOut = function(event, d){
+                    bubble_mouse_handler
+                        .style("opacity", 0)
                     d3.selectAll("circle")
                         .transition()
                         .duration(200)
@@ -157,15 +179,20 @@
                     .data(data)
                     .join(
                         enter => {enter.append("circle")
-                                        .attr("cx", function(d) { return x_axis(+d.rate) })
-                                        .attr("cy", function(d) { return y_axis(+d.cpi) })
-                                        .attr("r", function(d) { return Math.sqrt(d.gov)/Math.PI })
+                                        .attr("cx", function(d) { return x(+d.rate) })
+                                        .attr("cy", function(d) { return y(+d.cpi) })
+                                        .attr("r", function(d) { return +d.gov })
                                         .attr("fill", function(d) { return d.color })
+                                        .style("opacity", 0.8)
                                         .on("mouseover", mouseOver)
-                                        .on("mouseleave", mouseLeave)},
-                        update => {update.attr("cx", function(d) { return x_axis(+d.rate) })
-                                        .attr("cy", function(d) { return y_axis(+d.cpi) })
-                                        .attr("r", function(d) { return Math.sqrt(d.gov)/Math.PI })},
+                                        .on("mousemove", mouseMove)
+                                        .on("mouseout", mouseOut)},
+                        update => {update.transition()
+                                        // .delay(function(d, i){return i*3})
+                                        .duration(800)
+                                        .attr("cx", function(d) { return x(+d.rate) })
+                                        .attr("cy", function(d) { return y(+d.cpi) })
+                                        .attr("r", function(d) { return +d.gov })},
                         exit => exit.remove()
                     );                    
             },
@@ -175,23 +202,5 @@
 </script>
 
 
-<style scoped>
-    .bubbleChartContainer{
-        height: 100%;
-        background-color: #ffffff;
-    }
-    .overviewTitle{
-        font-size: 3em;
-        width: 100%;
-        background-color: #ffffff;
-        color: #1a1919;
-        text-align: center;
-        margin: 0;
-        height: 10%;
-    }
-    .bubbleChart{
-        height: 90%;
-        font-size: 15px;
-        background-color: #ffffff;
-    }
+<style>
 </style>
