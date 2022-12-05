@@ -6,7 +6,7 @@
                 <h1><strong>What happened to our earth?</strong></h1>
             </div>
             <div class="col-9 border">
-                <SankeyGraph />
+                <SankeyGraph v-if="data_exists" :all_sankey_data="all_sankey_data" :curr_date="curr_date"/>
             </div>
         </div>
     </section>
@@ -26,6 +26,7 @@ export default {
             all_sankey_data: {},
             max_country: 5,
             curr_date_index: 0,
+            curr_date: "2020-12-14"
         }
     },
     components: {
@@ -38,14 +39,14 @@ export default {
     methods: {
         read_csv() {
             d3.csv(CSV_PATH).then((data) => {
-                this.data_exists = true
-                console.log(data)
+                // console.log(data)
                 this.process_date_array(data)
-                console.log(this.date_array)
+                // console.log(this.date_array)
                 let processed_data = this.get_processed_csv_data(data)
                 console.log(processed_data)
                 this.process_all_sankey_data(processed_data)
                 console.log(this.all_sankey_data)
+                this.data_exists = true
             })
         },
         process_date_array(data) {
@@ -109,9 +110,10 @@ export default {
                     "links": []
                 };
                 graph.nodes.push({ "name": "World Doses Admin" })
-                console.log(processed_csv[day])
+                // console.log(processed_csv[day])
                 processed_csv[day].forEach(region => {
-                    // console.log(region)
+                    if (day == "2020-12-14")
+                    console.log(region)
                     if (region["Country_Region"] == "World") return
                     graph.nodes.push({
                         "name": region["Country_Region"] + " Doses Admin"

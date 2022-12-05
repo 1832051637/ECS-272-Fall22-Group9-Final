@@ -200,7 +200,7 @@ export default {
         let next = curr.setDate(curr.getDate() + 1);
         curr = new Date(next);
       }
-      console.log("Array of all date...", this.date_array)
+      // console.log("Array of all date...", this.date_array)
     },
     process_csv_data(data) {
       let processed_data = []
@@ -301,7 +301,7 @@ export default {
             g["event_index"] = k
             this.csv_data.global_event_data[g["date_index"]] = g
           })
-          console.log(this.csv_data.global_event_data)
+          // console.log(this.csv_data.global_event_data)
         })
     },
 
